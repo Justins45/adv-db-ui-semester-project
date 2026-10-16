@@ -263,3 +263,6 @@
 /home/Mother/Documents/school/adv-db-ui-semester-project/backend/TheaterApi/obj/Debug/net10.0/TheaterApi.pdb
 /home/Mother/Documents/school/adv-db-ui-semester-project/backend/TheaterApi/obj/Debug/net10.0/TheaterApi.genruntimeconfig.cache
 /home/Mother/Documents/school/adv-db-ui-semester-project/backend/TheaterApi/obj/Debug/net10.0/ref/TheaterApi.dll
+/home/Mother/Documents/school/adv-db-ui-semester-project/backend/TheaterApi/bin/Debug/net10.0/Swashbuckle.AspNetCore.Swagger.dll
+/home/Mother/Documents/school/adv-db-ui-semester-project/backend/TheaterApi/bin/Debug/net10.0/Swashbuckle.AspNetCore.SwaggerGen.dll
+/home/Mother/Documents/school/adv-db-ui-semester-project/backend/TheaterApi/bin/Debug/net10.0/Swashbuckle.AspNetCore.SwaggerUI.dll

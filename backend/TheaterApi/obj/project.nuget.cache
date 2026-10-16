@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "jvAzOXyda6s=",
+  "dgSpecHash": "eeP50s5+pRI=",
   "success": true,
   "projectFilePath": "/home/Mother/Documents/school/adv-db-ui-semester-project/backend/TheaterApi/TheaterApi.csproj",
   "expectedPackageFiles": [
@@ -34,6 +34,7 @@
     "/home/Mother/.nuget/packages/microsoft.entityframeworkcore.analyzers/10.0.13/microsoft.entityframeworkcore.analyzers.10.0.13.nupkg.sha512",
     "/home/Mother/.nuget/packages/microsoft.entityframeworkcore.design/10.0.13/microsoft.entityframeworkcore.design.10.0.13.nupkg.sha512",
     "/home/Mother/.nuget/packages/microsoft.entityframeworkcore.relational/10.0.13/microsoft.entityframeworkcore.relational.10.0.13.nupkg.sha512",
+    "/home/Mother/.nuget/packages/microsoft.extensions.apidescription.server/10.0.0/microsoft.extensions.apidescription.server.10.0.0.nupkg.sha512",
     "/home/Mother/.nuget/packages/microsoft.extensions.dependencymodel/10.0.13/microsoft.extensions.dependencymodel.10.0.13.nupkg.sha512",
     "/home/Mother/.nuget/packages/microsoft.openapi/2.12.0/microsoft.openapi.2.12.0.nupkg.sha512",
     "/home/Mother/.nuget/packages/microsoft.visualstudio.solutionpersistence/1.0.52/microsoft.visualstudio.solutionpersistence.1.0.52.nupkg.sha512",
@@ -41,6 +42,10 @@
     "/home/Mother/.nuget/packages/newtonsoft.json/13.0.4/newtonsoft.json.13.0.4.nupkg.sha512",
     "/home/Mother/.nuget/packages/npgsql/10.0.3/npgsql.10.0.3.nupkg.sha512",
     "/home/Mother/.nuget/packages/npgsql.entityframeworkcore.postgresql/10.0.3/npgsql.entityframeworkcore.postgresql.10.0.3.nupkg.sha512",
+    "/home/Mother/.nuget/packages/swashbuckle.aspnetcore/10.3.0/swashbuckle.aspnetcore.10.3.0.nupkg.sha512",
+    "/home/Mother/.nuget/packages/swashbuckle.aspnetcore.swagger/10.3.0/swashbuckle.aspnetcore.swagger.10.3.0.nupkg.sha512",
+    "/home/Mother/.nuget/packages/swashbuckle.aspnetcore.swaggergen/10.3.0/swashbuckle.aspnetcore.swaggergen.10.3.0.nupkg.sha512",
+    "/home/Mother/.nuget/packages/swashbuckle.aspnetcore.swaggerui/10.3.0/swashbuckle.aspnetcore.swaggerui.10.3.0.nupkg.sha512",
     "/home/Mother/.nuget/packages/system.codedom/7.0.0/system.codedom.7.0.0.nupkg.sha512",
     "/home/Mother/.nuget/packages/system.composition/9.0.0/system.composition.9.0.0.nupkg.sha512",
     "/home/Mother/.nuget/packages/system.composition.attributedmodel/9.0.0/system.composition.attributedmodel.9.0.0.nupkg.sha512",

@@ -1,9 +1,2 @@
 @temp_asp.net_webapi_HostAddress = http://localhost:5045
 
-###
-
-POST https://localhost:<port>/api/logs/test
-
-###
-
-GET https://localhost:<port>/api/logs
