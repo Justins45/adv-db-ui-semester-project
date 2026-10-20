@@ -17,6 +17,8 @@ builder.Services.AddSingleton(_ =>
 
 builder.Services.AddSingleton<ILogStore, FirestoreLogStore>();
 
+builder.Services.AddTransient<FirestoreSeeder>();
+
 builder.Services.AddControllers();
 // Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
 builder.Services.AddOpenApi();
@@ -45,6 +47,14 @@ if (app.Environment.IsDevelopment())
     app.MapOpenApi();
     app.UseSwagger();
     app.UseSwaggerUI();
+}
+
+// Seed only in Development, and only when you flip the flag in appsettings.Development.json
+if (app.Environment.IsDevelopment() && app.Configuration.GetValue<bool>("SeedFirestore"))
+{
+    using var scope = app.Services.CreateScope();
+    var seeder = scope.ServiceProvider.GetRequiredService<FirestoreSeeder>();
+    await seeder.SeedAsync(Path.Combine(app.Environment.ContentRootPath, "firestore_logs_seed.json"));
 }
 
 app.UseHttpsRedirection();
