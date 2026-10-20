@@ -14,16 +14,14 @@ public class FirestoreSeeder
         var json = await File.ReadAllTextAsync(jsonPath);
         using var doc = JsonDocument.Parse(json);
 
-        var batch = _db.StartBatch(); // limit is 500 writes; 50 fits easily
+        // Batch limit is 500 writes; the seed is ~100 documents, so one batch is fine.
+        var batch = _db.StartBatch();
 
         foreach (var collection in doc.RootElement.EnumerateObject())
         {
             foreach (var item in collection.Value.EnumerateArray())
             {
-                var data = new Dictionary<string, object>();
-                foreach (var prop in item.EnumerateObject())
-                    data[prop.Name] = ConvertValue(prop);
-
+                var data = ConvertObject(item);
                 var id = item.GetProperty("id").GetInt32().ToString();
                 batch.Set(_db.Collection(collection.Name).Document(id), data);
             }
@@ -32,16 +30,36 @@ public class FirestoreSeeder
         await batch.CommitAsync();
     }
 
-    private static object ConvertValue(JsonProperty prop)
+    // JSON object -> Firestore map (recurses into nested maps and arrays)
+    private static Dictionary<string, object?> ConvertObject(JsonElement element)
     {
-        if (TimestampFields.Contains(prop.Name))
-            return Timestamp.FromDateTime(prop.Value.GetDateTimeOffset().UtcDateTime);
+        var map = new Dictionary<string, object?>();
+        foreach (var prop in element.EnumerateObject())
+            map[prop.Name] = ConvertValue(prop.Value, prop.Name);
+        return map;
+    }
 
-        return prop.Value.ValueKind switch
+    private static object? ConvertValue(JsonElement value, string? propertyName = null)
+    {
+        if (propertyName is not null
+            && TimestampFields.Contains(propertyName)
+            && value.ValueKind == JsonValueKind.String)
         {
-            JsonValueKind.Number => prop.Value.GetInt64(),
-            JsonValueKind.String => prop.Value.GetString()!,
-            _ => prop.Value.ToString()
+            return Timestamp.FromDateTime(value.GetDateTimeOffset().UtcDateTime);
+        }
+
+        return value.ValueKind switch
+        {
+            JsonValueKind.Object => ConvertObject(value),
+            JsonValueKind.Array  => value.EnumerateArray()
+                                         .Select(v => ConvertValue(v))
+                                         .ToList(),
+            JsonValueKind.String => value.GetString(),
+            JsonValueKind.Number => value.TryGetInt64(out var l) ? l : value.GetDouble(),
+            JsonValueKind.True   => true,
+            JsonValueKind.False  => false,
+            JsonValueKind.Null   => null,
+            _ => value.ToString()
         };
     }
 }

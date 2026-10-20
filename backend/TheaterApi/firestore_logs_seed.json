@@ -1,63 +1,1704 @@
 {
   "permission_change_log": [
-    { "id": 1, "person_id": 101, "changed_by": 2, "old_role": 1, "new_role": 2, "date_time": "2026-09-02T14:05:11Z" },
-    { "id": 2, "person_id": 102, "changed_by": 2, "old_role": 1, "new_role": 3, "date_time": "2026-09-02T14:12:40Z" },
-    { "id": 3, "person_id": 103, "changed_by": 2, "old_role": 2, "new_role": 4, "date_time": "2026-09-09T18:30:02Z" },
-    { "id": 4, "person_id": 101, "changed_by": 4, "old_role": 2, "new_role": 3, "date_time": "2026-09-15T16:45:27Z" },
-    { "id": 5, "person_id": 104, "changed_by": 2, "old_role": 1, "new_role": 2, "date_time": "2026-09-18T10:03:55Z" },
-    { "id": 6, "person_id": 105, "changed_by": 2, "old_role": 4, "new_role": 5, "date_time": "2026-09-21T13:20:00Z" },
-    { "id": 7, "person_id": 102, "changed_by": 4, "old_role": 3, "new_role": 1, "date_time": "2026-09-27T20:11:18Z" },
-    { "id": 8, "person_id": 106, "changed_by": 5, "old_role": 1, "new_role": 3, "date_time": "2026-10-01T09:55:43Z" },
-    { "id": 9, "person_id": 103, "new_role": 5, "date_time": "2026-10-06T15:40:09Z" },
-    { "id": 10, "person_id": 107, "changed_by": 5, "old_role": 2, "new_role": 1, "date_time": "2026-10-12T11:27:36Z" }
+    {
+      "id": 1,
+      "person_id": 101,
+      "changed_by": 2,
+      "old_role": 1,
+      "new_role": 2,
+      "date_time": "2026-09-02T14:05:11Z"
+    },
+    {
+      "id": 2,
+      "person_id": 102,
+      "changed_by": 2,
+      "old_role": 1,
+      "new_role": 3,
+      "date_time": "2026-09-02T14:12:40Z"
+    },
+    {
+      "id": 3,
+      "person_id": 103,
+      "changed_by": 2,
+      "old_role": 2,
+      "new_role": 4,
+      "date_time": "2026-09-09T18:30:02Z"
+    },
+    {
+      "id": 4,
+      "person_id": 101,
+      "changed_by": 4,
+      "old_role": 2,
+      "new_role": 3,
+      "date_time": "2026-09-15T16:45:27Z"
+    },
+    {
+      "id": 5,
+      "person_id": 104,
+      "changed_by": 2,
+      "old_role": 1,
+      "new_role": 2,
+      "date_time": "2026-09-18T10:03:55Z"
+    },
+    {
+      "id": 6,
+      "person_id": 105,
+      "changed_by": 2,
+      "old_role": 4,
+      "new_role": 5,
+      "date_time": "2026-09-21T13:20:00Z"
+    },
+    {
+      "id": 7,
+      "person_id": 102,
+      "changed_by": 4,
+      "old_role": 3,
+      "new_role": 1,
+      "date_time": "2026-09-27T20:11:18Z"
+    },
+    {
+      "id": 8,
+      "person_id": 106,
+      "changed_by": 5,
+      "old_role": 1,
+      "new_role": 3,
+      "date_time": "2026-10-01T09:55:43Z"
+    },
+    {
+      "id": 9,
+      "person_id": 103,
+      "new_role": 5,
+      "date_time": "2026-10-06T15:40:09Z"
+    },
+    {
+      "id": 10,
+      "person_id": 107,
+      "changed_by": 5,
+      "old_role": 2,
+      "new_role": 1,
+      "date_time": "2026-10-12T11:27:36Z"
+    }
   ],
-
   "audit_log": [
-    { "id": 1, "staff_id": 3, "table_name": "orders", "record_id": 5521, "action": "UPDATE", "old_value": "{\"status\":\"pending\"}", "new_value": "{\"status\":\"paid\"}", "changed_at": "2026-10-03T19:02:14Z", "ip_address": "203.0.113.24" },
-    { "id": 2, "staff_id": 3, "table_name": "tickets", "record_id": 8810, "action": "INSERT", "new_value": "{\"performance_id\":42,\"seat\":\"C12\",\"price\":45.00}", "changed_at": "2026-10-03T19:02:15Z", "ip_address": "203.0.113.24" },
-    { "id": 3, "staff_id": 4, "table_name": "promo_codes", "record_id": 17, "action": "INSERT", "new_value": "{\"code\":\"FALL10\",\"discount_pct\":10}", "changed_at": "2026-10-04T13:15:30Z", "ip_address": "198.51.100.7" },
-    { "id": 4, "staff_id": 4, "table_name": "promo_codes", "record_id": 17, "action": "UPDATE", "old_value": "{\"discount_pct\":10}", "new_value": "{\"discount_pct\":15}", "changed_at": "2026-10-05T09:44:02Z", "ip_address": "198.51.100.7" },
-    { "id": 5, "staff_id": 2, "table_name": "performances", "record_id": 42, "action": "UPDATE", "old_value": "{\"start_time\":\"19:30\"}", "new_value": "{\"start_time\":\"20:00\"}", "changed_at": "2026-10-05T16:20:51Z", "ip_address": "192.0.2.15" },
-    { "id": 6, "staff_id": 5, "table_name": "orders", "record_id": 5530, "action": "DELETE", "old_value": "{\"status\":\"abandoned\",\"total\":0.00}", "changed_at": "2026-10-06T08:00:00Z" },
-    { "id": 7, "staff_id": 3, "table_name": "holds", "record_id": 903, "action": "DELETE", "old_value": "{\"seat\":\"B4\",\"expires_at\":\"2026-10-06T18:10:00Z\"}", "changed_at": "2026-10-06T18:11:03Z", "ip_address": "203.0.113.24" },
-    { "id": 8, "staff_id": 5, "table_name": "tickets", "record_id": 8795, "action": "UPDATE", "old_value": "{\"status\":\"issued\"}", "new_value": "{\"status\":\"refunded\"}", "changed_at": "2026-10-07T12:33:47Z", "ip_address": "192.0.2.88" },
-    { "id": 9, "staff_id": 2, "table_name": "persons", "record_id": 104, "action": "UPDATE", "old_value": "{\"email\":\"old.mail@example.com\"}", "new_value": "{\"email\":\"new.mail@example.com\"}", "changed_at": "2026-10-08T17:05:29Z", "ip_address": "192.0.2.15" },
-    { "id": 10, "staff_id": 4, "table_name": "performances", "record_id": 45, "action": "INSERT", "new_value": "{\"show\":\"Our Town\",\"start_time\":\"19:30\",\"date\":\"2026-11-14\"}", "changed_at": "2026-10-09T10:18:12Z", "ip_address": "198.51.100.7" },
-    { "id": 11, "staff_id": 3, "table_name": "orders", "record_id": 5544, "action": "UPDATE", "old_value": "{\"total\":90.00}", "new_value": "{\"total\":76.50,\"promo_code\":\"FALL15\"}", "changed_at": "2026-10-10T14:50:38Z", "ip_address": "203.0.113.24" },
-    { "id": 12, "staff_id": 6, "table_name": "promo_codes", "record_id": 12, "action": "DELETE", "old_value": "{\"code\":\"SUMMER5\",\"discount_pct\":5}", "changed_at": "2026-10-11T09:01:44Z" },
-    { "id": 13, "staff_id": 2, "table_name": "seats", "record_id": 2210, "action": "UPDATE", "old_value": "{\"status\":\"available\"}", "new_value": "{\"status\":\"blocked\",\"reason\":\"sightline\"}", "changed_at": "2026-10-12T15:36:20Z", "ip_address": "192.0.2.15" },
-    { "id": 14, "staff_id": 5, "table_name": "holds", "record_id": 910, "action": "INSERT", "new_value": "{\"seat\":\"F7\",\"performance_id\":43}", "changed_at": "2026-10-14T18:22:09Z", "ip_address": "192.0.2.88" },
-    { "id": 15, "staff_id": 3, "table_name": "tickets", "record_id": 8822, "action": "UPDATE", "old_value": "{\"seat\":\"D3\"}", "new_value": "{\"seat\":\"D5\"}", "changed_at": "2026-10-16T11:09:55Z" },
-    { "id": 16, "staff_id": 4, "table_name": "persons", "record_id": 112, "action": "UPDATE", "old_value": "{\"phone\":\"403-555-0142\"}", "new_value": "{\"phone\":\"403-555-0199\"}", "changed_at": "2026-10-18T16:41:30Z", "ip_address": "198.51.100.7" }
+    {
+      "id": 1,
+      "staff_id": 2,
+      "table_name": "orders",
+      "record_id": 8879,
+      "action": "UPDATE",
+      "changed_at": "2026-09-14T11:09:25Z",
+      "changes": {
+        "old": {
+          "status": "pending"
+        },
+        "new": {
+          "status": "paid"
+        }
+      },
+      "context": {
+        "ip_address": "192.0.2.15",
+        "source": "box-office-terminal"
+      },
+      "tags": [
+        "orders",
+        "update",
+        "financial"
+      ]
+    },
+    {
+      "id": 2,
+      "staff_id": 6,
+      "table_name": "tickets",
+      "record_id": 714,
+      "action": "UPDATE",
+      "changed_at": "2026-09-14T20:37:03Z",
+      "changes": {
+        "old": {
+          "status": "pending"
+        },
+        "new": {
+          "status": "paid"
+        }
+      },
+      "context": {
+        "ip_address": null,
+        "source": "api"
+      },
+      "tags": [
+        "tickets",
+        "update",
+        "financial"
+      ]
+    },
+    {
+      "id": 3,
+      "staff_id": 3,
+      "table_name": "orders",
+      "record_id": 7055,
+      "action": "UPDATE",
+      "changed_at": "2026-09-15T06:26:04Z",
+      "changes": {
+        "old": {
+          "status": "pending"
+        },
+        "new": {
+          "status": "paid"
+        }
+      },
+      "context": {
+        "ip_address": "203.0.113.24",
+        "source": "admin-portal"
+      },
+      "tags": [
+        "orders",
+        "update",
+        "financial"
+      ]
+    },
+    {
+      "id": 4,
+      "staff_id": 6,
+      "table_name": "orders",
+      "record_id": 6599,
+      "action": "UPDATE",
+      "changed_at": "2026-09-15T16:07:14Z",
+      "changes": {
+        "old": {
+          "status": "pending"
+        },
+        "new": {
+          "status": "paid"
+        }
+      },
+      "context": {
+        "ip_address": null,
+        "source": "box-office-terminal"
+      },
+      "tags": [
+        "orders",
+        "update",
+        "financial"
+      ]
+    },
+    {
+      "id": 5,
+      "staff_id": 3,
+      "table_name": "promo_codes",
+      "record_id": 18,
+      "action": "INSERT",
+      "changed_at": "2026-09-15T22:02:35Z",
+      "changes": {
+        "new": {
+          "code": "WINTER10",
+          "discount_pct": 15
+        }
+      },
+      "context": {
+        "ip_address": "203.0.113.24",
+        "source": "api"
+      },
+      "tags": [
+        "promo_codes",
+        "insert",
+        "financial"
+      ]
+    },
+    {
+      "id": 6,
+      "staff_id": 3,
+      "table_name": "orders",
+      "record_id": 3178,
+      "action": "UPDATE",
+      "changed_at": "2026-09-16T10:52:43Z",
+      "changes": {
+        "old": {
+          "status": "issued"
+        },
+        "new": {
+          "status": "refunded"
+        }
+      },
+      "context": {
+        "ip_address": "203.0.113.24",
+        "source": "admin-portal"
+      },
+      "tags": [
+        "orders",
+        "update",
+        "financial"
+      ]
+    },
+    {
+      "id": 7,
+      "staff_id": 2,
+      "table_name": "persons",
+      "record_id": 106,
+      "action": "UPDATE",
+      "changed_at": "2026-09-16T15:35:45Z",
+      "changes": {
+        "old": {
+          "phone": "403-555-0163"
+        },
+        "new": {
+          "phone": "403-555-0187"
+        }
+      },
+      "context": {
+        "ip_address": "192.0.2.15",
+        "source": "box-office-terminal"
+      },
+      "tags": [
+        "persons",
+        "update"
+      ]
+    },
+    {
+      "id": 8,
+      "staff_id": 4,
+      "table_name": "performances",
+      "record_id": 43,
+      "action": "UPDATE",
+      "changed_at": "2026-09-17T04:27:49Z",
+      "changes": {
+        "old": {
+          "start_time": "19:30"
+        },
+        "new": {
+          "start_time": "20:00"
+        }
+      },
+      "context": {
+        "ip_address": "198.51.100.7",
+        "source": "api"
+      },
+      "tags": [
+        "performances",
+        "update"
+      ]
+    },
+    {
+      "id": 9,
+      "staff_id": 3,
+      "table_name": "holds",
+      "record_id": 916,
+      "action": "INSERT",
+      "changed_at": "2026-09-17T11:15:50Z",
+      "changes": {
+        "new": {
+          "seat": "C9",
+          "performance_id": 43
+        }
+      },
+      "context": {
+        "ip_address": "203.0.113.24",
+        "source": "admin-portal"
+      },
+      "tags": [
+        "holds",
+        "insert"
+      ]
+    },
+    {
+      "id": 10,
+      "staff_id": 4,
+      "table_name": "persons",
+      "record_id": 103,
+      "action": "UPDATE",
+      "changed_at": "2026-09-17T20:46:28Z",
+      "changes": {
+        "old": {
+          "phone": "403-555-0165"
+        },
+        "new": {
+          "phone": "403-555-0153"
+        }
+      },
+      "context": {
+        "ip_address": "198.51.100.7",
+        "source": "box-office-terminal"
+      },
+      "tags": [
+        "persons",
+        "update"
+      ]
+    },
+    {
+      "id": 11,
+      "staff_id": 3,
+      "table_name": "performances",
+      "record_id": 38,
+      "action": "UPDATE",
+      "changed_at": "2026-09-18T04:48:21Z",
+      "changes": {
+        "old": {
+          "start_time": "19:30"
+        },
+        "new": {
+          "start_time": "20:00"
+        }
+      },
+      "context": {
+        "ip_address": "203.0.113.24",
+        "source": "api"
+      },
+      "tags": [
+        "performances",
+        "update"
+      ]
+    },
+    {
+      "id": 12,
+      "staff_id": 6,
+      "table_name": "persons",
+      "record_id": 110,
+      "action": "UPDATE",
+      "changed_at": "2026-09-18T17:04:48Z",
+      "changes": {
+        "old": {
+          "phone": "403-555-0188"
+        },
+        "new": {
+          "phone": "403-555-0144"
+        }
+      },
+      "context": {
+        "ip_address": null,
+        "source": "admin-portal"
+      },
+      "tags": [
+        "persons",
+        "update"
+      ]
+    },
+    {
+      "id": 13,
+      "staff_id": 5,
+      "table_name": "orders",
+      "record_id": 1633,
+      "action": "UPDATE",
+      "changed_at": "2026-09-19T01:31:37Z",
+      "changes": {
+        "old": {
+          "status": "issued"
+        },
+        "new": {
+          "status": "refunded"
+        }
+      },
+      "context": {
+        "ip_address": "192.0.2.88",
+        "source": "box-office-terminal"
+      },
+      "tags": [
+        "orders",
+        "update",
+        "financial"
+      ]
+    },
+    {
+      "id": 14,
+      "staff_id": 2,
+      "table_name": "orders",
+      "record_id": 5172,
+      "action": "UPDATE",
+      "changed_at": "2026-09-19T09:44:42Z",
+      "changes": {
+        "old": {
+          "status": "blocked"
+        },
+        "new": {
+          "status": "available"
+        }
+      },
+      "context": {
+        "ip_address": "192.0.2.15",
+        "source": "api"
+      },
+      "tags": [
+        "orders",
+        "update",
+        "financial"
+      ]
+    },
+    {
+      "id": 15,
+      "staff_id": 4,
+      "table_name": "holds",
+      "record_id": 881,
+      "action": "DELETE",
+      "changed_at": "2026-09-19T20:52:28Z",
+      "changes": {
+        "old": {
+          "seat": "D6"
+        }
+      },
+      "context": {
+        "ip_address": "198.51.100.7",
+        "source": "admin-portal"
+      },
+      "tags": [
+        "holds",
+        "delete",
+        "destructive"
+      ]
+    },
+    {
+      "id": 16,
+      "staff_id": 5,
+      "table_name": "orders",
+      "record_id": 3675,
+      "action": "UPDATE",
+      "changed_at": "2026-09-20T01:39:07Z",
+      "changes": {
+        "old": {
+          "status": "issued"
+        },
+        "new": {
+          "status": "refunded"
+        }
+      },
+      "context": {
+        "ip_address": "192.0.2.88",
+        "source": "box-office-terminal"
+      },
+      "tags": [
+        "orders",
+        "update",
+        "financial"
+      ]
+    },
+    {
+      "id": 17,
+      "staff_id": 5,
+      "table_name": "performances",
+      "record_id": 39,
+      "action": "UPDATE",
+      "changed_at": "2026-09-20T10:47:15Z",
+      "changes": {
+        "old": {
+          "start_time": "19:30"
+        },
+        "new": {
+          "start_time": "20:00"
+        }
+      },
+      "context": {
+        "ip_address": "192.0.2.88",
+        "source": "api"
+      },
+      "tags": [
+        "performances",
+        "update"
+      ]
+    },
+    {
+      "id": 18,
+      "staff_id": 6,
+      "table_name": "promo_codes",
+      "record_id": 28,
+      "action": "UPDATE",
+      "changed_at": "2026-09-20T19:28:25Z",
+      "changes": {
+        "old": {
+          "discount_pct": 20
+        },
+        "new": {
+          "discount_pct": 25
+        }
+      },
+      "context": {
+        "ip_address": null,
+        "source": "admin-portal"
+      },
+      "tags": [
+        "promo_codes",
+        "update",
+        "financial"
+      ]
+    },
+    {
+      "id": 19,
+      "staff_id": 5,
+      "table_name": "tickets",
+      "record_id": 2572,
+      "action": "UPDATE",
+      "changed_at": "2026-09-21T05:43:56Z",
+      "changes": {
+        "old": {
+          "status": "pending"
+        },
+        "new": {
+          "status": "paid"
+        }
+      },
+      "context": {
+        "ip_address": "192.0.2.88",
+        "source": "box-office-terminal"
+      },
+      "tags": [
+        "tickets",
+        "update",
+        "financial"
+      ]
+    },
+    {
+      "id": 20,
+      "staff_id": 3,
+      "table_name": "orders",
+      "record_id": 8045,
+      "action": "UPDATE",
+      "changed_at": "2026-09-21T13:09:14Z",
+      "changes": {
+        "old": {
+          "status": "blocked"
+        },
+        "new": {
+          "status": "available"
+        }
+      },
+      "context": {
+        "ip_address": "203.0.113.24",
+        "source": "api"
+      },
+      "tags": [
+        "orders",
+        "update",
+        "financial"
+      ]
+    },
+    {
+      "id": 21,
+      "staff_id": 2,
+      "table_name": "tickets",
+      "record_id": 6964,
+      "action": "UPDATE",
+      "changed_at": "2026-09-21T22:16:18Z",
+      "changes": {
+        "old": {
+          "status": "blocked"
+        },
+        "new": {
+          "status": "available"
+        }
+      },
+      "context": {
+        "ip_address": "192.0.2.15",
+        "source": "admin-portal"
+      },
+      "tags": [
+        "tickets",
+        "update",
+        "financial"
+      ]
+    },
+    {
+      "id": 22,
+      "staff_id": 4,
+      "table_name": "tickets",
+      "record_id": 8545,
+      "action": "UPDATE",
+      "changed_at": "2026-09-22T08:39:36Z",
+      "changes": {
+        "old": {
+          "status": "blocked"
+        },
+        "new": {
+          "status": "available"
+        }
+      },
+      "context": {
+        "ip_address": "198.51.100.7",
+        "source": "box-office-terminal"
+      },
+      "tags": [
+        "tickets",
+        "update",
+        "financial"
+      ]
+    },
+    {
+      "id": 23,
+      "staff_id": 2,
+      "table_name": "performances",
+      "record_id": 44,
+      "action": "UPDATE",
+      "changed_at": "2026-09-22T20:43:47Z",
+      "changes": {
+        "old": {
+          "start_time": "19:30"
+        },
+        "new": {
+          "start_time": "20:00"
+        }
+      },
+      "context": {
+        "ip_address": "192.0.2.15",
+        "source": "api"
+      },
+      "tags": [
+        "performances",
+        "update"
+      ]
+    },
+    {
+      "id": 24,
+      "staff_id": 5,
+      "table_name": "holds",
+      "record_id": 892,
+      "action": "INSERT",
+      "changed_at": "2026-09-23T03:25:06Z",
+      "changes": {
+        "new": {
+          "seat": "A4",
+          "performance_id": 43
+        }
+      },
+      "context": {
+        "ip_address": "192.0.2.88",
+        "source": "admin-portal"
+      },
+      "tags": [
+        "holds",
+        "insert"
+      ]
+    },
+    {
+      "id": 25,
+      "staff_id": 6,
+      "table_name": "orders",
+      "record_id": 1777,
+      "action": "UPDATE",
+      "changed_at": "2026-09-23T10:07:21Z",
+      "changes": {
+        "old": {
+          "status": "pending"
+        },
+        "new": {
+          "status": "paid"
+        }
+      },
+      "context": {
+        "ip_address": null,
+        "source": "box-office-terminal"
+      },
+      "tags": [
+        "orders",
+        "update",
+        "financial"
+      ]
+    },
+    {
+      "id": 26,
+      "staff_id": 2,
+      "table_name": "promo_codes",
+      "record_id": 28,
+      "action": "INSERT",
+      "changed_at": "2026-09-23T22:09:34Z",
+      "changes": {
+        "new": {
+          "code": "FRIEND20",
+          "discount_pct": 20
+        }
+      },
+      "context": {
+        "ip_address": "192.0.2.15",
+        "source": "api"
+      },
+      "tags": [
+        "promo_codes",
+        "insert",
+        "financial"
+      ]
+    },
+    {
+      "id": 27,
+      "staff_id": 4,
+      "table_name": "persons",
+      "record_id": 115,
+      "action": "UPDATE",
+      "changed_at": "2026-09-24T04:40:16Z",
+      "changes": {
+        "old": {
+          "phone": "403-555-0115"
+        },
+        "new": {
+          "phone": "403-555-0114"
+        }
+      },
+      "context": {
+        "ip_address": "198.51.100.7",
+        "source": "admin-portal"
+      },
+      "tags": [
+        "persons",
+        "update"
+      ]
+    },
+    {
+      "id": 28,
+      "staff_id": 5,
+      "table_name": "promo_codes",
+      "record_id": 4,
+      "action": "INSERT",
+      "changed_at": "2026-09-24T15:29:30Z",
+      "changes": {
+        "new": {
+          "code": "STUDENT15",
+          "discount_pct": 15
+        }
+      },
+      "context": {
+        "ip_address": "192.0.2.88",
+        "source": "box-office-terminal"
+      },
+      "tags": [
+        "promo_codes",
+        "insert",
+        "financial"
+      ]
+    },
+    {
+      "id": 29,
+      "staff_id": 3,
+      "table_name": "persons",
+      "record_id": 106,
+      "action": "UPDATE",
+      "changed_at": "2026-09-25T00:53:44Z",
+      "changes": {
+        "old": {
+          "phone": "403-555-0167"
+        },
+        "new": {
+          "phone": "403-555-0146"
+        }
+      },
+      "context": {
+        "ip_address": "203.0.113.24",
+        "source": "api"
+      },
+      "tags": [
+        "persons",
+        "update"
+      ]
+    },
+    {
+      "id": 30,
+      "staff_id": 2,
+      "table_name": "seats",
+      "record_id": 8752,
+      "action": "UPDATE",
+      "changed_at": "2026-09-25T07:44:34Z",
+      "changes": {
+        "old": {
+          "status": "issued"
+        },
+        "new": {
+          "status": "refunded"
+        }
+      },
+      "context": {
+        "ip_address": "192.0.2.15",
+        "source": "admin-portal"
+      },
+      "tags": [
+        "seats",
+        "update"
+      ]
+    },
+    {
+      "id": 31,
+      "staff_id": 4,
+      "table_name": "persons",
+      "record_id": 105,
+      "action": "UPDATE",
+      "changed_at": "2026-09-25T20:55:05Z",
+      "changes": {
+        "old": {
+          "phone": "403-555-0145"
+        },
+        "new": {
+          "phone": "403-555-0198"
+        }
+      },
+      "context": {
+        "ip_address": "198.51.100.7",
+        "source": "box-office-terminal"
+      },
+      "tags": [
+        "persons",
+        "update"
+      ]
+    },
+    {
+      "id": 32,
+      "staff_id": 6,
+      "table_name": "promo_codes",
+      "record_id": 26,
+      "action": "DELETE",
+      "changed_at": "2026-09-26T01:34:34Z",
+      "changes": {
+        "old": {
+          "code": "FRIEND20",
+          "discount_pct": 10
+        }
+      },
+      "context": {
+        "ip_address": null,
+        "source": "api"
+      },
+      "tags": [
+        "promo_codes",
+        "delete",
+        "financial",
+        "destructive"
+      ]
+    },
+    {
+      "id": 33,
+      "staff_id": 3,
+      "table_name": "tickets",
+      "record_id": 8580,
+      "action": "UPDATE",
+      "changed_at": "2026-09-26T12:47:51Z",
+      "changes": {
+        "old": {
+          "status": "available"
+        },
+        "new": {
+          "status": "blocked"
+        }
+      },
+      "context": {
+        "ip_address": "203.0.113.24",
+        "source": "admin-portal"
+      },
+      "tags": [
+        "tickets",
+        "update",
+        "financial"
+      ]
+    },
+    {
+      "id": 34,
+      "staff_id": 2,
+      "table_name": "seats",
+      "record_id": 4677,
+      "action": "UPDATE",
+      "changed_at": "2026-09-26T20:46:01Z",
+      "changes": {
+        "old": {
+          "status": "available"
+        },
+        "new": {
+          "status": "blocked"
+        }
+      },
+      "context": {
+        "ip_address": "192.0.2.15",
+        "source": "box-office-terminal"
+      },
+      "tags": [
+        "seats",
+        "update"
+      ]
+    },
+    {
+      "id": 35,
+      "staff_id": 6,
+      "table_name": "promo_codes",
+      "record_id": 12,
+      "action": "DELETE",
+      "changed_at": "2026-09-27T05:12:44Z",
+      "changes": {
+        "old": {
+          "code": "STUDENT15",
+          "discount_pct": 5
+        }
+      },
+      "context": {
+        "ip_address": null,
+        "source": "api"
+      },
+      "tags": [
+        "promo_codes",
+        "delete",
+        "financial",
+        "destructive"
+      ]
+    },
+    {
+      "id": 36,
+      "staff_id": 5,
+      "table_name": "tickets",
+      "record_id": 5633,
+      "action": "UPDATE",
+      "changed_at": "2026-09-27T13:06:14Z",
+      "changes": {
+        "old": {
+          "status": "paid"
+        },
+        "new": {
+          "status": "refunded"
+        }
+      },
+      "context": {
+        "ip_address": "192.0.2.88",
+        "source": "admin-portal"
+      },
+      "tags": [
+        "tickets",
+        "update",
+        "financial"
+      ]
+    },
+    {
+      "id": 37,
+      "staff_id": 6,
+      "table_name": "seats",
+      "record_id": 131,
+      "action": "UPDATE",
+      "changed_at": "2026-09-28T00:39:57Z",
+      "changes": {
+        "old": {
+          "status": "available"
+        },
+        "new": {
+          "status": "blocked"
+        }
+      },
+      "context": {
+        "ip_address": null,
+        "source": "box-office-terminal"
+      },
+      "tags": [
+        "seats",
+        "update"
+      ]
+    },
+    {
+      "id": 38,
+      "staff_id": 2,
+      "table_name": "seats",
+      "record_id": 2064,
+      "action": "UPDATE",
+      "changed_at": "2026-09-28T11:22:51Z",
+      "changes": {
+        "old": {
+          "status": "available"
+        },
+        "new": {
+          "status": "blocked"
+        }
+      },
+      "context": {
+        "ip_address": "192.0.2.15",
+        "source": "api"
+      },
+      "tags": [
+        "seats",
+        "update"
+      ]
+    },
+    {
+      "id": 39,
+      "staff_id": 5,
+      "table_name": "tickets",
+      "record_id": 7209,
+      "action": "UPDATE",
+      "changed_at": "2026-09-28T20:48:12Z",
+      "changes": {
+        "old": {
+          "status": "issued"
+        },
+        "new": {
+          "status": "refunded"
+        }
+      },
+      "context": {
+        "ip_address": "192.0.2.88",
+        "source": "admin-portal"
+      },
+      "tags": [
+        "tickets",
+        "update",
+        "financial"
+      ]
+    },
+    {
+      "id": 40,
+      "staff_id": 5,
+      "table_name": "performances",
+      "record_id": 39,
+      "action": "UPDATE",
+      "changed_at": "2026-09-29T00:51:46Z",
+      "changes": {
+        "old": {
+          "start_time": "19:30"
+        },
+        "new": {
+          "start_time": "20:00"
+        }
+      },
+      "context": {
+        "ip_address": "192.0.2.88",
+        "source": "box-office-terminal"
+      },
+      "tags": [
+        "performances",
+        "update"
+      ]
+    },
+    {
+      "id": 41,
+      "staff_id": 3,
+      "table_name": "orders",
+      "record_id": 2576,
+      "action": "UPDATE",
+      "changed_at": "2026-09-29T14:10:10Z",
+      "changes": {
+        "old": {
+          "status": "blocked"
+        },
+        "new": {
+          "status": "available"
+        }
+      },
+      "context": {
+        "ip_address": "203.0.113.24",
+        "source": "api"
+      },
+      "tags": [
+        "orders",
+        "update",
+        "financial"
+      ]
+    },
+    {
+      "id": 42,
+      "staff_id": 3,
+      "table_name": "persons",
+      "record_id": 111,
+      "action": "UPDATE",
+      "changed_at": "2026-09-29T21:51:41Z",
+      "changes": {
+        "old": {
+          "phone": "403-555-0119"
+        },
+        "new": {
+          "phone": "403-555-0170"
+        }
+      },
+      "context": {
+        "ip_address": "203.0.113.24",
+        "source": "admin-portal"
+      },
+      "tags": [
+        "persons",
+        "update"
+      ]
+    },
+    {
+      "id": 43,
+      "staff_id": 2,
+      "table_name": "seats",
+      "record_id": 1783,
+      "action": "UPDATE",
+      "changed_at": "2026-09-30T07:08:01Z",
+      "changes": {
+        "old": {
+          "status": "blocked"
+        },
+        "new": {
+          "status": "available"
+        }
+      },
+      "context": {
+        "ip_address": "192.0.2.15",
+        "source": "box-office-terminal"
+      },
+      "tags": [
+        "seats",
+        "update"
+      ]
+    },
+    {
+      "id": 44,
+      "staff_id": 5,
+      "table_name": "seats",
+      "record_id": 3291,
+      "action": "UPDATE",
+      "changed_at": "2026-09-30T17:59:08Z",
+      "changes": {
+        "old": {
+          "status": "paid"
+        },
+        "new": {
+          "status": "refunded"
+        }
+      },
+      "context": {
+        "ip_address": "192.0.2.88",
+        "source": "api"
+      },
+      "tags": [
+        "seats",
+        "update"
+      ]
+    },
+    {
+      "id": 45,
+      "staff_id": 3,
+      "table_name": "orders",
+      "record_id": 5521,
+      "action": "UPDATE",
+      "changed_at": "2026-10-03T19:02:14Z",
+      "changes": {
+        "old": {
+          "status": "pending"
+        },
+        "new": {
+          "status": "paid"
+        }
+      },
+      "context": {
+        "ip_address": "203.0.113.24",
+        "source": "admin-portal"
+      },
+      "tags": [
+        "orders",
+        "update",
+        "financial"
+      ]
+    },
+    {
+      "id": 46,
+      "staff_id": 3,
+      "table_name": "tickets",
+      "record_id": 8810,
+      "action": "INSERT",
+      "changed_at": "2026-10-03T19:02:15Z",
+      "changes": {
+        "new": {
+          "performance_id": 42,
+          "seat": "C12",
+          "price": 45.0
+        }
+      },
+      "context": {
+        "ip_address": "203.0.113.24",
+        "source": "box-office-terminal"
+      },
+      "tags": [
+        "tickets",
+        "insert",
+        "financial"
+      ]
+    },
+    {
+      "id": 47,
+      "staff_id": 4,
+      "table_name": "promo_codes",
+      "record_id": 17,
+      "action": "INSERT",
+      "changed_at": "2026-10-04T13:15:30Z",
+      "changes": {
+        "new": {
+          "code": "FALL10",
+          "discount_pct": 10
+        }
+      },
+      "context": {
+        "ip_address": "198.51.100.7",
+        "source": "api"
+      },
+      "tags": [
+        "promo_codes",
+        "insert",
+        "financial"
+      ]
+    },
+    {
+      "id": 48,
+      "staff_id": 4,
+      "table_name": "promo_codes",
+      "record_id": 17,
+      "action": "UPDATE",
+      "changed_at": "2026-10-05T09:44:02Z",
+      "changes": {
+        "old": {
+          "discount_pct": 10
+        },
+        "new": {
+          "discount_pct": 15
+        }
+      },
+      "context": {
+        "ip_address": "198.51.100.7",
+        "source": "admin-portal"
+      },
+      "tags": [
+        "promo_codes",
+        "update",
+        "financial"
+      ]
+    },
+    {
+      "id": 49,
+      "staff_id": 2,
+      "table_name": "performances",
+      "record_id": 42,
+      "action": "UPDATE",
+      "changed_at": "2026-10-05T16:20:51Z",
+      "changes": {
+        "old": {
+          "start_time": "19:30"
+        },
+        "new": {
+          "start_time": "20:00"
+        }
+      },
+      "context": {
+        "ip_address": "192.0.2.15",
+        "source": "box-office-terminal"
+      },
+      "tags": [
+        "performances",
+        "update"
+      ]
+    },
+    {
+      "id": 50,
+      "staff_id": 5,
+      "table_name": "orders",
+      "record_id": 5530,
+      "action": "DELETE",
+      "changed_at": "2026-10-06T08:00:00Z",
+      "changes": {
+        "old": {
+          "status": "abandoned",
+          "total": 0.0
+        }
+      },
+      "context": {
+        "ip_address": null,
+        "source": "api"
+      },
+      "tags": [
+        "orders",
+        "delete",
+        "financial",
+        "destructive"
+      ]
+    },
+    {
+      "id": 51,
+      "staff_id": 3,
+      "table_name": "holds",
+      "record_id": 903,
+      "action": "DELETE",
+      "changed_at": "2026-10-06T18:11:03Z",
+      "changes": {
+        "old": {
+          "seat": "B4",
+          "expires_at": "2026-10-06T18:10:00Z"
+        }
+      },
+      "context": {
+        "ip_address": "203.0.113.24",
+        "source": "admin-portal"
+      },
+      "tags": [
+        "holds",
+        "delete",
+        "destructive"
+      ]
+    },
+    {
+      "id": 52,
+      "staff_id": 5,
+      "table_name": "tickets",
+      "record_id": 8795,
+      "action": "UPDATE",
+      "changed_at": "2026-10-07T12:33:47Z",
+      "changes": {
+        "old": {
+          "status": "issued"
+        },
+        "new": {
+          "status": "refunded"
+        }
+      },
+      "context": {
+        "ip_address": "192.0.2.88",
+        "source": "box-office-terminal"
+      },
+      "tags": [
+        "tickets",
+        "update",
+        "financial"
+      ]
+    },
+    {
+      "id": 53,
+      "staff_id": 2,
+      "table_name": "persons",
+      "record_id": 104,
+      "action": "UPDATE",
+      "changed_at": "2026-10-08T17:05:29Z",
+      "changes": {
+        "old": {
+          "email": "old.mail@example.com"
+        },
+        "new": {
+          "email": "new.mail@example.com"
+        }
+      },
+      "context": {
+        "ip_address": "192.0.2.15",
+        "source": "api"
+      },
+      "tags": [
+        "persons",
+        "update"
+      ]
+    },
+    {
+      "id": 54,
+      "staff_id": 4,
+      "table_name": "performances",
+      "record_id": 45,
+      "action": "INSERT",
+      "changed_at": "2026-10-09T10:18:12Z",
+      "changes": {
+        "new": {
+          "show": "Our Town",
+          "start_time": "19:30",
+          "date": "2026-11-14"
+        }
+      },
+      "context": {
+        "ip_address": "198.51.100.7",
+        "source": "admin-portal"
+      },
+      "tags": [
+        "performances",
+        "insert"
+      ]
+    },
+    {
+      "id": 55,
+      "staff_id": 3,
+      "table_name": "orders",
+      "record_id": 5544,
+      "action": "UPDATE",
+      "changed_at": "2026-10-10T14:50:38Z",
+      "changes": {
+        "old": {
+          "total": 90.0
+        },
+        "new": {
+          "total": 76.5,
+          "promo_code": "FALL15"
+        }
+      },
+      "context": {
+        "ip_address": "203.0.113.24",
+        "source": "box-office-terminal"
+      },
+      "tags": [
+        "orders",
+        "update",
+        "financial"
+      ]
+    },
+    {
+      "id": 56,
+      "staff_id": 6,
+      "table_name": "promo_codes",
+      "record_id": 12,
+      "action": "DELETE",
+      "changed_at": "2026-10-11T09:01:44Z",
+      "changes": {
+        "old": {
+          "code": "SUMMER5",
+          "discount_pct": 5
+        }
+      },
+      "context": {
+        "ip_address": null,
+        "source": "api"
+      },
+      "tags": [
+        "promo_codes",
+        "delete",
+        "financial",
+        "destructive"
+      ]
+    },
+    {
+      "id": 57,
+      "staff_id": 2,
+      "table_name": "seats",
+      "record_id": 2210,
+      "action": "UPDATE",
+      "changed_at": "2026-10-12T15:36:20Z",
+      "changes": {
+        "old": {
+          "status": "available"
+        },
+        "new": {
+          "status": "blocked",
+          "reason": "sightline"
+        }
+      },
+      "context": {
+        "ip_address": "192.0.2.15",
+        "source": "admin-portal"
+      },
+      "tags": [
+        "seats",
+        "update"
+      ]
+    },
+    {
+      "id": 58,
+      "staff_id": 5,
+      "table_name": "holds",
+      "record_id": 910,
+      "action": "INSERT",
+      "changed_at": "2026-10-14T18:22:09Z",
+      "changes": {
+        "new": {
+          "seat": "F7",
+          "performance_id": 43
+        }
+      },
+      "context": {
+        "ip_address": "192.0.2.88",
+        "source": "box-office-terminal"
+      },
+      "tags": [
+        "holds",
+        "insert"
+      ]
+    },
+    {
+      "id": 59,
+      "staff_id": 3,
+      "table_name": "tickets",
+      "record_id": 8822,
+      "action": "UPDATE",
+      "changed_at": "2026-10-16T11:09:55Z",
+      "changes": {
+        "old": {
+          "seat": "D3"
+        },
+        "new": {
+          "seat": "D5"
+        }
+      },
+      "context": {
+        "ip_address": null,
+        "source": "api"
+      },
+      "tags": [
+        "tickets",
+        "update",
+        "financial"
+      ]
+    },
+    {
+      "id": 60,
+      "staff_id": 4,
+      "table_name": "persons",
+      "record_id": 112,
+      "action": "UPDATE",
+      "changed_at": "2026-10-18T16:41:30Z",
+      "changes": {
+        "old": {
+          "phone": "403-555-0142"
+        },
+        "new": {
+          "phone": "403-555-0199"
+        }
+      },
+      "context": {
+        "ip_address": "198.51.100.7",
+        "source": "admin-portal"
+      },
+      "tags": [
+        "persons",
+        "update"
+      ]
+    }
   ],
-
   "performance_status_log": [
-    { "id": 1, "performance_id": 40, "changed_by": 2, "previous": "scheduled", "new": "on_sale", "date_time": "2026-09-01T09:00:00Z" },
-    { "id": 2, "performance_id": 41, "changed_by": 2, "previous": "scheduled", "new": "on_sale", "date_time": "2026-09-01T09:00:05Z" },
-    { "id": 3, "performance_id": 40, "changed_by": 4, "previous": "on_sale", "new": "sold_out", "date_time": "2026-09-20T21:14:33Z" },
-    { "id": 4, "performance_id": 42, "changed_by": 4, "previous": "on_sale", "new": "postponed", "date_time": "2026-10-05T16:22:00Z" },
-    { "id": 5, "performance_id": 42, "changed_by": 4, "previous": "postponed", "new": "on_sale", "date_time": "2026-10-05T17:01:12Z" },
-    { "id": 6, "performance_id": 43, "changed_by": 5, "previous": "on_sale", "new": "cancelled", "date_time": "2026-10-09T08:45:19Z" },
-    { "id": 7, "performance_id": 41, "previous": "on_sale", "new": "completed", "date_time": "2026-10-10T23:30:00Z" },
-    { "id": 8, "performance_id": 44, "changed_by": 2, "previous": "scheduled", "new": "on_sale", "date_time": "2026-10-12T09:00:00Z" },
-    { "id": 9, "performance_id": 45, "changed_by": 2, "new": "scheduled", "date_time": "2026-10-09T10:18:13Z" },
-    { "id": 10, "performance_id": 44, "changed_by": 5, "previous": "on_sale", "new": "sold_out", "date_time": "2026-10-17T19:48:26Z" }
+    {
+      "id": 1,
+      "performance_id": 40,
+      "changed_by": 2,
+      "previous": "scheduled",
+      "new": "on_sale",
+      "date_time": "2026-09-01T09:00:00Z"
+    },
+    {
+      "id": 2,
+      "performance_id": 41,
+      "changed_by": 2,
+      "previous": "scheduled",
+      "new": "on_sale",
+      "date_time": "2026-09-01T09:00:05Z"
+    },
+    {
+      "id": 3,
+      "performance_id": 40,
+      "changed_by": 4,
+      "previous": "on_sale",
+      "new": "sold_out",
+      "date_time": "2026-09-20T21:14:33Z"
+    },
+    {
+      "id": 4,
+      "performance_id": 42,
+      "changed_by": 4,
+      "previous": "on_sale",
+      "new": "postponed",
+      "date_time": "2026-10-05T16:22:00Z"
+    },
+    {
+      "id": 5,
+      "performance_id": 42,
+      "changed_by": 4,
+      "previous": "postponed",
+      "new": "on_sale",
+      "date_time": "2026-10-05T17:01:12Z"
+    },
+    {
+      "id": 6,
+      "performance_id": 43,
+      "changed_by": 5,
+      "previous": "on_sale",
+      "new": "cancelled",
+      "date_time": "2026-10-09T08:45:19Z"
+    },
+    {
+      "id": 7,
+      "performance_id": 41,
+      "previous": "on_sale",
+      "new": "completed",
+      "date_time": "2026-10-10T23:30:00Z"
+    },
+    {
+      "id": 8,
+      "performance_id": 44,
+      "changed_by": 2,
+      "previous": "scheduled",
+      "new": "on_sale",
+      "date_time": "2026-10-12T09:00:00Z"
+    },
+    {
+      "id": 9,
+      "performance_id": 45,
+      "changed_by": 2,
+      "new": "scheduled",
+      "date_time": "2026-10-09T10:18:13Z"
+    },
+    {
+      "id": 10,
+      "performance_id": 44,
+      "changed_by": 5,
+      "previous": "on_sale",
+      "new": "sold_out",
+      "date_time": "2026-10-17T19:48:26Z"
+    }
   ],
-
   "error_log": [
-    { "id": 1, "person_id": 101, "end_point": "/api/orders", "error_message": "Unhandled exception while creating order: seat already held by another session", "stack_trace": "System.InvalidOperationException: Seat already held\n   at TheaterApi.Services.HoldService.PlaceHold(Int32 seatId, Int32 personId) in HoldService.cs:line 58\n   at TheaterApi.Controllers.OrdersController.Create(OrderDto dto) in OrdersController.cs:line 34" },
-    { "id": 2, "person_id": 103, "end_point": "/api/orders/5521/pay", "error_message": "Payment provider timeout after 30000ms", "stack_trace": "System.Threading.Tasks.TaskCanceledException: The request was canceled due to the configured HttpClient.Timeout\n   at TheaterApi.Services.PaymentService.Charge(Int32 orderId) in PaymentService.cs:line 91" },
-    { "id": 3, "end_point": "/api/auth/login", "error_message": "Invalid credentials supplied" },
-    { "id": 4, "person_id": 104, "end_point": "/api/tickets/8810", "error_message": "Ticket not found" },
-    { "id": 5, "person_id": 102, "end_point": "/api/performances/42/seats", "error_message": "Npgsql connection pool exhausted", "stack_trace": "Npgsql.NpgsqlException: The connection pool has been exhausted\n   at Npgsql.ConnectorPool.Get(NpgsqlConnection conn, NpgsqlTimeout timeout)\n   at TheaterApi.Data.SeatRepository.GetByPerformance(Int32 performanceId) in SeatRepository.cs:line 27" },
-    { "id": 6, "person_id": 105, "end_point": "/api/promo-codes/validate", "error_message": "Promo code expired" },
-    { "id": 7, "end_point": "/api/auth/register", "error_message": "Email address already registered" },
-    { "id": 8, "person_id": 106, "end_point": "/api/orders/5544", "error_message": "Concurrency conflict: order was modified by another user", "stack_trace": "Microsoft.EntityFrameworkCore.DbUpdateConcurrencyException: The database operation was expected to affect 1 row(s), but actually affected 0 row(s)\n   at Microsoft.EntityFrameworkCore.Update.AffectedCountModificationCommandBatch.ThrowAggregateUpdateConcurrencyException(Int32 commandIndex)\n   at TheaterApi.Services.OrderService.Update(Int32 id, OrderDto dto) in OrderService.cs:line 112" },
-    { "id": 9, "person_id": 101, "end_point": "/api/holds", "error_message": "Hold expired before checkout completed" },
-    { "id": 10, "person_id": 107, "end_point": "/api/tickets/8795/refund", "error_message": "Refund exceeds original payment amount", "stack_trace": "System.ArgumentException: Refund amount 55.00 exceeds captured amount 45.00\n   at TheaterApi.Services.RefundService.Issue(Int32 ticketId, Decimal amount) in RefundService.cs:line 44" },
-    { "id": 11, "end_point": "/api/performances", "error_message": "Request timed out while reading from database" },
-    { "id": 12, "person_id": 103, "end_point": "/api/staff/permissions", "error_message": "Forbidden: caller lacks admin role" },
-    { "id": 13, "person_id": 108, "end_point": "/api/orders/5560/tickets", "error_message": "Failed to generate ticket PDF", "stack_trace": "System.IO.IOException: The process cannot access the file 'ticket_8830.pdf' because it is being used by another process\n   at TheaterApi.Services.TicketPdfService.Render(Int32 ticketId) in TicketPdfService.cs:line 73" },
-    { "id": 14, "person_id": 112, "end_point": "/api/persons/112", "error_message": "Validation failed: phone number format invalid" }
+    {
+      "id": 1,
+      "person_id": 101,
+      "end_point": "/api/orders",
+      "error_message": "Unhandled exception while creating order: seat already held by another session",
+      "stack_trace": "System.InvalidOperationException: Seat already held\n   at TheaterApi.Services.HoldService.PlaceHold(Int32 seatId, Int32 personId) in HoldService.cs:line 58\n   at TheaterApi.Controllers.OrdersController.Create(OrderDto dto) in OrdersController.cs:line 34"
+    },
+    {
+      "id": 2,
+      "person_id": 103,
+      "end_point": "/api/orders/5521/pay",
+      "error_message": "Payment provider timeout after 30000ms",
+      "stack_trace": "System.Threading.Tasks.TaskCanceledException: The request was canceled due to the configured HttpClient.Timeout\n   at TheaterApi.Services.PaymentService.Charge(Int32 orderId) in PaymentService.cs:line 91"
+    },
+    {
+      "id": 3,
+      "end_point": "/api/auth/login",
+      "error_message": "Invalid credentials supplied"
+    },
+    {
+      "id": 4,
+      "person_id": 104,
+      "end_point": "/api/tickets/8810",
+      "error_message": "Ticket not found"
+    },
+    {
+      "id": 5,
+      "person_id": 102,
+      "end_point": "/api/performances/42/seats",
+      "error_message": "Npgsql connection pool exhausted",
+      "stack_trace": "Npgsql.NpgsqlException: The connection pool has been exhausted\n   at Npgsql.ConnectorPool.Get(NpgsqlConnection conn, NpgsqlTimeout timeout)\n   at TheaterApi.Data.SeatRepository.GetByPerformance(Int32 performanceId) in SeatRepository.cs:line 27"
+    },
+    {
+      "id": 6,
+      "person_id": 105,
+      "end_point": "/api/promo-codes/validate",
+      "error_message": "Promo code expired"
+    },
+    {
+      "id": 7,
+      "end_point": "/api/auth/register",
+      "error_message": "Email address already registered"
+    },
+    {
+      "id": 8,
+      "person_id": 106,
+      "end_point": "/api/orders/5544",
+      "error_message": "Concurrency conflict: order was modified by another user",
+      "stack_trace": "Microsoft.EntityFrameworkCore.DbUpdateConcurrencyException: The database operation was expected to affect 1 row(s), but actually affected 0 row(s)\n   at Microsoft.EntityFrameworkCore.Update.AffectedCountModificationCommandBatch.ThrowAggregateUpdateConcurrencyException(Int32 commandIndex)\n   at TheaterApi.Services.OrderService.Update(Int32 id, OrderDto dto) in OrderService.cs:line 112"
+    },
+    {
+      "id": 9,
+      "person_id": 101,
+      "end_point": "/api/holds",
+      "error_message": "Hold expired before checkout completed"
+    },
+    {
+      "id": 10,
+      "person_id": 107,
+      "end_point": "/api/tickets/8795/refund",
+      "error_message": "Refund exceeds original payment amount",
+      "stack_trace": "System.ArgumentException: Refund amount 55.00 exceeds captured amount 45.00\n   at TheaterApi.Services.RefundService.Issue(Int32 ticketId, Decimal amount) in RefundService.cs:line 44"
+    },
+    {
+      "id": 11,
+      "end_point": "/api/performances",
+      "error_message": "Request timed out while reading from database"
+    },
+    {
+      "id": 12,
+      "person_id": 103,
+      "end_point": "/api/staff/permissions",
+      "error_message": "Forbidden: caller lacks admin role"
+    },
+    {
+      "id": 13,
+      "person_id": 108,
+      "end_point": "/api/orders/5560/tickets",
+      "error_message": "Failed to generate ticket PDF",
+      "stack_trace": "System.IO.IOException: The process cannot access the file 'ticket_8830.pdf' because it is being used by another process\n   at TheaterApi.Services.TicketPdfService.Render(Int32 ticketId) in TicketPdfService.cs:line 73"
+    },
+    {
+      "id": 14,
+      "person_id": 112,
+      "end_point": "/api/persons/112",
+      "error_message": "Validation failed: phone number format invalid"
+    }
   ]
 }
