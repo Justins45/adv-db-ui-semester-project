@@ -1,7 +1,10 @@
 using System.ComponentModel.DataAnnotations;
 using Microsoft.AspNetCore.Mvc;
+using Google.Cloud.Firestore;
 using TheaterApi.Data;
 using TheaterApi.Models.Logs;
+using TheaterApi.Models;
+using TheaterApi.Service;
 
 namespace TheaterApi.Controllers;
 
@@ -11,7 +14,8 @@ public class LogsController(
     ILogRepository<AuditLog> auditLogs,
     ILogRepository<PermissionChangeLog> permissionLogs,
     ILogRepository<PerformanceStatusLog> performanceLogs,
-    ILogRepository<ErrorLog> errorLogs) : ControllerBase
+    ILogRepository<ErrorLog> errorLogs,
+    AuditLogService auditLogService) : ControllerBase
 {
     // ───────────── Audit log ─────────────
 
@@ -40,6 +44,20 @@ public class LogsController(
     [ProducesResponseType(StatusCodes.Status404NotFound)]
     public Task<IActionResult> DeleteAudit(int id, CancellationToken ct) =>
         DeleteOne(auditLogs, id, ct);
+
+    // NOTE: (1) FIREBASE SDK QUERY -- aggregate count
+    // GET api/logs/audit-counts
+    [HttpGet("audit-counts")]
+    public async Task<ActionResult<AuditLogCounts>> GetAuditCounts()
+        => Ok(await auditLogService.GetCountsAsync());
+
+    
+    // NOTE: (2) FIREBASE SDK QUERY -- filter by
+    // GET api/logs/audit-recent?daysAgo=7
+    [HttpGet("audit-recent")]
+    public async Task<ActionResult<List<AuditLog>>> GetRecentAuditLogs(
+        [FromQuery, Range(1, 365)] int daysAgo = 7)
+        => Ok(await auditLogService.GetRecentAsync(daysAgo));
 
     // ───────────── Permission changes ─────────────
 

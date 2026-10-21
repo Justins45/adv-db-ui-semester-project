@@ -1,6 +1,7 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.OpenApi;
 using TheaterApi.Data;
+using TheaterApi.Service;
 using Google.Cloud.Firestore;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -22,6 +23,7 @@ builder.Services.AddTransient<FirestoreSeeder>();
 builder.Services.AddFirestoreLogs();
 
 builder.Services.AddControllers();
+builder.Services.AddScoped<AuditLogService>();
 // Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
 builder.Services.AddOpenApi();
 
