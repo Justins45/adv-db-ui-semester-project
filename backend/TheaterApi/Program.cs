@@ -19,6 +19,8 @@ builder.Services.AddSingleton<ILogStore, FirestoreLogStore>();
 
 builder.Services.AddTransient<FirestoreSeeder>();
 
+builder.Services.AddFirestoreLogs();
+
 builder.Services.AddControllers();
 // Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
 builder.Services.AddOpenApi();
