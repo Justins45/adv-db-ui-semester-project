@@ -4,7 +4,7 @@
 
 1. [Setup Instructions](#setup-instructions)
 2. [Datasets](#datasets)
-3. [Dependencies and Environment Notes](#dependencies-and-environment-notes)
+3. [Environment Notes](#dependencies-and-environment-notes)
 4. [Supplying Credentials](#supplying-credentials)
 
 ## Setup Instructions
