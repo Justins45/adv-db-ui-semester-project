@@ -4,6 +4,9 @@ Seed-data generator for the Tradition LTD. ticketing database (DBAD 4000, Phase 
 All data is made up. The generator is seeded, so running it again produces the
 exact same file. Output: AdvDataPhase2SeedData.sql (run AFTER the schema script).
 
+Logging tables (audit, error, permission-change, performance-status) moved to Firebase
+and are no longer generated here.
+
 Usage:
     python3 generate_seed_data.py            -> writes AdvDataPhase2SeedData.sql
     python3 generate_seed_data.py out.sql    -> writes to out.sql
@@ -11,7 +14,6 @@ Usage:
 
 import random
 import sys
-import json
 from datetime import datetime, timedelta
 from zoneinfo import ZoneInfo
 
@@ -31,15 +33,7 @@ def q(v):
         return str(v)
     if isinstance(v, datetime):
         return "'" + v.astimezone(TZ).isoformat(sep=" ", timespec="seconds") + "'"
-    if isinstance(v, Bytes):
-        return "convert_to(" + q(v.text) + ", 'UTF8')"
     return "'" + str(v).replace("'", "''") + "'"
-
-
-class Bytes:
-    """Marker for BYTEA columns: stored as UTF-8 bytes of the given text."""
-    def __init__(self, text):
-        self.text = text
 
 
 def money(x):
@@ -120,7 +114,9 @@ regular_staff = staff_ids[8:]
 for sid in staff_ids:
     add("STAFF", ["id", "role_id"], [sid, ROLES["ADMIN"] if sid in admin_ids else ROLES["STAFF"]])
 non_staff = [p for p in ALL_PIDS if p not in staff_ids]
-former_staff = sorted(random.sample(non_staff, 20))   # used to work there, now patrons only
+# This draw fed the old PERMISSION_CHANGE_LOG (now in Firebase). It is kept so every later
+# random value, and so the rest of the data set, stays the same as before.
+random.sample(non_staff, 20)
 
 # ---------------------------------------------------------------- PERFORMER (100)
 BILLING = ["Lead Actor", "Lead Actress", "Supporting Actor", "Supporting Actress", "Ensemble",
@@ -472,23 +468,6 @@ for lid in range(1, 1201):
     add("LOGIN_HISTORY", ["id", "person_id", "ip_address", "success", "login_timestamp"],
         [lid, pid, ip, random.random() > 0.12, rand_between(local(2026, 1, 1), NOW)])
 
-# ---------------------------------------------------------------- ERROR_LOG (150)
-ERRORS = [("/api/checkout", "Payment gateway timeout"), ("/api/checkout", "Database timeout"),
-          ("/api/cart/add", "Seat no longer available"), ("/api/cart/add", "Hold expired before checkout"),
-          ("/api/events", "Image upload exceeded size limit"), ("/api/login", "Too many failed attempts"),
-          ("/api/password-reset", "Reset token expired"), ("/api/tickets/scan", "Ticket not valid for this performance"),
-          ("/api/promo/apply", "Promo code expired"), ("/admin/performances", "Stage already booked at this time"),
-          ("/api/seats", "Seat map failed to load"), ("/admin/reports", "Query exceeded time limit")]
-for eid in range(1, 151):
-    ep, msg = random.choice(ERRORS)
-    trace = None
-    if random.random() < 0.6:
-        trace = Bytes(f"Error: {msg}\n    at handler ({ep.strip('/').replace('/', '.')}.js:{random.randint(10, 400)})\n"
-                      f"    at Router.dispatch (router.js:{random.randint(50, 200)})\n    at processTicksAndRejections (node:internal)")
-    add("ERROR_LOG", ["id", "person_id", "end_point", "error_message", "stack_trace", "created_at"],
-        [eid, None if random.random() < 0.3 else random.choice(ALL_PIDS), ep, msg, trace,
-         rand_between(local(2026, 1, 1), NOW)])
-
 # ---------------------------------------------------------------- PASSWORD_RESET_REQUEST (150)
 for rid in range(1, 151):
     when = rand_between(local(2026, 1, 1), NOW)
@@ -499,73 +478,11 @@ for rid in range(1, 151):
     add("PASSWORD_RESET_REQUEST", ["id", "person_id", "time", "success", "status"],
         [rid, random.choice(ALL_PIDS), when, status == "COMPLETED", status])
 
-# ---------------------------------------------------------------- PERMISSION_CHANGE_LOG (~100)
-pcl = []
-founders = admin_ids[:2]
-for sid in staff_ids + former_staff:
-    hired = rand_between(local(2024, 3, 1), local(2026, 6, 1))
-    by = founders[1] if sid == founders[0] else founders[0]
-    pcl.append([sid, by, ROLES["PATRON"], ROLES["STAFF"], hired])
-    if sid in admin_ids:
-        pcl.append([sid, by, ROLES["STAFF"], ROLES["ADMIN"], hired + timedelta(days=random.randint(30, 200))])
-    if sid in former_staff:
-        pcl.append([sid, random.choice(admin_ids), ROLES["STAFF"], ROLES["PATRON"],
-                    hired + timedelta(days=random.randint(60, 400))])
-pcl.sort(key=lambda r: r[4])
-for i, r in enumerate(pcl, 1):
-    add("PERMISSION_CHANGE_LOG", ["id", "person_id", "changed_by", "old_role", "new_role", "date_time"], [i, *r])
-
-# ---------------------------------------------------------------- PERFORMANCE_STATUS_LOG
-psl = []
-for p in performances:
-    if p["status"] == "DRAFT":
-        continue
-    ev = events[p["event"] - 1]
-    published = ev["live"] or (p["dt"] - timedelta(days=40))
-    psl.append([p["id"], random.choice(staff_ids), "DRAFT", "SCHEDULED", published - timedelta(days=random.randint(1, 10))])
-    if p["status"] == "COMPLETED":
-        psl.append([p["id"], random.choice(staff_ids), "SCHEDULED", "COMPLETED", p["dt"] + timedelta(hours=3)])
-    elif p["status"] == "CANCELLED":
-        psl.append([p["id"], random.choice(admin_ids), "SCHEDULED", "CANCELLED",
-                    rand_between(published, min(p["dt"], NOW) - timedelta(hours=1))])
-psl.sort(key=lambda r: r[4])
-for i, r in enumerate(psl, 1):
-    add("PERFORMANCE_STATUS_LOG", ["id", "performance_id", "changed_by", "previous", "new", "date_time"], [i, *r])
-
-# ---------------------------------------------------------------- AUDIT_LOG (300)
-for aid in range(1, 301):
-    table = random.choice(["EVENT", "PERFORMANCE", "PRICE_TIER", "PROMO_CODE", "VENUE", "STAGE"])
-    action = random.choices(["UPDATE", "INSERT", "DELETE"], weights=[65, 30, 5])[0]
-    if table == "EVENT":
-        ev = random.choice(events); rec = ev["id"]
-        old = {"title": ev["title"], "status": "DRAFT"}; new = {"title": ev["title"], "status": ev["status"]}
-    elif table == "PERFORMANCE":
-        p = random.choice(performances); rec = p["id"]
-        old = {"status": "SCHEDULED"}; new = {"status": p["status"]}
-    elif table == "PRICE_TIER":
-        t = random.choice(tiers); rec = t["id"]
-        old = {"price": money(t["price"] - 5)}; new = {"price": t["price"]}
-    elif table == "PROMO_CODE":
-        rec = random.randint(1, 40); old = {"active": True}; new = {"active": False}
-    elif table == "VENUE":
-        rec = random.randint(1, 6); old = {"postal_code": "T0A 0A0"}; new = {"postal_code": VENUES[rec - 1][4]}
-    else:
-        rec = random.randint(1, len(stage_venue)); old = {"name": "Stage " + str(rec)}; new = {"name": stage_name[rec]}
-    if action == "INSERT":
-        old = None
-    if action == "DELETE":
-        new = None
-    add("AUDIT_LOG", ["id", "staff_id", "table_name", "record_id", "action", "old_value", "new_value",
-                      "changed_at", "ip_address"],
-        [aid, random.choice(staff_ids), table, rec, action,
-         Bytes(json.dumps(old)) if old else None, Bytes(json.dumps(new)) if new else None,
-         rand_between(local(2026, 1, 1), NOW), f"10.0.{random.randint(0, 3)}.{random.randint(2, 254)}"])
-
 # ---------------------------------------------------------------- write file
 ORDER = ["ROLE", "PERSON", "VENUE", "EVENT", "GENRE", "PROMO_CODE", "EMAIL_LIST", "LOGIN_HISTORY",
-         "ERROR_LOG", "PASSWORD_RESET_REQUEST", "PATRON", "STAFF", "PERFORMER", "STAGE", "EVENT_GENRE",
-         "PERMISSION_CHANGE_LOG", "AUDIT_LOG", "CART", "SECTION", "PERFORMANCE", "SEAT",
-         "PERFORMANCE_STATUS_LOG", "PERFORMANCE_CAST", "PRICE_TIER", "PERFORMANCE_SEAT", "TICKET",
+         "PASSWORD_RESET_REQUEST", "PATRON", "STAFF", "PERFORMER", "STAGE", "EVENT_GENRE",
+         "CART", "SECTION", "PERFORMANCE", "SEAT",
+         "PERFORMANCE_CAST", "PRICE_TIER", "PERFORMANCE_SEAT", "TICKET",
          "TICKET_SCAN", "CART_ITEM", "ORDER", "PAYMENT"]
 assert set(ORDER) == set(tables), set(ORDER) ^ set(tables)
 SERIAL_TABLES = [t for t in ORDER if t not in ("PATRON", "STAFF", "PERFORMER", "EMAIL_LIST",

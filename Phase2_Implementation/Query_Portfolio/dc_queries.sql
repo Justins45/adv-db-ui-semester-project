@@ -32,10 +32,10 @@ FROM performance p
 
 -- Example usage: the 10 upcoming (scheduled) performances with the weakest sales,
 -- with revenue formatted as currency and the sold percentage shown with a % sign.
-SELECT event, venue, stage, date_time,
-        available_seats, held_seats, sold_seats, total_seats,
-        to_char(total_revenue, 'FM$999,999,990.00') AS revenue,
-        sold_percentage || '%' AS sold_pct
+SELECT event AS "Event", venue AS "Venue", stage AS "Stage", date_time AS "Date Time",
+        available_seats AS "Available Seats", held_seats AS "Held Seats", sold_seats AS "Sold Seats", total_seats AS "Total Seats",
+        to_char(total_revenue, 'FM$999,999,990.00') AS "Revenue",
+        sold_percentage || '%' AS "Sold Percentage"
 FROM v_performance_availability
 WHERE performance_status = 'SCHEDULED'
 ORDER BY v_performance_availability.sold_percentage ASC
@@ -173,47 +173,80 @@ SELECT id, 50.00 FROM performance_seat WHERE status = 'SOLD' LIMIT 1;
 ROLLBACK;
 
 
--- 5. Audit log update on promo_code table
+-- 5. Trigger: keep PERFORMANCE.filled in sync with its seats
 
--- f_audit_changes: generic audit trigger function that writes a row to audit_log
--- for every insert, update, or delete, storing the row before and after as JSON.
--- The acting staff member is read from the session setting app.staff_id, which
--- must be set first (SET app.staff_id = '...') or current_setting() will error.
-CREATE OR REPLACE FUNCTION f_audit_changes()
+-- f_update_performance_filled: recalculates PERFORMANCE.filled whenever a seat's
+-- status changes. A performance is filled when it is not DRAFT or CANCELLED and
+-- none of its seats are left to buy (no seat is AVAILABLE or HELD).
+-- Without this trigger, filled would only be correct if the application
+-- remembered to update it after every sale, release or cancellation.
+CREATE OR REPLACE FUNCTION f_update_performance_filled()
 RETURNS TRIGGER
 LANGUAGE plpgsql
 AS $$
+DECLARE
+    v_performance_id INTEGER := COALESCE(NEW.performance_id, OLD.performance_id);
 BEGIN
-    INSERT INTO audit_log (staff_id, table_name, record_id, action, old_value, new_value, ip_address)
-    VALUES (
-        current_setting('app.staff_id')::INTEGER,
-        UPPER(TG_TABLE_NAME),                       -- table that fired the trigger
-        COALESCE(NEW.id, OLD.id),                   -- NEW is null on DELETE, OLD is null on INSERT
-        TG_OP,                                      -- 'INSERT', 'UPDATE' or 'DELETE'
-        convert_to(to_jsonb(OLD)::text, 'UTF8'),    -- row as JSON, stored as bytes
-        convert_to(to_jsonb(NEW)::text, 'UTF8'),
-        '127.0.0.1'                                 -- placeholder; no real client IP is captured
-    );
+    UPDATE performance p
+    SET filled = p.status NOT IN ('DRAFT', 'CANCELLED')
+                AND NOT EXISTS (
+                    SELECT 1
+                    FROM performance_seat ps
+                    WHERE ps.performance_id = p.id
+                        AND ps.status IN ('AVAILABLE', 'HELD')
+                )
+    WHERE p.id = v_performance_id;
+
     -- Return value is ignored for AFTER triggers, but returning the row is the usual convention
     RETURN COALESCE(NEW, OLD);
 END;
 $$;
 
--- AFTER trigger so only changes that actually succeeded get logged
-CREATE OR REPLACE TRIGGER trg_audit_promo_code
-AFTER INSERT OR UPDATE OR DELETE ON promo_code
-FOR EACH ROW EXECUTE FUNCTION f_audit_changes();
+-- AFTER trigger, so the count sees the seat's new status.
+-- UPDATE OF status means updates that don't touch status never fire it.
+DROP TRIGGER IF EXISTS trg_performance_filled ON performance_seat;
+
+CREATE TRIGGER trg_performance_filled
+AFTER INSERT OR DELETE OR UPDATE OF status ON performance_seat
+FOR EACH ROW EXECUTE FUNCTION f_update_performance_filled();
 
 
-
--- Test: act as staff member 2, deactivate a promo code, check the audit log,
--- then reactivate it (the reactivation is also logged).
+-- Test: take the scheduled performance closest to selling out, sell every seat
+-- still for sale, and confirm filled flips to TRUE. Then release one seat and
+-- confirm it flips back. ROLLBACK undoes the test.
 BEGIN;
-SET app.staff_id = '2';
-UPDATE promo_code SET active = FALSE WHERE code = 'SAVE5';
-SELECT action, table_name, record_id, old_value, new_value, staff_id, changed_at
-FROM audit_log
-WHERE staff_id = 2 AND table_name = 'PROMO_CODE'
-ORDER BY changed_at DESC;
-UPDATE promo_code SET active = TRUE WHERE code = 'SAVE5';
-COMMIT;
+
+-- The target: the scheduled performance with the fewest buyable seats left
+CREATE TEMP TABLE test_perf ON COMMIT DROP AS
+SELECT ps.performance_id, COUNT(*) AS seats_left
+FROM performance_seat ps
+JOIN performance p ON p.id = ps.performance_id
+WHERE p.status = 'SCHEDULED'
+    AND ps.status IN ('AVAILABLE', 'HELD')
+GROUP BY ps.performance_id
+ORDER BY seats_left, ps.performance_id
+LIMIT 1;
+
+-- Before: filled should be FALSE
+SELECT p.id, p.status, p.filled, t.seats_left, 'before' AS stage
+FROM performance p JOIN test_perf t ON t.performance_id = p.id;
+
+-- Sell every remaining seat
+UPDATE performance_seat SET status = 'SOLD', held_until = NULL
+WHERE performance_id = (SELECT performance_id FROM test_perf)
+    AND status IN ('AVAILABLE', 'HELD');
+
+-- After: filled should now be TRUE
+SELECT p.id, p.status, p.filled, 'after selling out' AS stage
+FROM performance p JOIN test_perf t ON t.performance_id = p.id;
+
+-- A refund releases one seat: filled should go back to FALSE
+UPDATE performance_seat SET status = 'AVAILABLE'
+WHERE id = (SELECT MIN(id) FROM performance_seat
+            WHERE performance_id = (SELECT performance_id FROM test_perf)
+                AND status = 'SOLD');
+
+SELECT p.id, p.status, p.filled, 'after one refund' AS stage
+FROM performance p JOIN test_perf t ON t.performance_id = p.id;
+
+ROLLBACK;
