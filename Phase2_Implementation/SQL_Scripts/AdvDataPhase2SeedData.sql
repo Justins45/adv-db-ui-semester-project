@@ -1974,614 +1974,158 @@ INSERT INTO LOGIN_HISTORY (id, person_id, ip_address, success, login_timestamp) 
     (1199, 75, '88.97.47.225', FALSE, '2026-05-26 05:40:38-06:00'),
     (1200, 115, '10.0.0.65', TRUE, '2026-08-09 05:26:20-06:00');
 
--- ERROR_LOG: 150 rows
-INSERT INTO ERROR_LOG (id, person_id, end_point, error_message, stack_trace, created_at) VALUES
-    (1, 12, '/api/tickets/scan', 'Ticket not valid for this performance', convert_to('Error: Ticket not valid for this performance
-    at handler (api.tickets.scan.js:288)
-    at Router.dispatch (router.js:53)
-    at processTicksAndRejections (node:internal)', 'UTF8'), '2026-09-05 22:56:36-06:00'),
-    (2, 187, '/api/password-reset', 'Reset token expired', convert_to('Error: Reset token expired
-    at handler (api.password-reset.js:24)
-    at Router.dispatch (router.js:119)
-    at processTicksAndRejections (node:internal)', 'UTF8'), '2026-05-22 19:09:35-06:00'),
-    (3, 127, '/api/checkout', 'Database timeout', convert_to('Error: Database timeout
-    at handler (api.checkout.js:70)
-    at Router.dispatch (router.js:86)
-    at processTicksAndRejections (node:internal)', 'UTF8'), '2026-07-03 03:20:17-06:00'),
-    (4, 246, '/api/login', 'Too many failed attempts', convert_to('Error: Too many failed attempts
-    at handler (api.login.js:98)
-    at Router.dispatch (router.js:170)
-    at processTicksAndRejections (node:internal)', 'UTF8'), '2026-09-18 02:44:36-06:00'),
-    (5, 77, '/api/tickets/scan', 'Ticket not valid for this performance', convert_to('Error: Ticket not valid for this performance
-    at handler (api.tickets.scan.js:184)
-    at Router.dispatch (router.js:65)
-    at processTicksAndRejections (node:internal)', 'UTF8'), '2026-04-22 18:14:31-06:00'),
-    (6, NULL, '/api/login', 'Too many failed attempts', NULL, '2026-03-08 20:38:36-06:00'),
-    (7, 285, '/api/login', 'Too many failed attempts', convert_to('Error: Too many failed attempts
-    at handler (api.login.js:34)
-    at Router.dispatch (router.js:119)
-    at processTicksAndRejections (node:internal)', 'UTF8'), '2026-04-09 15:30:06-06:00'),
-    (8, 223, '/admin/performances', 'Stage already booked at this time', convert_to('Error: Stage already booked at this time
-    at handler (admin.performances.js:108)
-    at Router.dispatch (router.js:166)
-    at processTicksAndRejections (node:internal)', 'UTF8'), '2026-07-26 17:18:36-06:00'),
-    (9, NULL, '/api/cart/add', 'Seat no longer available', convert_to('Error: Seat no longer available
-    at handler (api.cart.add.js:319)
-    at Router.dispatch (router.js:149)
-    at processTicksAndRejections (node:internal)', 'UTF8'), '2026-08-26 23:00:59-06:00'),
-    (10, 338, '/api/checkout', 'Database timeout', convert_to('Error: Database timeout
-    at handler (api.checkout.js:64)
-    at Router.dispatch (router.js:198)
-    at processTicksAndRejections (node:internal)', 'UTF8'), '2026-06-06 12:05:10-06:00'),
-    (11, 390, '/api/login', 'Too many failed attempts', NULL, '2026-10-03 12:36:11-06:00'),
-    (12, 352, '/api/seats', 'Seat map failed to load', convert_to('Error: Seat map failed to load
-    at handler (api.seats.js:191)
-    at Router.dispatch (router.js:132)
-    at processTicksAndRejections (node:internal)', 'UTF8'), '2026-07-21 09:41:02-06:00'),
-    (13, 36, '/admin/reports', 'Query exceeded time limit', NULL, '2026-10-15 07:55:38-06:00'),
-    (14, NULL, '/api/cart/add', 'Seat no longer available', convert_to('Error: Seat no longer available
-    at handler (api.cart.add.js:202)
-    at Router.dispatch (router.js:182)
-    at processTicksAndRejections (node:internal)', 'UTF8'), '2026-03-09 20:38:16-06:00'),
-    (15, 222, '/api/seats', 'Seat map failed to load', convert_to('Error: Seat map failed to load
-    at handler (api.seats.js:61)
-    at Router.dispatch (router.js:168)
-    at processTicksAndRejections (node:internal)', 'UTF8'), '2026-01-26 00:11:36-07:00'),
-    (16, 97, '/admin/performances', 'Stage already booked at this time', convert_to('Error: Stage already booked at this time
-    at handler (admin.performances.js:216)
-    at Router.dispatch (router.js:173)
-    at processTicksAndRejections (node:internal)', 'UTF8'), '2026-08-29 23:12:00-06:00'),
-    (17, 257, '/admin/reports', 'Query exceeded time limit', convert_to('Error: Query exceeded time limit
-    at handler (admin.reports.js:328)
-    at Router.dispatch (router.js:79)
-    at processTicksAndRejections (node:internal)', 'UTF8'), '2026-02-12 05:55:40-07:00'),
-    (18, 37, '/api/events', 'Image upload exceeded size limit', convert_to('Error: Image upload exceeded size limit
-    at handler (api.events.js:204)
-    at Router.dispatch (router.js:178)
-    at processTicksAndRejections (node:internal)', 'UTF8'), '2026-05-15 16:37:32-06:00'),
-    (19, 22, '/api/checkout', 'Database timeout', convert_to('Error: Database timeout
-    at handler (api.checkout.js:212)
-    at Router.dispatch (router.js:116)
-    at processTicksAndRejections (node:internal)', 'UTF8'), '2026-05-13 15:22:54-06:00'),
-    (20, 205, '/api/events', 'Image upload exceeded size limit', NULL, '2026-03-01 04:22:16-07:00'),
-    (21, 94, '/api/events', 'Image upload exceeded size limit', convert_to('Error: Image upload exceeded size limit
-    at handler (api.events.js:118)
-    at Router.dispatch (router.js:167)
-    at processTicksAndRejections (node:internal)', 'UTF8'), '2026-08-22 02:01:47-06:00'),
-    (22, 42, '/api/cart/add', 'Hold expired before checkout', NULL, '2026-06-27 13:37:36-06:00'),
-    (23, NULL, '/api/login', 'Too many failed attempts', convert_to('Error: Too many failed attempts
-    at handler (api.login.js:190)
-    at Router.dispatch (router.js:154)
-    at processTicksAndRejections (node:internal)', 'UTF8'), '2026-09-23 04:52:59-06:00'),
-    (24, 38, '/api/checkout', 'Database timeout', convert_to('Error: Database timeout
-    at handler (api.checkout.js:350)
-    at Router.dispatch (router.js:180)
-    at processTicksAndRejections (node:internal)', 'UTF8'), '2026-06-15 00:22:44-06:00'),
-    (25, 337, '/admin/reports', 'Query exceeded time limit', convert_to('Error: Query exceeded time limit
-    at handler (admin.reports.js:364)
-    at Router.dispatch (router.js:157)
-    at processTicksAndRejections (node:internal)', 'UTF8'), '2026-03-18 14:12:38-06:00'),
-    (26, 160, '/api/seats', 'Seat map failed to load', convert_to('Error: Seat map failed to load
-    at handler (api.seats.js:297)
-    at Router.dispatch (router.js:181)
-    at processTicksAndRejections (node:internal)', 'UTF8'), '2026-10-11 04:09:04-06:00'),
-    (27, 127, '/api/tickets/scan', 'Ticket not valid for this performance', convert_to('Error: Ticket not valid for this performance
-    at handler (api.tickets.scan.js:384)
-    at Router.dispatch (router.js:153)
-    at processTicksAndRejections (node:internal)', 'UTF8'), '2026-06-21 18:00:16-06:00'),
-    (28, 41, '/admin/reports', 'Query exceeded time limit', convert_to('Error: Query exceeded time limit
-    at handler (admin.reports.js:271)
-    at Router.dispatch (router.js:97)
-    at processTicksAndRejections (node:internal)', 'UTF8'), '2026-07-31 20:03:12-06:00'),
-    (29, 236, '/api/checkout', 'Payment gateway timeout', NULL, '2026-02-14 09:23:09-07:00'),
-    (30, NULL, '/api/cart/add', 'Seat no longer available', convert_to('Error: Seat no longer available
-    at handler (api.cart.add.js:76)
-    at Router.dispatch (router.js:120)
-    at processTicksAndRejections (node:internal)', 'UTF8'), '2026-08-19 19:56:46-06:00'),
-    (31, 241, '/api/events', 'Image upload exceeded size limit', convert_to('Error: Image upload exceeded size limit
-    at handler (api.events.js:157)
-    at Router.dispatch (router.js:77)
-    at processTicksAndRejections (node:internal)', 'UTF8'), '2026-07-15 11:54:26-06:00'),
-    (32, 163, '/api/seats', 'Seat map failed to load', NULL, '2026-06-18 11:25:53-06:00'),
-    (33, 103, '/api/cart/add', 'Seat no longer available', convert_to('Error: Seat no longer available
-    at handler (api.cart.add.js:122)
-    at Router.dispatch (router.js:104)
-    at processTicksAndRejections (node:internal)', 'UTF8'), '2026-07-17 06:28:22-06:00'),
-    (34, NULL, '/admin/performances', 'Stage already booked at this time', convert_to('Error: Stage already booked at this time
-    at handler (admin.performances.js:14)
-    at Router.dispatch (router.js:108)
-    at processTicksAndRejections (node:internal)', 'UTF8'), '2026-04-15 15:24:38-06:00'),
-    (35, 355, '/api/password-reset', 'Reset token expired', convert_to('Error: Reset token expired
-    at handler (api.password-reset.js:311)
-    at Router.dispatch (router.js:198)
-    at processTicksAndRejections (node:internal)', 'UTF8'), '2026-08-11 11:19:29-06:00'),
-    (36, 253, '/admin/reports', 'Query exceeded time limit', NULL, '2026-08-29 09:54:44-06:00'),
-    (37, 148, '/admin/performances', 'Stage already booked at this time', NULL, '2026-01-14 23:58:35-07:00'),
-    (38, NULL, '/api/login', 'Too many failed attempts', convert_to('Error: Too many failed attempts
-    at handler (api.login.js:204)
-    at Router.dispatch (router.js:110)
-    at processTicksAndRejections (node:internal)', 'UTF8'), '2026-09-10 09:18:39-06:00'),
-    (39, 295, '/admin/reports', 'Query exceeded time limit', NULL, '2026-05-14 04:46:42-06:00'),
-    (40, NULL, '/admin/performances', 'Stage already booked at this time', NULL, '2026-03-21 14:21:00-06:00'),
-    (41, 291, '/api/cart/add', 'Seat no longer available', convert_to('Error: Seat no longer available
-    at handler (api.cart.add.js:383)
-    at Router.dispatch (router.js:147)
-    at processTicksAndRejections (node:internal)', 'UTF8'), '2026-10-14 23:17:46-06:00'),
-    (42, NULL, '/api/cart/add', 'Seat no longer available', convert_to('Error: Seat no longer available
-    at handler (api.cart.add.js:394)
-    at Router.dispatch (router.js:83)
-    at processTicksAndRejections (node:internal)', 'UTF8'), '2026-06-11 06:05:47-06:00'),
-    (43, NULL, '/api/checkout', 'Payment gateway timeout', convert_to('Error: Payment gateway timeout
-    at handler (api.checkout.js:150)
-    at Router.dispatch (router.js:91)
-    at processTicksAndRejections (node:internal)', 'UTF8'), '2026-07-04 09:43:13-06:00'),
-    (44, NULL, '/api/seats', 'Seat map failed to load', convert_to('Error: Seat map failed to load
-    at handler (api.seats.js:86)
-    at Router.dispatch (router.js:194)
-    at processTicksAndRejections (node:internal)', 'UTF8'), '2026-04-12 21:23:27-06:00'),
-    (45, 290, '/api/events', 'Image upload exceeded size limit', convert_to('Error: Image upload exceeded size limit
-    at handler (api.events.js:198)
-    at Router.dispatch (router.js:145)
-    at processTicksAndRejections (node:internal)', 'UTF8'), '2026-03-30 21:15:52-06:00'),
-    (46, 157, '/api/checkout', 'Database timeout', NULL, '2026-01-12 17:05:38-07:00'),
-    (47, 256, '/api/cart/add', 'Hold expired before checkout', convert_to('Error: Hold expired before checkout
-    at handler (api.cart.add.js:102)
-    at Router.dispatch (router.js:200)
-    at processTicksAndRejections (node:internal)', 'UTF8'), '2026-08-18 15:12:19-06:00'),
-    (48, NULL, '/admin/reports', 'Query exceeded time limit', convert_to('Error: Query exceeded time limit
-    at handler (admin.reports.js:363)
-    at Router.dispatch (router.js:151)
-    at processTicksAndRejections (node:internal)', 'UTF8'), '2026-05-25 04:51:17-06:00'),
-    (49, NULL, '/admin/performances', 'Stage already booked at this time', convert_to('Error: Stage already booked at this time
-    at handler (admin.performances.js:321)
-    at Router.dispatch (router.js:118)
-    at processTicksAndRejections (node:internal)', 'UTF8'), '2026-10-07 08:03:21-06:00'),
-    (50, NULL, '/api/cart/add', 'Hold expired before checkout', NULL, '2026-01-30 22:39:06-07:00'),
-    (51, NULL, '/admin/performances', 'Stage already booked at this time', NULL, '2026-03-01 16:27:25-07:00'),
-    (52, 333, '/api/promo/apply', 'Promo code expired', convert_to('Error: Promo code expired
-    at handler (api.promo.apply.js:185)
-    at Router.dispatch (router.js:124)
-    at processTicksAndRejections (node:internal)', 'UTF8'), '2026-07-08 20:49:28-06:00'),
-    (53, NULL, '/api/login', 'Too many failed attempts', convert_to('Error: Too many failed attempts
-    at handler (api.login.js:227)
-    at Router.dispatch (router.js:127)
-    at processTicksAndRejections (node:internal)', 'UTF8'), '2026-08-27 13:57:13-06:00'),
-    (54, NULL, '/admin/performances', 'Stage already booked at this time', convert_to('Error: Stage already booked at this time
-    at handler (admin.performances.js:55)
-    at Router.dispatch (router.js:79)
-    at processTicksAndRejections (node:internal)', 'UTF8'), '2026-08-18 11:25:12-06:00'),
-    (55, 185, '/api/tickets/scan', 'Ticket not valid for this performance', convert_to('Error: Ticket not valid for this performance
-    at handler (api.tickets.scan.js:157)
-    at Router.dispatch (router.js:115)
-    at processTicksAndRejections (node:internal)', 'UTF8'), '2026-06-24 04:43:50-06:00'),
-    (56, 281, '/api/tickets/scan', 'Ticket not valid for this performance', convert_to('Error: Ticket not valid for this performance
-    at handler (api.tickets.scan.js:381)
-    at Router.dispatch (router.js:116)
-    at processTicksAndRejections (node:internal)', 'UTF8'), '2026-05-10 06:08:12-06:00'),
-    (57, 290, '/api/seats', 'Seat map failed to load', convert_to('Error: Seat map failed to load
-    at handler (api.seats.js:51)
-    at Router.dispatch (router.js:156)
-    at processTicksAndRejections (node:internal)', 'UTF8'), '2026-07-21 08:48:51-06:00'),
-    (58, 35, '/api/login', 'Too many failed attempts', convert_to('Error: Too many failed attempts
-    at handler (api.login.js:326)
-    at Router.dispatch (router.js:166)
-    at processTicksAndRejections (node:internal)', 'UTF8'), '2026-05-10 18:51:52-06:00'),
-    (59, 350, '/api/seats', 'Seat map failed to load', convert_to('Error: Seat map failed to load
-    at handler (api.seats.js:43)
-    at Router.dispatch (router.js:112)
-    at processTicksAndRejections (node:internal)', 'UTF8'), '2026-01-16 17:45:22-07:00'),
-    (60, 187, '/api/events', 'Image upload exceeded size limit', convert_to('Error: Image upload exceeded size limit
-    at handler (api.events.js:267)
-    at Router.dispatch (router.js:135)
-    at processTicksAndRejections (node:internal)', 'UTF8'), '2026-03-23 13:07:17-06:00'),
-    (61, 231, '/api/login', 'Too many failed attempts', convert_to('Error: Too many failed attempts
-    at handler (api.login.js:148)
-    at Router.dispatch (router.js:100)
-    at processTicksAndRejections (node:internal)', 'UTF8'), '2026-05-23 12:07:39-06:00'),
-    (62, 312, '/api/tickets/scan', 'Ticket not valid for this performance', NULL, '2026-08-02 20:56:33-06:00'),
-    (63, 220, '/api/events', 'Image upload exceeded size limit', NULL, '2026-07-07 01:10:05-06:00'),
-    (64, 74, '/api/checkout', 'Payment gateway timeout', convert_to('Error: Payment gateway timeout
-    at handler (api.checkout.js:292)
-    at Router.dispatch (router.js:186)
-    at processTicksAndRejections (node:internal)', 'UTF8'), '2026-05-15 00:56:57-06:00'),
-    (65, 66, '/api/events', 'Image upload exceeded size limit', convert_to('Error: Image upload exceeded size limit
-    at handler (api.events.js:397)
-    at Router.dispatch (router.js:126)
-    at processTicksAndRejections (node:internal)', 'UTF8'), '2026-06-24 23:00:59-06:00'),
-    (66, 179, '/api/checkout', 'Payment gateway timeout', convert_to('Error: Payment gateway timeout
-    at handler (api.checkout.js:114)
-    at Router.dispatch (router.js:190)
-    at processTicksAndRejections (node:internal)', 'UTF8'), '2026-02-04 13:38:27-07:00'),
-    (67, 82, '/api/checkout', 'Payment gateway timeout', convert_to('Error: Payment gateway timeout
-    at handler (api.checkout.js:21)
-    at Router.dispatch (router.js:89)
-    at processTicksAndRejections (node:internal)', 'UTF8'), '2026-04-27 17:50:13-06:00'),
-    (68, 204, '/api/login', 'Too many failed attempts', NULL, '2026-06-18 14:26:16-06:00'),
-    (69, 193, '/api/checkout', 'Database timeout', NULL, '2026-07-15 08:36:23-06:00'),
-    (70, NULL, '/api/cart/add', 'Seat no longer available', NULL, '2026-07-28 18:03:03-06:00'),
-    (71, 81, '/admin/reports', 'Query exceeded time limit', convert_to('Error: Query exceeded time limit
-    at handler (admin.reports.js:288)
-    at Router.dispatch (router.js:123)
-    at processTicksAndRejections (node:internal)', 'UTF8'), '2026-07-24 20:23:03-06:00'),
-    (72, NULL, '/api/checkout', 'Payment gateway timeout', convert_to('Error: Payment gateway timeout
-    at handler (api.checkout.js:154)
-    at Router.dispatch (router.js:173)
-    at processTicksAndRejections (node:internal)', 'UTF8'), '2026-04-16 04:03:25-06:00'),
-    (73, 375, '/api/checkout', 'Database timeout', convert_to('Error: Database timeout
-    at handler (api.checkout.js:107)
-    at Router.dispatch (router.js:65)
-    at processTicksAndRejections (node:internal)', 'UTF8'), '2026-03-22 22:13:04-06:00'),
-    (74, 221, '/api/promo/apply', 'Promo code expired', convert_to('Error: Promo code expired
-    at handler (api.promo.apply.js:92)
-    at Router.dispatch (router.js:137)
-    at processTicksAndRejections (node:internal)', 'UTF8'), '2026-03-12 00:58:39-06:00'),
-    (75, NULL, '/api/checkout', 'Payment gateway timeout', convert_to('Error: Payment gateway timeout
-    at handler (api.checkout.js:139)
-    at Router.dispatch (router.js:109)
-    at processTicksAndRejections (node:internal)', 'UTF8'), '2026-04-12 07:02:32-06:00'),
-    (76, NULL, '/api/cart/add', 'Hold expired before checkout', convert_to('Error: Hold expired before checkout
-    at handler (api.cart.add.js:52)
-    at Router.dispatch (router.js:128)
-    at processTicksAndRejections (node:internal)', 'UTF8'), '2026-08-27 11:24:58-06:00'),
-    (77, 228, '/api/events', 'Image upload exceeded size limit', convert_to('Error: Image upload exceeded size limit
-    at handler (api.events.js:58)
-    at Router.dispatch (router.js:96)
-    at processTicksAndRejections (node:internal)', 'UTF8'), '2026-07-04 10:17:13-06:00'),
-    (78, NULL, '/api/tickets/scan', 'Ticket not valid for this performance', convert_to('Error: Ticket not valid for this performance
-    at handler (api.tickets.scan.js:130)
-    at Router.dispatch (router.js:132)
-    at processTicksAndRejections (node:internal)', 'UTF8'), '2026-02-16 10:03:05-07:00'),
-    (79, 355, '/admin/performances', 'Stage already booked at this time', NULL, '2026-02-10 05:22:02-07:00'),
-    (80, 226, '/api/cart/add', 'Hold expired before checkout', convert_to('Error: Hold expired before checkout
-    at handler (api.cart.add.js:219)
-    at Router.dispatch (router.js:117)
-    at processTicksAndRejections (node:internal)', 'UTF8'), '2026-07-02 06:49:00-06:00'),
-    (81, 75, '/api/cart/add', 'Hold expired before checkout', NULL, '2026-04-27 12:35:02-06:00'),
-    (82, NULL, '/admin/reports', 'Query exceeded time limit', NULL, '2026-04-06 16:29:13-06:00'),
-    (83, 67, '/api/events', 'Image upload exceeded size limit', NULL, '2026-01-04 00:10:55-07:00'),
-    (84, 259, '/api/tickets/scan', 'Ticket not valid for this performance', convert_to('Error: Ticket not valid for this performance
-    at handler (api.tickets.scan.js:292)
-    at Router.dispatch (router.js:114)
-    at processTicksAndRejections (node:internal)', 'UTF8'), '2026-08-24 13:48:51-06:00'),
-    (85, 371, '/api/events', 'Image upload exceeded size limit', NULL, '2026-06-08 22:35:18-06:00'),
-    (86, 31, '/admin/reports', 'Query exceeded time limit', convert_to('Error: Query exceeded time limit
-    at handler (admin.reports.js:225)
-    at Router.dispatch (router.js:127)
-    at processTicksAndRejections (node:internal)', 'UTF8'), '2026-06-27 11:35:33-06:00'),
-    (87, 290, '/api/password-reset', 'Reset token expired', convert_to('Error: Reset token expired
-    at handler (api.password-reset.js:195)
-    at Router.dispatch (router.js:65)
-    at processTicksAndRejections (node:internal)', 'UTF8'), '2026-01-04 12:02:23-07:00'),
-    (88, 167, '/api/seats', 'Seat map failed to load', convert_to('Error: Seat map failed to load
-    at handler (api.seats.js:75)
-    at Router.dispatch (router.js:122)
-    at processTicksAndRejections (node:internal)', 'UTF8'), '2026-09-20 04:41:26-06:00'),
-    (89, NULL, '/admin/reports', 'Query exceeded time limit', convert_to('Error: Query exceeded time limit
-    at handler (admin.reports.js:319)
-    at Router.dispatch (router.js:174)
-    at processTicksAndRejections (node:internal)', 'UTF8'), '2026-10-04 05:42:46-06:00'),
-    (90, 205, '/admin/reports', 'Query exceeded time limit', NULL, '2026-03-19 15:35:29-06:00'),
-    (91, 300, '/api/password-reset', 'Reset token expired', NULL, '2026-02-13 04:41:29-07:00'),
-    (92, NULL, '/api/events', 'Image upload exceeded size limit', NULL, '2026-05-09 08:55:55-06:00'),
-    (93, 379, '/api/cart/add', 'Seat no longer available', convert_to('Error: Seat no longer available
-    at handler (api.cart.add.js:98)
-    at Router.dispatch (router.js:113)
-    at processTicksAndRejections (node:internal)', 'UTF8'), '2026-06-25 19:05:33-06:00'),
-    (94, NULL, '/api/password-reset', 'Reset token expired', convert_to('Error: Reset token expired
-    at handler (api.password-reset.js:155)
-    at Router.dispatch (router.js:167)
-    at processTicksAndRejections (node:internal)', 'UTF8'), '2026-08-03 07:13:37-06:00'),
-    (95, 313, '/api/seats', 'Seat map failed to load', convert_to('Error: Seat map failed to load
-    at handler (api.seats.js:279)
-    at Router.dispatch (router.js:158)
-    at processTicksAndRejections (node:internal)', 'UTF8'), '2026-05-03 01:40:15-06:00'),
-    (96, 85, '/api/tickets/scan', 'Ticket not valid for this performance', NULL, '2026-09-28 12:47:22-06:00'),
-    (97, 151, '/admin/performances', 'Stage already booked at this time', convert_to('Error: Stage already booked at this time
-    at handler (admin.performances.js:96)
-    at Router.dispatch (router.js:170)
-    at processTicksAndRejections (node:internal)', 'UTF8'), '2026-04-20 04:17:23-06:00'),
-    (98, 335, '/admin/performances', 'Stage already booked at this time', NULL, '2026-10-13 10:58:10-06:00'),
-    (99, NULL, '/admin/reports', 'Query exceeded time limit', convert_to('Error: Query exceeded time limit
-    at handler (admin.reports.js:59)
-    at Router.dispatch (router.js:156)
-    at processTicksAndRejections (node:internal)', 'UTF8'), '2026-01-11 04:14:15-07:00'),
-    (100, NULL, '/admin/performances', 'Stage already booked at this time', convert_to('Error: Stage already booked at this time
-    at handler (admin.performances.js:331)
-    at Router.dispatch (router.js:67)
-    at processTicksAndRejections (node:internal)', 'UTF8'), '2026-07-18 06:15:48-06:00'),
-    (101, NULL, '/api/promo/apply', 'Promo code expired', NULL, '2026-06-03 10:23:26-06:00'),
-    (102, 148, '/api/cart/add', 'Seat no longer available', convert_to('Error: Seat no longer available
-    at handler (api.cart.add.js:90)
-    at Router.dispatch (router.js:153)
-    at processTicksAndRejections (node:internal)', 'UTF8'), '2026-04-22 08:10:46-06:00'),
-    (103, 97, '/api/checkout', 'Payment gateway timeout', convert_to('Error: Payment gateway timeout
-    at handler (api.checkout.js:48)
-    at Router.dispatch (router.js:135)
-    at processTicksAndRejections (node:internal)', 'UTF8'), '2026-09-09 09:42:02-06:00'),
-    (104, 310, '/api/checkout', 'Database timeout', NULL, '2026-09-25 04:30:20-06:00'),
-    (105, 136, '/api/promo/apply', 'Promo code expired', convert_to('Error: Promo code expired
-    at handler (api.promo.apply.js:400)
-    at Router.dispatch (router.js:100)
-    at processTicksAndRejections (node:internal)', 'UTF8'), '2026-02-12 08:15:47-07:00'),
-    (106, 244, '/api/checkout', 'Payment gateway timeout', NULL, '2026-03-12 19:31:28-06:00'),
-    (107, 253, '/admin/reports', 'Query exceeded time limit', convert_to('Error: Query exceeded time limit
-    at handler (admin.reports.js:229)
-    at Router.dispatch (router.js:89)
-    at processTicksAndRejections (node:internal)', 'UTF8'), '2026-04-07 15:24:22-06:00'),
-    (108, NULL, '/api/password-reset', 'Reset token expired', convert_to('Error: Reset token expired
-    at handler (api.password-reset.js:70)
-    at Router.dispatch (router.js:63)
-    at processTicksAndRejections (node:internal)', 'UTF8'), '2026-02-18 06:54:40-07:00'),
-    (109, NULL, '/api/cart/add', 'Hold expired before checkout', convert_to('Error: Hold expired before checkout
-    at handler (api.cart.add.js:168)
-    at Router.dispatch (router.js:100)
-    at processTicksAndRejections (node:internal)', 'UTF8'), '2026-02-17 01:56:08-07:00'),
-    (110, 189, '/api/promo/apply', 'Promo code expired', convert_to('Error: Promo code expired
-    at handler (api.promo.apply.js:128)
-    at Router.dispatch (router.js:72)
-    at processTicksAndRejections (node:internal)', 'UTF8'), '2026-04-19 07:27:08-06:00'),
-    (111, 236, '/admin/performances', 'Stage already booked at this time', NULL, '2026-02-13 18:16:23-07:00'),
-    (112, 204, '/api/seats', 'Seat map failed to load', convert_to('Error: Seat map failed to load
-    at handler (api.seats.js:294)
-    at Router.dispatch (router.js:51)
-    at processTicksAndRejections (node:internal)', 'UTF8'), '2026-02-06 00:40:21-07:00'),
-    (113, 276, '/api/password-reset', 'Reset token expired', NULL, '2026-01-25 22:42:13-07:00'),
-    (114, 301, '/api/cart/add', 'Seat no longer available', NULL, '2026-07-15 02:22:35-06:00'),
-    (115, NULL, '/api/password-reset', 'Reset token expired', convert_to('Error: Reset token expired
-    at handler (api.password-reset.js:25)
-    at Router.dispatch (router.js:178)
-    at processTicksAndRejections (node:internal)', 'UTF8'), '2026-03-23 18:46:14-06:00'),
-    (116, NULL, '/api/events', 'Image upload exceeded size limit', convert_to('Error: Image upload exceeded size limit
-    at handler (api.events.js:65)
-    at Router.dispatch (router.js:55)
-    at processTicksAndRejections (node:internal)', 'UTF8'), '2026-05-21 01:32:33-06:00'),
-    (117, NULL, '/api/cart/add', 'Seat no longer available', NULL, '2026-03-21 09:04:14-06:00'),
-    (118, 283, '/admin/performances', 'Stage already booked at this time', NULL, '2026-10-07 09:36:59-06:00'),
-    (119, NULL, '/api/seats', 'Seat map failed to load', NULL, '2026-02-02 23:14:09-07:00'),
-    (120, NULL, '/api/password-reset', 'Reset token expired', NULL, '2026-09-08 22:14:03-06:00'),
-    (121, NULL, '/api/password-reset', 'Reset token expired', convert_to('Error: Reset token expired
-    at handler (api.password-reset.js:285)
-    at Router.dispatch (router.js:136)
-    at processTicksAndRejections (node:internal)', 'UTF8'), '2026-08-14 03:58:54-06:00'),
-    (122, 154, '/admin/reports', 'Query exceeded time limit', convert_to('Error: Query exceeded time limit
-    at handler (admin.reports.js:35)
-    at Router.dispatch (router.js:127)
-    at processTicksAndRejections (node:internal)', 'UTF8'), '2026-04-04 02:40:04-06:00'),
-    (123, NULL, '/admin/reports', 'Query exceeded time limit', convert_to('Error: Query exceeded time limit
-    at handler (admin.reports.js:346)
-    at Router.dispatch (router.js:172)
-    at processTicksAndRejections (node:internal)', 'UTF8'), '2026-01-08 10:01:14-07:00'),
-    (124, 373, '/api/password-reset', 'Reset token expired', convert_to('Error: Reset token expired
-    at handler (api.password-reset.js:388)
-    at Router.dispatch (router.js:121)
-    at processTicksAndRejections (node:internal)', 'UTF8'), '2026-06-05 09:10:23-06:00'),
-    (125, 370, '/api/login', 'Too many failed attempts', convert_to('Error: Too many failed attempts
-    at handler (api.login.js:375)
-    at Router.dispatch (router.js:96)
-    at processTicksAndRejections (node:internal)', 'UTF8'), '2026-02-24 22:01:33-07:00'),
-    (126, 211, '/api/cart/add', 'Seat no longer available', convert_to('Error: Seat no longer available
-    at handler (api.cart.add.js:138)
-    at Router.dispatch (router.js:188)
-    at processTicksAndRejections (node:internal)', 'UTF8'), '2026-06-05 06:40:39-06:00'),
-    (127, 152, '/admin/reports', 'Query exceeded time limit', convert_to('Error: Query exceeded time limit
-    at handler (admin.reports.js:260)
-    at Router.dispatch (router.js:55)
-    at processTicksAndRejections (node:internal)', 'UTF8'), '2026-06-10 15:48:54-06:00'),
-    (128, 156, '/api/login', 'Too many failed attempts', convert_to('Error: Too many failed attempts
-    at handler (api.login.js:153)
-    at Router.dispatch (router.js:114)
-    at processTicksAndRejections (node:internal)', 'UTF8'), '2026-04-19 07:28:21-06:00'),
-    (129, NULL, '/api/tickets/scan', 'Ticket not valid for this performance', NULL, '2026-02-19 20:16:39-07:00'),
-    (130, NULL, '/api/tickets/scan', 'Ticket not valid for this performance', NULL, '2026-03-17 22:06:21-06:00'),
-    (131, NULL, '/api/login', 'Too many failed attempts', convert_to('Error: Too many failed attempts
-    at handler (api.login.js:247)
-    at Router.dispatch (router.js:145)
-    at processTicksAndRejections (node:internal)', 'UTF8'), '2026-05-20 08:34:35-06:00'),
-    (132, 273, '/api/promo/apply', 'Promo code expired', NULL, '2026-02-15 10:35:32-07:00'),
-    (133, NULL, '/api/cart/add', 'Seat no longer available', convert_to('Error: Seat no longer available
-    at handler (api.cart.add.js:108)
-    at Router.dispatch (router.js:140)
-    at processTicksAndRejections (node:internal)', 'UTF8'), '2026-07-08 21:46:25-06:00'),
-    (134, NULL, '/api/login', 'Too many failed attempts', convert_to('Error: Too many failed attempts
-    at handler (api.login.js:49)
-    at Router.dispatch (router.js:162)
-    at processTicksAndRejections (node:internal)', 'UTF8'), '2026-08-06 11:06:59-06:00'),
-    (135, 63, '/api/cart/add', 'Seat no longer available', NULL, '2026-09-29 18:01:37-06:00'),
-    (136, 350, '/api/tickets/scan', 'Ticket not valid for this performance', NULL, '2026-07-26 06:45:09-06:00'),
-    (137, NULL, '/api/checkout', 'Payment gateway timeout', NULL, '2026-06-25 03:25:53-06:00'),
-    (138, NULL, '/api/cart/add', 'Seat no longer available', convert_to('Error: Seat no longer available
-    at handler (api.cart.add.js:294)
-    at Router.dispatch (router.js:55)
-    at processTicksAndRejections (node:internal)', 'UTF8'), '2026-01-08 22:34:30-07:00'),
-    (139, 306, '/api/tickets/scan', 'Ticket not valid for this performance', convert_to('Error: Ticket not valid for this performance
-    at handler (api.tickets.scan.js:31)
-    at Router.dispatch (router.js:181)
-    at processTicksAndRejections (node:internal)', 'UTF8'), '2026-06-23 02:26:35-06:00'),
-    (140, 37, '/api/checkout', 'Database timeout', NULL, '2026-04-01 17:49:09-06:00'),
-    (141, 277, '/api/promo/apply', 'Promo code expired', convert_to('Error: Promo code expired
-    at handler (api.promo.apply.js:305)
-    at Router.dispatch (router.js:65)
-    at processTicksAndRejections (node:internal)', 'UTF8'), '2026-07-15 06:11:26-06:00'),
-    (142, 394, '/api/cart/add', 'Seat no longer available', convert_to('Error: Seat no longer available
-    at handler (api.cart.add.js:371)
-    at Router.dispatch (router.js:91)
-    at processTicksAndRejections (node:internal)', 'UTF8'), '2026-10-12 20:38:54-06:00'),
-    (143, 137, '/api/promo/apply', 'Promo code expired', NULL, '2026-09-06 07:10:18-06:00'),
-    (144, 356, '/api/checkout', 'Payment gateway timeout', convert_to('Error: Payment gateway timeout
-    at handler (api.checkout.js:248)
-    at Router.dispatch (router.js:138)
-    at processTicksAndRejections (node:internal)', 'UTF8'), '2026-03-08 03:48:53-06:00'),
-    (145, NULL, '/api/events', 'Image upload exceeded size limit', convert_to('Error: Image upload exceeded size limit
-    at handler (api.events.js:197)
-    at Router.dispatch (router.js:119)
-    at processTicksAndRejections (node:internal)', 'UTF8'), '2026-05-30 17:47:01-06:00'),
-    (146, 19, '/admin/reports', 'Query exceeded time limit', convert_to('Error: Query exceeded time limit
-    at handler (admin.reports.js:214)
-    at Router.dispatch (router.js:163)
-    at processTicksAndRejections (node:internal)', 'UTF8'), '2026-09-28 12:42:19-06:00'),
-    (147, 3, '/api/login', 'Too many failed attempts', convert_to('Error: Too many failed attempts
-    at handler (api.login.js:204)
-    at Router.dispatch (router.js:136)
-    at processTicksAndRejections (node:internal)', 'UTF8'), '2026-03-11 04:28:39-06:00'),
-    (148, 256, '/api/login', 'Too many failed attempts', convert_to('Error: Too many failed attempts
-    at handler (api.login.js:88)
-    at Router.dispatch (router.js:54)
-    at processTicksAndRejections (node:internal)', 'UTF8'), '2026-09-19 00:40:43-06:00'),
-    (149, NULL, '/api/cart/add', 'Hold expired before checkout', NULL, '2026-08-02 11:54:13-06:00'),
-    (150, 48, '/api/seats', 'Seat map failed to load', NULL, '2026-04-26 17:50:06-06:00');
-
 -- PASSWORD_RESET_REQUEST: 150 rows
 INSERT INTO PASSWORD_RESET_REQUEST (id, person_id, time, success, status) VALUES
-    (1, 370, '2026-04-17 13:19:11-06:00', TRUE, 'COMPLETED'),
-    (2, 242, '2026-02-25 08:00:23-07:00', TRUE, 'COMPLETED'),
-    (3, 57, '2026-01-15 22:24:10-07:00', TRUE, 'COMPLETED'),
-    (4, 298, '2026-09-17 03:50:53-06:00', TRUE, 'COMPLETED'),
-    (5, 313, '2026-01-19 00:44:12-07:00', TRUE, 'COMPLETED'),
-    (6, 304, '2026-10-04 20:32:35-06:00', TRUE, 'COMPLETED'),
-    (7, 259, '2026-06-15 22:39:57-06:00', TRUE, 'COMPLETED'),
-    (8, 167, '2026-08-12 08:39:48-06:00', TRUE, 'COMPLETED'),
-    (9, 55, '2026-08-04 01:46:10-06:00', TRUE, 'COMPLETED'),
-    (10, 114, '2026-09-11 16:37:23-06:00', TRUE, 'COMPLETED'),
-    (11, 177, '2026-01-06 00:29:43-07:00', FALSE, 'FAILED'),
-    (12, 337, '2026-05-24 21:51:50-06:00', TRUE, 'COMPLETED'),
-    (13, 327, '2026-09-09 11:48:22-06:00', TRUE, 'COMPLETED'),
-    (14, 19, '2026-02-05 04:03:29-07:00', TRUE, 'COMPLETED'),
-    (15, 150, '2026-07-09 10:59:17-06:00', TRUE, 'COMPLETED'),
-    (16, 314, '2026-04-02 18:05:36-06:00', TRUE, 'COMPLETED'),
-    (17, 369, '2026-03-27 12:41:35-06:00', FALSE, 'FAILED'),
-    (18, 27, '2026-07-25 04:34:59-06:00', TRUE, 'COMPLETED'),
-    (19, 232, '2026-07-07 14:48:17-06:00', FALSE, 'EXPIRED'),
-    (20, 189, '2026-03-30 19:50:52-06:00', TRUE, 'COMPLETED'),
-    (21, 290, '2026-07-05 20:09:21-06:00', TRUE, 'COMPLETED'),
-    (22, 164, '2026-03-05 06:45:39-07:00', TRUE, 'COMPLETED'),
-    (23, 351, '2026-01-12 05:25:21-07:00', TRUE, 'COMPLETED'),
-    (24, 326, '2026-07-02 07:13:19-06:00', FALSE, 'EXPIRED'),
-    (25, 31, '2026-05-23 08:17:27-06:00', FALSE, 'EXPIRED'),
-    (26, 230, '2026-08-05 23:19:01-06:00', TRUE, 'COMPLETED'),
-    (27, 390, '2026-05-08 03:34:02-06:00', TRUE, 'COMPLETED'),
-    (28, 331, '2026-02-26 10:25:09-07:00', FALSE, 'EXPIRED'),
-    (29, 346, '2026-02-07 01:48:11-07:00', FALSE, 'EXPIRED'),
-    (30, 291, '2026-05-26 00:07:55-06:00', FALSE, 'FAILED'),
-    (31, 303, '2026-06-10 19:19:42-06:00', TRUE, 'COMPLETED'),
-    (32, 332, '2026-09-16 16:30:02-06:00', TRUE, 'COMPLETED'),
-    (33, 335, '2026-07-05 16:43:01-06:00', FALSE, 'EXPIRED'),
-    (34, 248, '2026-03-26 16:53:05-06:00', FALSE, 'EXPIRED'),
-    (35, 218, '2026-04-01 11:48:12-06:00', TRUE, 'COMPLETED'),
-    (36, 294, '2026-09-11 00:25:05-06:00', TRUE, 'COMPLETED'),
-    (37, 50, '2026-03-27 18:52:41-06:00', TRUE, 'COMPLETED'),
-    (38, 302, '2026-07-05 22:21:04-06:00', TRUE, 'COMPLETED'),
-    (39, 347, '2026-09-07 14:09:26-06:00', TRUE, 'COMPLETED'),
-    (40, 173, '2026-10-11 00:22:49-06:00', FALSE, 'EXPIRED'),
-    (41, 387, '2026-05-02 07:47:31-06:00', TRUE, 'COMPLETED'),
-    (42, 400, '2026-02-21 23:57:44-07:00', TRUE, 'COMPLETED'),
-    (43, 4, '2026-08-25 05:57:17-06:00', TRUE, 'COMPLETED'),
-    (44, 292, '2026-02-17 21:56:34-07:00', TRUE, 'COMPLETED'),
-    (45, 151, '2026-08-21 04:31:28-06:00', TRUE, 'COMPLETED'),
-    (46, 190, '2026-06-07 19:11:02-06:00', FALSE, 'EXPIRED'),
-    (47, 100, '2026-09-27 23:02:59-06:00', TRUE, 'COMPLETED'),
-    (48, 136, '2026-09-05 07:16:49-06:00', TRUE, 'COMPLETED'),
-    (49, 393, '2026-04-22 08:33:28-06:00', TRUE, 'COMPLETED'),
-    (50, 203, '2026-03-31 19:24:59-06:00', TRUE, 'COMPLETED'),
-    (51, 21, '2026-06-30 19:22:07-06:00', TRUE, 'COMPLETED'),
-    (52, 227, '2026-08-01 04:54:33-06:00', TRUE, 'COMPLETED'),
-    (53, 155, '2026-03-02 07:28:58-07:00', TRUE, 'COMPLETED'),
-    (54, 64, '2026-01-22 06:45:38-07:00', TRUE, 'COMPLETED'),
-    (55, 334, '2026-04-02 22:29:24-06:00', TRUE, 'COMPLETED'),
-    (56, 223, '2026-06-13 06:22:25-06:00', FALSE, 'EXPIRED'),
-    (57, 197, '2026-06-13 01:49:19-06:00', FALSE, 'FAILED'),
-    (58, 50, '2026-10-02 15:59:16-06:00', TRUE, 'COMPLETED'),
-    (59, 25, '2026-02-07 02:49:03-07:00', TRUE, 'COMPLETED'),
-    (60, 106, '2026-05-29 18:54:12-06:00', TRUE, 'COMPLETED'),
-    (61, 221, '2026-09-20 08:36:46-06:00', TRUE, 'COMPLETED'),
-    (62, 120, '2026-09-03 10:43:47-06:00', FALSE, 'FAILED'),
-    (63, 163, '2026-09-29 19:33:24-06:00', TRUE, 'COMPLETED'),
-    (64, 29, '2026-04-08 19:22:30-06:00', TRUE, 'COMPLETED'),
-    (65, 345, '2026-05-08 21:58:58-06:00', TRUE, 'COMPLETED'),
-    (66, 213, '2026-04-01 23:47:27-06:00', FALSE, 'EXPIRED'),
-    (67, 53, '2026-08-06 01:26:47-06:00', TRUE, 'COMPLETED'),
-    (68, 188, '2026-05-21 21:30:36-06:00', FALSE, 'FAILED'),
-    (69, 305, '2026-05-07 22:57:10-06:00', TRUE, 'COMPLETED'),
-    (70, 28, '2026-02-02 15:32:14-07:00', FALSE, 'EXPIRED'),
-    (71, 179, '2026-07-12 05:06:19-06:00', FALSE, 'EXPIRED'),
-    (72, 16, '2026-09-02 11:34:29-06:00', TRUE, 'COMPLETED'),
-    (73, 2, '2026-01-31 11:59:42-07:00', FALSE, 'FAILED'),
-    (74, 38, '2026-02-13 14:48:41-07:00', TRUE, 'COMPLETED'),
-    (75, 123, '2026-10-04 02:45:43-06:00', TRUE, 'COMPLETED'),
-    (76, 184, '2026-04-08 13:33:20-06:00', TRUE, 'COMPLETED'),
-    (77, 315, '2026-06-14 04:33:04-06:00', FALSE, 'FAILED'),
-    (78, 233, '2026-03-30 00:34:24-06:00', TRUE, 'COMPLETED'),
-    (79, 54, '2026-07-25 00:19:30-06:00', FALSE, 'EXPIRED'),
-    (80, 115, '2026-03-16 23:44:26-06:00', TRUE, 'COMPLETED'),
-    (81, 127, '2026-09-08 21:32:57-06:00', TRUE, 'COMPLETED'),
-    (82, 127, '2026-02-17 12:54:20-07:00', TRUE, 'COMPLETED'),
-    (83, 177, '2026-08-01 09:58:13-06:00', TRUE, 'COMPLETED'),
-    (84, 41, '2026-03-11 19:10:18-06:00', FALSE, 'FAILED'),
-    (85, 338, '2026-09-24 17:57:03-06:00', TRUE, 'COMPLETED'),
-    (86, 315, '2026-07-13 14:31:13-06:00', TRUE, 'COMPLETED'),
-    (87, 364, '2026-05-05 11:38:04-06:00', TRUE, 'COMPLETED'),
-    (88, 188, '2026-01-05 07:56:45-07:00', FALSE, 'FAILED'),
-    (89, 225, '2026-03-17 03:43:05-06:00', TRUE, 'COMPLETED'),
-    (90, 141, '2026-08-31 07:25:11-06:00', FALSE, 'EXPIRED'),
-    (91, 346, '2026-04-25 13:49:48-06:00', TRUE, 'COMPLETED'),
-    (92, 400, '2026-01-19 21:11:58-07:00', TRUE, 'COMPLETED'),
-    (93, 291, '2026-05-26 05:28:21-06:00', TRUE, 'COMPLETED'),
-    (94, 230, '2026-03-29 03:55:12-06:00', FALSE, 'EXPIRED'),
-    (95, 3, '2026-06-05 20:57:59-06:00', TRUE, 'COMPLETED'),
-    (96, 53, '2026-02-14 22:43:05-07:00', TRUE, 'COMPLETED'),
-    (97, 29, '2026-10-07 09:16:03-06:00', TRUE, 'COMPLETED'),
-    (98, 333, '2026-09-05 07:32:06-06:00', TRUE, 'COMPLETED'),
-    (99, 20, '2026-04-21 19:14:27-06:00', TRUE, 'COMPLETED'),
-    (100, 189, '2026-04-20 22:38:33-06:00', FALSE, 'FAILED'),
-    (101, 332, '2026-02-19 02:55:41-07:00', TRUE, 'COMPLETED'),
-    (102, 329, '2026-04-10 09:27:32-06:00', TRUE, 'COMPLETED'),
-    (103, 269, '2026-04-02 09:42:35-06:00', TRUE, 'COMPLETED'),
-    (104, 227, '2026-09-08 03:49:20-06:00', TRUE, 'COMPLETED'),
-    (105, 135, '2026-08-11 17:49:10-06:00', TRUE, 'COMPLETED'),
-    (106, 260, '2026-09-15 08:03:51-06:00', TRUE, 'COMPLETED'),
-    (107, 236, '2026-10-03 15:31:34-06:00', TRUE, 'COMPLETED'),
-    (108, 175, '2026-03-18 18:57:03-06:00', TRUE, 'COMPLETED'),
-    (109, 3, '2026-06-14 12:10:54-06:00', TRUE, 'COMPLETED'),
-    (110, 1, '2026-02-02 16:43:53-07:00', TRUE, 'COMPLETED'),
-    (111, 383, '2026-03-04 12:45:36-07:00', TRUE, 'COMPLETED'),
-    (112, 148, '2026-01-10 01:34:27-07:00', TRUE, 'COMPLETED'),
-    (113, 104, '2026-04-18 12:19:50-06:00', FALSE, 'EXPIRED'),
-    (114, 101, '2026-07-01 03:37:10-06:00', TRUE, 'COMPLETED'),
-    (115, 133, '2026-06-14 12:09:22-06:00', TRUE, 'COMPLETED'),
-    (116, 363, '2026-09-16 11:11:42-06:00', FALSE, 'EXPIRED'),
-    (117, 336, '2026-01-19 11:52:00-07:00', TRUE, 'COMPLETED'),
-    (118, 9, '2026-02-21 09:40:45-07:00', TRUE, 'COMPLETED'),
-    (119, 78, '2026-08-02 14:01:18-06:00', TRUE, 'COMPLETED'),
-    (120, 152, '2026-09-22 23:38:56-06:00', TRUE, 'COMPLETED'),
-    (121, 99, '2026-01-05 11:26:18-07:00', FALSE, 'EXPIRED'),
-    (122, 34, '2026-01-13 17:03:26-07:00', TRUE, 'COMPLETED'),
-    (123, 228, '2026-06-26 22:30:22-06:00', TRUE, 'COMPLETED'),
-    (124, 111, '2026-04-17 16:03:49-06:00', TRUE, 'COMPLETED'),
-    (125, 84, '2026-10-10 07:03:04-06:00', TRUE, 'COMPLETED'),
-    (126, 230, '2026-05-16 17:30:53-06:00', TRUE, 'COMPLETED'),
-    (127, 66, '2026-05-23 20:51:55-06:00', TRUE, 'COMPLETED'),
-    (128, 13, '2026-06-03 12:03:34-06:00', TRUE, 'COMPLETED'),
-    (129, 134, '2026-08-26 22:13:04-06:00', FALSE, 'EXPIRED'),
-    (130, 167, '2026-09-13 20:54:29-06:00', TRUE, 'COMPLETED'),
-    (131, 355, '2026-09-10 12:27:20-06:00', FALSE, 'EXPIRED'),
-    (132, 47, '2026-08-31 01:28:59-06:00', TRUE, 'COMPLETED'),
-    (133, 221, '2026-04-11 14:19:05-06:00', FALSE, 'EXPIRED'),
-    (134, 171, '2026-05-02 01:48:44-06:00', FALSE, 'FAILED'),
-    (135, 12, '2026-04-17 14:20:16-06:00', TRUE, 'COMPLETED'),
-    (136, 335, '2026-10-02 23:12:53-06:00', TRUE, 'COMPLETED'),
-    (137, 376, '2026-05-28 05:00:58-06:00', FALSE, 'EXPIRED'),
-    (138, 317, '2026-02-13 03:06:24-07:00', TRUE, 'COMPLETED'),
-    (139, 41, '2026-01-13 18:55:55-07:00', TRUE, 'COMPLETED'),
-    (140, 204, '2026-03-31 09:53:27-06:00', FALSE, 'EXPIRED'),
-    (141, 327, '2026-04-22 00:12:56-06:00', TRUE, 'COMPLETED'),
-    (142, 271, '2026-06-21 21:10:14-06:00', TRUE, 'COMPLETED'),
-    (143, 39, '2026-05-25 07:37:55-06:00', FALSE, 'FAILED'),
-    (144, 6, '2026-03-03 19:20:28-07:00', FALSE, 'EXPIRED'),
-    (145, 254, '2026-07-01 22:31:34-06:00', TRUE, 'COMPLETED'),
-    (146, 202, '2026-05-20 18:03:53-06:00', TRUE, 'COMPLETED'),
-    (147, 228, '2026-04-21 12:05:12-06:00', TRUE, 'COMPLETED'),
-    (148, 330, '2026-03-29 17:06:09-06:00', TRUE, 'COMPLETED'),
-    (149, 174, '2026-01-20 03:00:43-07:00', TRUE, 'COMPLETED'),
-    (150, 100, '2026-06-28 09:25:19-06:00', TRUE, 'COMPLETED');
+    (1, 279, '2026-07-09 19:39:36-06:00', TRUE, 'COMPLETED'),
+    (2, 12, '2026-01-06 01:55:34-07:00', FALSE, 'FAILED'),
+    (3, 87, '2026-09-05 22:56:36-06:00', TRUE, 'COMPLETED'),
+    (4, 107, '2026-01-12 07:09:17-07:00', TRUE, 'COMPLETED'),
+    (5, 204, '2026-05-22 12:19:27-06:00', TRUE, 'COMPLETED'),
+    (6, 305, '2026-03-30 03:29:13-06:00', TRUE, 'COMPLETED'),
+    (7, 164, '2026-05-03 08:57:32-06:00', TRUE, 'COMPLETED'),
+    (8, 241, '2026-03-10 21:48:16-06:00', TRUE, 'COMPLETED'),
+    (9, 343, '2026-07-30 07:12:28-06:00', TRUE, 'COMPLETED'),
+    (10, 175, '2026-07-09 12:46:42-06:00', TRUE, 'COMPLETED'),
+    (11, 77, '2026-01-24 19:09:36-07:00', TRUE, 'COMPLETED'),
+    (12, 165, '2026-04-22 18:14:31-06:00', FALSE, 'EXPIRED'),
+    (13, 385, '2026-02-20 09:58:52-07:00', FALSE, 'EXPIRED'),
+    (14, 25, '2026-05-08 11:00:16-06:00', TRUE, 'COMPLETED'),
+    (15, 285, '2026-04-16 20:37:41-06:00', FALSE, 'EXPIRED'),
+    (16, 361, '2026-04-09 15:30:06-06:00', TRUE, 'COMPLETED'),
+    (17, 313, '2026-03-16 14:22:11-06:00', FALSE, 'EXPIRED'),
+    (18, 223, '2026-06-26 21:16:58-06:00', TRUE, 'COMPLETED'),
+    (19, 310, '2026-07-26 17:18:36-06:00', TRUE, 'COMPLETED'),
+    (20, 314, '2026-06-01 16:34:11-06:00', TRUE, 'COMPLETED'),
+    (21, 55, '2026-02-03 01:32:40-07:00', TRUE, 'COMPLETED'),
+    (22, 338, '2026-08-13 19:50:14-06:00', FALSE, 'FAILED'),
+    (23, 394, '2026-06-06 12:05:10-06:00', TRUE, 'COMPLETED'),
+    (24, 390, '2026-02-22 11:24:56-07:00', FALSE, 'EXPIRED'),
+    (25, 51, '2026-10-03 12:36:11-06:00', TRUE, 'COMPLETED'),
+    (26, 85, '2026-05-18 17:53:37-06:00', TRUE, 'COMPLETED'),
+    (27, 374, '2026-09-24 10:06:53-06:00', TRUE, 'COMPLETED'),
+    (28, 36, '2026-01-10 04:58:17-07:00', TRUE, 'COMPLETED'),
+    (29, 9, '2026-10-15 07:55:38-06:00', TRUE, 'COMPLETED'),
+    (30, 134, '2026-05-27 02:41:45-06:00', TRUE, 'COMPLETED'),
+    (31, 252, '2026-03-09 20:38:16-06:00', TRUE, 'COMPLETED'),
+    (32, 327, '2026-02-09 02:59:21-07:00', TRUE, 'COMPLETED'),
+    (33, 13, '2026-06-18 07:41:35-06:00', TRUE, 'COMPLETED'),
+    (34, 248, '2026-10-03 21:56:01-06:00', TRUE, 'COMPLETED'),
+    (35, 318, '2026-05-31 19:04:56-06:00', TRUE, 'COMPLETED'),
+    (36, 319, '2026-09-26 09:23:18-06:00', TRUE, 'COMPLETED'),
+    (37, 59, '2026-08-19 22:49:11-06:00', TRUE, 'COMPLETED'),
+    (38, 90, '2026-07-14 14:06:27-06:00', TRUE, 'COMPLETED'),
+    (39, 384, '2026-10-01 07:07:26-06:00', TRUE, 'COMPLETED'),
+    (40, 36, '2026-05-08 22:23:28-06:00', TRUE, 'COMPLETED'),
+    (41, 133, '2026-08-05 15:45:08-06:00', FALSE, 'FAILED'),
+    (42, 176, '2026-01-17 08:59:17-07:00', TRUE, 'COMPLETED'),
+    (43, 79, '2026-06-04 18:02:07-06:00', FALSE, 'EXPIRED'),
+    (44, 109, '2026-04-08 05:02:11-06:00', TRUE, 'COMPLETED'),
+    (45, 94, '2026-06-28 01:31:38-06:00', FALSE, 'EXPIRED'),
+    (46, 242, '2026-08-22 02:01:47-06:00', TRUE, 'COMPLETED'),
+    (47, 176, '2026-07-29 23:41:43-06:00', TRUE, 'COMPLETED'),
+    (48, 210, '2026-07-28 07:41:20-06:00', FALSE, 'EXPIRED'),
+    (49, 55, '2026-01-21 07:08:23-07:00', TRUE, 'COMPLETED'),
+    (50, 341, '2026-06-13 18:32:25-06:00', TRUE, 'COMPLETED'),
+    (51, 38, '2026-07-18 13:21:21-06:00', TRUE, 'COMPLETED'),
+    (52, 214, '2026-06-15 00:22:44-06:00', FALSE, 'FAILED'),
+    (53, 385, '2026-09-23 23:02:17-06:00', TRUE, 'COMPLETED'),
+    (54, 328, '2026-09-13 09:34:25-06:00', FALSE, 'EXPIRED'),
+    (55, 288, '2026-02-09 11:54:21-07:00', FALSE, 'EXPIRED'),
+    (56, 160, '2026-07-19 11:38:35-06:00', TRUE, 'COMPLETED'),
+    (57, 365, '2026-10-11 04:09:04-06:00', TRUE, 'COMPLETED'),
+    (58, 239, '2026-10-12 07:15:08-06:00', TRUE, 'COMPLETED'),
+    (59, 370, '2026-06-21 12:07:10-06:00', TRUE, 'COMPLETED'),
+    (60, 385, '2026-02-13 10:23:24-07:00', TRUE, 'COMPLETED'),
+    (61, 96, '2026-09-02 21:30:34-06:00', FALSE, 'EXPIRED'),
+    (62, 366, '2026-01-31 16:59:23-07:00', TRUE, 'COMPLETED'),
+    (63, 236, '2026-10-05 11:45:37-06:00', FALSE, 'EXPIRED'),
+    (64, 380, '2026-02-14 09:23:09-07:00', TRUE, 'COMPLETED'),
+    (65, 55, '2026-02-20 19:35:58-07:00', TRUE, 'COMPLETED'),
+    (66, 103, '2026-08-19 19:56:46-06:00', TRUE, 'COMPLETED'),
+    (67, 263, '2026-04-23 01:54:37-06:00', TRUE, 'COMPLETED'),
+    (68, 258, '2026-01-05 12:11:13-07:00', FALSE, 'EXPIRED'),
+    (69, 141, '2026-09-24 19:10:33-06:00', TRUE, 'COMPLETED'),
+    (70, 95, '2026-05-04 03:26:07-06:00', FALSE, 'EXPIRED'),
+    (71, 110, '2026-03-02 22:09:02-07:00', TRUE, 'COMPLETED'),
+    (72, 261, '2026-08-22 20:35:35-06:00', TRUE, 'COMPLETED'),
+    (73, 5, '2026-08-27 16:28:05-06:00', TRUE, 'COMPLETED'),
+    (74, 138, '2026-03-31 04:20:42-06:00', TRUE, 'COMPLETED'),
+    (75, 302, '2026-05-30 01:54:45-06:00', TRUE, 'COMPLETED'),
+    (76, 355, '2026-08-13 17:51:41-06:00', TRUE, 'COMPLETED'),
+    (77, 214, '2026-08-11 11:19:29-06:00', TRUE, 'COMPLETED'),
+    (78, 317, '2026-07-27 02:39:21-06:00', TRUE, 'COMPLETED'),
+    (79, 359, '2026-08-15 09:48:45-06:00', TRUE, 'COMPLETED'),
+    (80, 164, '2026-09-03 13:00:17-06:00', TRUE, 'COMPLETED'),
+    (81, 122, '2026-01-18 06:28:53-07:00', TRUE, 'COMPLETED'),
+    (82, 353, '2026-04-06 14:47:08-06:00', FALSE, 'EXPIRED'),
+    (83, 295, '2026-09-08 01:50:24-06:00', TRUE, 'COMPLETED'),
+    (84, 375, '2026-05-14 04:46:42-06:00', FALSE, 'EXPIRED'),
+    (85, 77, '2026-03-23 13:10:56-06:00', FALSE, 'EXPIRED'),
+    (86, 196, '2026-06-29 18:36:02-06:00', TRUE, 'COMPLETED'),
+    (87, 291, '2026-05-19 21:45:24-06:00', TRUE, 'COMPLETED'),
+    (88, 231, '2026-10-14 23:17:46-06:00', TRUE, 'COMPLETED'),
+    (89, 213, '2026-02-20 04:49:15-07:00', TRUE, 'COMPLETED'),
+    (90, 141, '2026-01-03 19:06:42-07:00', TRUE, 'COMPLETED'),
+    (91, 244, '2026-03-04 21:49:09-07:00', TRUE, 'COMPLETED'),
+    (92, 77, '2026-09-20 22:23:44-06:00', TRUE, 'COMPLETED'),
+    (93, 135, '2026-08-08 13:19:32-06:00', TRUE, 'COMPLETED'),
+    (94, 189, '2026-04-19 16:09:03-06:00', TRUE, 'COMPLETED'),
+    (95, 290, '2026-05-26 03:18:10-06:00', TRUE, 'COMPLETED'),
+    (96, 303, '2026-03-30 21:15:52-06:00', TRUE, 'COMPLETED'),
+    (97, 381, '2026-05-24 21:06:33-06:00', TRUE, 'COMPLETED'),
+    (98, 170, '2026-01-12 17:05:38-07:00', TRUE, 'COMPLETED'),
+    (99, 326, '2026-03-11 23:40:07-06:00', TRUE, 'COMPLETED'),
+    (100, 359, '2026-07-13 16:25:19-06:00', TRUE, 'COMPLETED'),
+    (101, 204, '2026-06-19 20:09:37-06:00', TRUE, 'COMPLETED'),
+    (102, 315, '2026-02-03 13:53:38-07:00', TRUE, 'COMPLETED'),
+    (103, 312, '2026-07-18 15:46:47-06:00', TRUE, 'COMPLETED'),
+    (104, 369, '2026-04-15 01:37:12-06:00', TRUE, 'COMPLETED'),
+    (105, 106, '2026-03-21 03:35:48-06:00', FALSE, 'EXPIRED'),
+    (106, 299, '2026-08-17 13:33:20-06:00', FALSE, 'EXPIRED'),
+    (107, 262, '2026-03-23 09:58:47-06:00', FALSE, 'FAILED'),
+    (108, 150, '2026-06-19 07:13:12-06:00', TRUE, 'COMPLETED'),
+    (109, 249, '2026-08-16 20:16:46-06:00', TRUE, 'COMPLETED'),
+    (110, 218, '2026-05-26 03:24:43-06:00', TRUE, 'COMPLETED'),
+    (111, 315, '2026-04-28 16:53:59-06:00', TRUE, 'COMPLETED'),
+    (112, 46, '2026-08-09 01:54:40-06:00', TRUE, 'COMPLETED'),
+    (113, 303, '2026-02-14 16:54:58-07:00', TRUE, 'COMPLETED'),
+    (114, 148, '2026-06-24 19:38:17-06:00', TRUE, 'COMPLETED'),
+    (115, 185, '2026-04-10 05:45:28-06:00', TRUE, 'COMPLETED'),
+    (116, 226, '2026-06-24 04:43:50-06:00', FALSE, 'EXPIRED'),
+    (117, 133, '2026-03-08 23:41:37-06:00', TRUE, 'COMPLETED'),
+    (118, 281, '2026-06-18 20:08:45-06:00', FALSE, 'FAILED'),
+    (119, 241, '2026-05-10 06:08:12-06:00', TRUE, 'COMPLETED'),
+    (120, 375, '2026-02-01 18:07:58-07:00', TRUE, 'COMPLETED'),
+    (121, 395, '2026-08-08 05:38:43-06:00', TRUE, 'COMPLETED'),
+    (122, 317, '2026-05-08 22:39:21-06:00', TRUE, 'COMPLETED'),
+    (123, 35, '2026-06-26 13:30:13-06:00', TRUE, 'COMPLETED'),
+    (124, 347, '2026-05-10 18:51:52-06:00', TRUE, 'COMPLETED'),
+    (125, 350, '2026-01-26 08:41:50-07:00', TRUE, 'COMPLETED'),
+    (126, 79, '2026-01-16 17:45:22-07:00', TRUE, 'COMPLETED'),
+    (127, 171, '2026-07-15 08:21:53-06:00', TRUE, 'COMPLETED'),
+    (128, 108, '2026-07-08 23:48:21-06:00', TRUE, 'COMPLETED'),
+    (129, 139, '2026-05-12 03:57:09-06:00', TRUE, 'COMPLETED'),
+    (130, 78, '2026-08-22 11:06:40-06:00', TRUE, 'COMPLETED'),
+    (131, 309, '2026-06-24 17:35:57-06:00', TRUE, 'COMPLETED'),
+    (132, 312, '2026-04-12 20:25:40-06:00', TRUE, 'COMPLETED'),
+    (133, 262, '2026-08-02 20:56:33-06:00', TRUE, 'COMPLETED'),
+    (134, 247, '2026-07-27 12:10:19-06:00', FALSE, 'EXPIRED'),
+    (135, 283, '2026-01-22 01:50:03-07:00', TRUE, 'COMPLETED'),
+    (136, 360, '2026-09-05 15:20:26-06:00', FALSE, 'EXPIRED'),
+    (137, 74, '2026-07-26 19:14:22-06:00', TRUE, 'COMPLETED'),
+    (138, 369, '2026-05-15 00:56:57-06:00', TRUE, 'COMPLETED'),
+    (139, 396, '2026-09-25 13:02:46-06:00', FALSE, 'FAILED'),
+    (140, 23, '2026-01-26 01:38:54-07:00', TRUE, 'COMPLETED'),
+    (141, 105, '2026-07-18 00:40:52-06:00', FALSE, 'EXPIRED'),
+    (142, 179, '2026-08-02 00:11:43-06:00', TRUE, 'COMPLETED'),
+    (143, 303, '2026-02-04 13:38:27-07:00', TRUE, 'COMPLETED'),
+    (144, 196, '2026-01-09 19:08:50-07:00', TRUE, 'COMPLETED'),
+    (145, 179, '2026-03-03 12:59:55-07:00', FALSE, 'EXPIRED'),
+    (146, 204, '2026-01-05 04:47:35-07:00', FALSE, 'EXPIRED'),
+    (147, 327, '2026-06-18 14:26:16-06:00', FALSE, 'FAILED'),
+    (148, 88, '2026-08-14 23:18:15-06:00', TRUE, 'COMPLETED'),
+    (149, 370, '2026-02-17 17:14:42-07:00', TRUE, 'COMPLETED'),
+    (150, 279, '2026-07-04 17:22:10-06:00', TRUE, 'COMPLETED');
 
 -- PATRON: 400 rows
 INSERT INTO PATRON (id, role_id) VALUES
@@ -3345,405 +2889,6 @@ INSERT INTO EVENT_GENRE (genre_id, event_id) VALUES
     (4, 99),
     (6, 100),
     (10, 100);
-
--- PERMISSION_CHANGE_LOG: 93 rows
-INSERT INTO PERMISSION_CHANGE_LOG (id, person_id, changed_by, old_role, new_role, date_time) VALUES
-    (1, 123, 2, 3, 2, '2024-03-02 09:19:55-07:00'),
-    (2, 216, 2, 3, 2, '2024-03-22 04:01:20-06:00'),
-    (3, 303, 2, 3, 2, '2024-04-09 01:30:52-06:00'),
-    (4, 366, 2, 3, 2, '2024-04-14 14:32:26-06:00'),
-    (5, 115, 2, 3, 2, '2024-04-30 14:07:32-06:00'),
-    (6, 338, 2, 3, 2, '2024-05-11 06:45:00-06:00'),
-    (7, 227, 2, 3, 2, '2024-05-24 13:52:23-06:00'),
-    (8, 360, 2, 3, 2, '2024-05-30 23:15:08-06:00'),
-    (9, 16, 2, 3, 2, '2024-05-31 11:32:03-06:00'),
-    (10, 116, 2, 3, 2, '2024-06-01 16:13:02-06:00'),
-    (11, 102, 2, 3, 2, '2024-06-07 13:44:41-06:00'),
-    (12, 234, 2, 3, 2, '2024-06-25 10:21:30-06:00'),
-    (13, 388, 2, 3, 2, '2024-07-11 11:48:30-06:00'),
-    (14, 298, 2, 3, 2, '2024-07-16 11:31:22-06:00'),
-    (15, 232, 2, 3, 2, '2024-07-18 15:39:36-06:00'),
-    (16, 303, 53, 2, 3, '2024-07-31 01:30:52-06:00'),
-    (17, 56, 2, 3, 2, '2024-08-05 08:21:08-06:00'),
-    (18, 202, 2, 3, 2, '2024-08-12 07:34:09-06:00'),
-    (19, 63, 2, 3, 2, '2024-08-21 08:23:08-06:00'),
-    (20, 183, 2, 3, 2, '2024-08-21 08:25:31-06:00'),
-    (21, 179, 2, 3, 2, '2024-08-21 10:27:42-06:00'),
-    (22, 204, 2, 3, 2, '2024-09-08 18:11:30-06:00'),
-    (23, 245, 2, 3, 2, '2024-09-26 05:30:21-06:00'),
-    (24, 314, 2, 3, 2, '2024-09-28 20:38:15-06:00'),
-    (25, 315, 2, 3, 2, '2024-10-01 18:41:13-06:00'),
-    (26, 82, 2, 3, 2, '2024-10-04 14:21:19-06:00'),
-    (27, 232, 51, 2, 3, '2024-10-22 15:39:36-06:00'),
-    (28, 108, 2, 3, 2, '2024-11-05 08:34:42-07:00'),
-    (29, 312, 2, 3, 2, '2024-11-05 17:24:27-07:00'),
-    (30, 56, 8, 2, 3, '2024-11-08 08:21:08-07:00'),
-    (31, 16, 2, 2, 1, '2024-11-12 11:32:03-07:00'),
-    (32, 116, 11, 2, 3, '2024-11-13 16:13:02-07:00'),
-    (33, 142, 2, 3, 2, '2024-11-14 14:45:25-07:00'),
-    (34, 338, 57, 2, 3, '2024-11-22 06:45:00-07:00'),
-    (35, 219, 2, 3, 2, '2024-11-23 04:33:27-07:00'),
-    (36, 304, 2, 3, 2, '2024-11-29 02:24:14-07:00'),
-    (37, 63, 10, 2, 3, '2024-12-26 08:23:08-07:00'),
-    (38, 130, 2, 3, 2, '2025-01-02 15:57:00-07:00'),
-    (39, 133, 2, 3, 2, '2025-01-10 06:59:22-07:00'),
-    (40, 57, 2, 3, 2, '2025-01-17 12:55:58-07:00'),
-    (41, 82, 16, 2, 3, '2025-01-24 14:21:19-07:00'),
-    (42, 204, 16, 2, 3, '2025-02-02 18:11:30-07:00'),
-    (43, 53, 2, 3, 2, '2025-02-26 21:24:27-07:00'),
-    (44, 217, 2, 3, 2, '2025-03-02 18:18:20-07:00'),
-    (45, 188, 2, 3, 2, '2025-03-03 20:19:12-07:00'),
-    (46, 249, 2, 3, 2, '2025-03-05 10:07:27-07:00'),
-    (47, 350, 2, 3, 2, '2025-03-08 18:21:48-07:00'),
-    (48, 102, 8, 2, 3, '2025-03-18 13:44:41-06:00'),
-    (49, 51, 2, 3, 2, '2025-03-31 17:04:19-06:00'),
-    (50, 106, 2, 3, 2, '2025-04-17 16:59:59-06:00'),
-    (51, 144, 2, 3, 2, '2025-04-25 02:58:59-06:00'),
-    (52, 348, 2, 3, 2, '2025-04-25 07:17:56-06:00'),
-    (53, 57, 2, 2, 1, '2025-05-18 12:55:58-06:00'),
-    (54, 249, 16, 2, 3, '2025-06-03 10:07:27-06:00'),
-    (55, 206, 2, 3, 2, '2025-06-14 02:50:03-06:00'),
-    (56, 179, 57, 2, 3, '2025-07-15 10:27:42-06:00'),
-    (57, 301, 2, 3, 2, '2025-07-22 11:56:03-06:00'),
-    (58, 11, 2, 3, 2, '2025-08-31 16:32:45-06:00'),
-    (59, 53, 2, 2, 1, '2025-09-01 21:24:27-06:00'),
-    (60, 172, 2, 3, 2, '2025-09-08 11:34:00-06:00'),
-    (61, 109, 2, 3, 2, '2025-09-15 03:06:09-06:00'),
-    (62, 62, 2, 3, 2, '2025-09-16 15:01:30-06:00'),
-    (63, 152, 2, 3, 2, '2025-09-17 15:18:05-06:00'),
-    (64, 51, 2, 2, 1, '2025-09-22 17:04:19-06:00'),
-    (65, 100, 2, 3, 2, '2025-09-24 17:23:57-06:00'),
-    (66, 64, 2, 3, 2, '2025-10-25 07:41:26-06:00'),
-    (67, 106, 57, 2, 3, '2025-11-15 16:59:59-07:00'),
-    (68, 394, 2, 3, 2, '2025-11-17 01:39:05-07:00'),
-    (69, 32, 2, 3, 2, '2025-11-25 21:41:00-07:00'),
-    (70, 132, 2, 3, 2, '2025-11-26 14:05:10-07:00'),
-    (71, 114, 2, 3, 2, '2025-12-07 14:21:46-07:00'),
-    (72, 11, 2, 2, 1, '2025-12-08 16:32:45-07:00'),
-    (73, 136, 2, 3, 2, '2025-12-16 07:03:05-07:00'),
-    (74, 173, 2, 3, 2, '2025-12-25 17:01:28-07:00'),
-    (75, 138, 2, 3, 2, '2026-01-19 07:53:20-07:00'),
-    (76, 342, 2, 3, 2, '2026-01-25 12:01:00-07:00'),
-    (77, 133, 2, 2, 3, '2026-01-28 06:59:22-07:00'),
-    (78, 145, 2, 3, 2, '2026-01-30 21:18:09-07:00'),
-    (79, 259, 2, 3, 2, '2026-02-15 01:40:24-07:00'),
-    (80, 144, 10, 2, 3, '2026-03-03 02:58:59-07:00'),
-    (81, 351, 2, 3, 2, '2026-03-24 14:07:16-06:00'),
-    (82, 8, 2, 3, 2, '2026-03-30 10:59:50-06:00'),
-    (83, 2, 8, 3, 2, '2026-04-30 05:02:32-06:00'),
-    (84, 259, 2, 2, 3, '2026-05-01 01:40:24-06:00'),
-    (85, 8, 2, 2, 1, '2026-05-21 10:59:50-06:00'),
-    (86, 10, 2, 3, 2, '2026-05-25 10:27:48-06:00'),
-    (87, 62, 16, 2, 3, '2026-06-02 15:01:30-06:00'),
-    (88, 10, 2, 2, 1, '2026-07-01 10:27:48-06:00'),
-    (89, 32, 10, 2, 3, '2026-07-01 21:41:00-06:00'),
-    (90, 152, 16, 2, 3, '2026-08-22 15:18:05-06:00'),
-    (91, 172, 16, 2, 3, '2026-10-07 11:34:00-06:00'),
-    (92, 2, 8, 2, 1, '2026-10-16 05:02:32-06:00'),
-    (93, 351, 51, 2, 3, '2027-03-23 14:07:16-06:00');
-
--- AUDIT_LOG: 300 rows
-INSERT INTO AUDIT_LOG (id, staff_id, table_name, record_id, action, old_value, new_value, changed_at, ip_address) VALUES
-    (1, 100, 'PROMO_CODE', 3, 'INSERT', NULL, convert_to('{"active": false}', 'UTF8'), '2026-03-18 21:23:57-06:00', '10.0.1.169'),
-    (2, 173, 'VENUE', 5, 'UPDATE', convert_to('{"postal_code": "T0A 0A0"}', 'UTF8'), convert_to('{"postal_code": "T1J 0N7"}', 'UTF8'), '2026-04-14 00:34:32-06:00', '10.0.0.207'),
-    (3, 11, 'EVENT', 23, 'DELETE', convert_to('{"title": "The Carousel Sessions", "status": "DRAFT"}', 'UTF8'), NULL, '2026-08-06 07:16:21-06:00', '10.0.1.30'),
-    (4, 136, 'PROMO_CODE', 3, 'UPDATE', convert_to('{"active": true}', 'UTF8'), convert_to('{"active": false}', 'UTF8'), '2026-07-02 12:36:12-06:00', '10.0.2.102'),
-    (5, 123, 'PROMO_CODE', 36, 'UPDATE', convert_to('{"active": true}', 'UTF8'), convert_to('{"active": false}', 'UTF8'), '2026-07-23 14:16:22-06:00', '10.0.1.146'),
-    (6, 217, 'PERFORMANCE', 138, 'UPDATE', convert_to('{"status": "SCHEDULED"}', 'UTF8'), convert_to('{"status": "SCHEDULED"}', 'UTF8'), '2026-01-24 11:02:52-07:00', '10.0.2.238'),
-    (7, 245, 'VENUE', 1, 'UPDATE', convert_to('{"postal_code": "T0A 0A0"}', 'UTF8'), convert_to('{"postal_code": "T2P 1J9"}', 'UTF8'), '2026-04-08 22:19:36-06:00', '10.0.0.227'),
-    (8, 108, 'PERFORMANCE', 180, 'UPDATE', convert_to('{"status": "SCHEDULED"}', 'UTF8'), convert_to('{"status": "DRAFT"}', 'UTF8'), '2026-01-11 12:01:42-07:00', '10.0.0.20'),
-    (9, 132, 'STAGE', 1, 'UPDATE', convert_to('{"name": "Stage 1"}', 'UTF8'), convert_to('{"name": "Main Stage"}', 'UTF8'), '2026-08-04 16:38:05-06:00', '10.0.1.57'),
-    (10, 2, 'PERFORMANCE', 74, 'UPDATE', convert_to('{"status": "SCHEDULED"}', 'UTF8'), convert_to('{"status": "COMPLETED"}', 'UTF8'), '2026-04-03 17:41:41-06:00', '10.0.1.38'),
-    (11, 8, 'VENUE', 3, 'UPDATE', convert_to('{"postal_code": "T0A 0A0"}', 'UTF8'), convert_to('{"postal_code": "T5J 3R8"}', 'UTF8'), '2026-06-28 14:02:04-06:00', '10.0.2.101'),
-    (12, 245, 'PRICE_TIER', 129, 'UPDATE', convert_to('{"price": 74.99}', 'UTF8'), convert_to('{"price": 79.99}', 'UTF8'), '2026-07-27 10:21:02-06:00', '10.0.0.174'),
-    (13, 394, 'EVENT', 39, 'UPDATE', convert_to('{"title": "The Tide Sessions", "status": "DRAFT"}', 'UTF8'), convert_to('{"title": "The Tide Sessions", "status": "ACTIVE"}', 'UTF8'), '2026-03-19 01:42:56-06:00', '10.0.1.223'),
-    (14, 2, 'STAGE', 2, 'UPDATE', convert_to('{"name": "Stage 2"}', 'UTF8'), convert_to('{"name": "Studio Stage"}', 'UTF8'), '2026-02-20 16:35:04-07:00', '10.0.1.31'),
-    (15, 142, 'PROMO_CODE', 33, 'UPDATE', convert_to('{"active": true}', 'UTF8'), convert_to('{"active": false}', 'UTF8'), '2026-06-01 20:10:40-06:00', '10.0.1.247'),
-    (16, 11, 'PROMO_CODE', 5, 'UPDATE', convert_to('{"active": true}', 'UTF8'), convert_to('{"active": false}', 'UTF8'), '2026-01-16 21:58:11-07:00', '10.0.2.142'),
-    (17, 16, 'VENUE', 3, 'UPDATE', convert_to('{"postal_code": "T0A 0A0"}', 'UTF8'), convert_to('{"postal_code": "T5J 3R8"}', 'UTF8'), '2026-05-01 01:27:39-06:00', '10.0.3.215'),
-    (18, 145, 'STAGE', 1, 'UPDATE', convert_to('{"name": "Stage 1"}', 'UTF8'), convert_to('{"name": "Main Stage"}', 'UTF8'), '2026-10-05 04:20:02-06:00', '10.0.1.189'),
-    (19, 2, 'VENUE', 4, 'INSERT', NULL, convert_to('{"postal_code": "T4N 1X6"}', 'UTF8'), '2026-08-07 10:40:08-06:00', '10.0.0.197'),
-    (20, 100, 'PROMO_CODE', 33, 'UPDATE', convert_to('{"active": true}', 'UTF8'), convert_to('{"active": false}', 'UTF8'), '2026-10-02 23:40:58-06:00', '10.0.3.94'),
-    (21, 132, 'EVENT', 15, 'DELETE', convert_to('{"title": "A Glass Letters", "status": "DRAFT"}', 'UTF8'), NULL, '2026-01-19 12:54:55-07:00', '10.0.2.108'),
-    (22, 388, 'VENUE', 5, 'INSERT', NULL, convert_to('{"postal_code": "T1J 0N7"}', 'UTF8'), '2026-08-20 09:35:05-06:00', '10.0.0.229'),
-    (23, 216, 'PERFORMANCE', 82, 'UPDATE', convert_to('{"status": "SCHEDULED"}', 'UTF8'), convert_to('{"status": "COMPLETED"}', 'UTF8'), '2026-05-28 11:04:09-06:00', '10.0.2.162'),
-    (24, 360, 'PROMO_CODE', 1, 'UPDATE', convert_to('{"active": true}', 'UTF8'), convert_to('{"active": false}', 'UTF8'), '2026-07-09 10:39:02-06:00', '10.0.3.252'),
-    (25, 57, 'VENUE', 6, 'INSERT', NULL, convert_to('{"postal_code": "T1L 1A3"}', 'UTF8'), '2026-10-11 18:14:52-06:00', '10.0.1.248'),
-    (26, 183, 'VENUE', 2, 'INSERT', NULL, convert_to('{"postal_code": "T2G 4K2"}', 'UTF8'), '2026-04-25 07:16:48-06:00', '10.0.3.128'),
-    (27, 234, 'PRICE_TIER', 140, 'INSERT', NULL, convert_to('{"price": 99.99}', 'UTF8'), '2026-08-23 14:43:31-06:00', '10.0.1.254'),
-    (28, 53, 'PRICE_TIER', 127, 'INSERT', NULL, convert_to('{"price": 79.99}', 'UTF8'), '2026-08-03 11:37:50-06:00', '10.0.3.162'),
-    (29, 188, 'PERFORMANCE', 139, 'UPDATE', convert_to('{"status": "SCHEDULED"}', 'UTF8'), convert_to('{"status": "SCHEDULED"}', 'UTF8'), '2026-05-21 00:22:50-06:00', '10.0.3.125'),
-    (30, 366, 'VENUE', 3, 'UPDATE', convert_to('{"postal_code": "T0A 0A0"}', 'UTF8'), convert_to('{"postal_code": "T5J 3R8"}', 'UTF8'), '2026-03-29 15:14:12-06:00', '10.0.1.46'),
-    (31, 394, 'PRICE_TIER', 93, 'UPDATE', convert_to('{"price": 84.99}', 'UTF8'), convert_to('{"price": 89.99}', 'UTF8'), '2026-04-05 00:11:18-06:00', '10.0.0.55'),
-    (32, 145, 'VENUE', 6, 'UPDATE', convert_to('{"postal_code": "T0A 0A0"}', 'UTF8'), convert_to('{"postal_code": "T1L 1A3"}', 'UTF8'), '2026-05-21 22:42:30-06:00', '10.0.1.28'),
-    (33, 217, 'EVENT', 27, 'INSERT', NULL, convert_to('{"title": "The Letters Sessions", "status": "ACTIVE"}', 'UTF8'), '2026-09-01 22:50:38-06:00', '10.0.0.215'),
-    (34, 132, 'PROMO_CODE', 4, 'DELETE', convert_to('{"active": true}', 'UTF8'), NULL, '2026-02-20 00:54:53-07:00', '10.0.2.79'),
-    (35, 109, 'STAGE', 3, 'UPDATE', convert_to('{"name": "Stage 3"}', 'UTF8'), convert_to('{"name": "VIP Lounge Stage"}', 'UTF8'), '2026-05-25 04:39:31-06:00', '10.0.2.105'),
-    (36, 100, 'PRICE_TIER', 155, 'INSERT', NULL, convert_to('{"price": 109.99}', 'UTF8'), '2026-08-13 18:02:51-06:00', '10.0.1.92'),
-    (37, 301, 'PERFORMANCE', 34, 'INSERT', NULL, convert_to('{"status": "COMPLETED"}', 'UTF8'), '2026-05-09 01:19:35-06:00', '10.0.1.145'),
-    (38, 53, 'STAGE', 10, 'DELETE', convert_to('{"name": "Stage 10"}', 'UTF8'), NULL, '2026-09-30 16:29:02-06:00', '10.0.0.172'),
-    (39, 350, 'VENUE', 5, 'UPDATE', convert_to('{"postal_code": "T0A 0A0"}', 'UTF8'), convert_to('{"postal_code": "T1J 0N7"}', 'UTF8'), '2026-06-25 11:25:21-06:00', '10.0.3.136'),
-    (40, 188, 'VENUE', 4, 'INSERT', NULL, convert_to('{"postal_code": "T4N 1X6"}', 'UTF8'), '2026-07-08 07:55:58-06:00', '10.0.0.80'),
-    (41, 183, 'VENUE', 6, 'INSERT', NULL, convert_to('{"postal_code": "T1L 1A3"}', 'UTF8'), '2026-01-18 00:09:41-07:00', '10.0.0.221'),
-    (42, 388, 'PERFORMANCE', 161, 'UPDATE', convert_to('{"status": "SCHEDULED"}', 'UTF8'), convert_to('{"status": "SCHEDULED"}', 'UTF8'), '2026-06-22 09:59:36-06:00', '10.0.1.189'),
-    (43, 188, 'VENUE', 5, 'UPDATE', convert_to('{"postal_code": "T0A 0A0"}', 'UTF8'), convert_to('{"postal_code": "T1J 0N7"}', 'UTF8'), '2026-10-11 18:45:04-06:00', '10.0.0.104'),
-    (44, 315, 'VENUE', 6, 'UPDATE', convert_to('{"postal_code": "T0A 0A0"}', 'UTF8'), convert_to('{"postal_code": "T1L 1A3"}', 'UTF8'), '2026-02-23 19:35:59-07:00', '10.0.0.25'),
-    (45, 394, 'PERFORMANCE', 175, 'UPDATE', convert_to('{"status": "SCHEDULED"}', 'UTF8'), convert_to('{"status": "DRAFT"}', 'UTF8'), '2026-07-31 14:52:05-06:00', '10.0.0.184'),
-    (46, 216, 'STAGE', 6, 'INSERT', NULL, convert_to('{"name": "Grand Stage"}', 'UTF8'), '2026-03-06 20:00:01-07:00', '10.0.3.183'),
-    (47, 227, 'PRICE_TIER', 45, 'UPDATE', convert_to('{"price": 42.5}', 'UTF8'), convert_to('{"price": 47.5}', 'UTF8'), '2026-01-23 06:27:31-07:00', '10.0.3.119'),
-    (48, 388, 'PERFORMANCE', 105, 'UPDATE', convert_to('{"status": "SCHEDULED"}', 'UTF8'), convert_to('{"status": "COMPLETED"}', 'UTF8'), '2026-01-26 09:16:58-07:00', '10.0.1.179'),
-    (49, 142, 'STAGE', 5, 'UPDATE', convert_to('{"name": "Stage 5"}', 'UTF8'), convert_to('{"name": "Black Box"}', 'UTF8'), '2026-04-26 11:01:35-06:00', '10.0.1.175'),
-    (50, 304, 'PROMO_CODE', 17, 'UPDATE', convert_to('{"active": true}', 'UTF8'), convert_to('{"active": false}', 'UTF8'), '2026-07-18 09:43:01-06:00', '10.0.0.230'),
-    (51, 132, 'PROMO_CODE', 24, 'INSERT', NULL, convert_to('{"active": false}', 'UTF8'), '2026-06-09 14:35:49-06:00', '10.0.1.34'),
-    (52, 304, 'EVENT', 28, 'INSERT', NULL, convert_to('{"title": "The Masquerade Sessions", "status": "ACTIVE"}', 'UTF8'), '2026-06-27 18:53:59-06:00', '10.0.0.138'),
-    (53, 206, 'PRICE_TIER', 150, 'UPDATE', convert_to('{"price": 104.99}', 'UTF8'), convert_to('{"price": 109.99}', 'UTF8'), '2026-07-25 04:36:14-06:00', '10.0.2.244'),
-    (54, 115, 'PROMO_CODE', 1, 'UPDATE', convert_to('{"active": true}', 'UTF8'), convert_to('{"active": false}', 'UTF8'), '2026-06-04 09:30:52-06:00', '10.0.3.51'),
-    (55, 388, 'PRICE_TIER', 86, 'UPDATE', convert_to('{"price": 59.99}', 'UTF8'), convert_to('{"price": 64.99}', 'UTF8'), '2026-08-19 23:42:43-06:00', '10.0.2.254'),
-    (56, 219, 'PERFORMANCE', 167, 'UPDATE', convert_to('{"status": "SCHEDULED"}', 'UTF8'), convert_to('{"status": "SCHEDULED"}', 'UTF8'), '2026-06-06 15:33:23-06:00', '10.0.2.143'),
-    (57, 216, 'VENUE', 3, 'UPDATE', convert_to('{"postal_code": "T0A 0A0"}', 'UTF8'), convert_to('{"postal_code": "T5J 3R8"}', 'UTF8'), '2026-02-19 09:41:05-07:00', '10.0.2.231'),
-    (58, 360, 'STAGE', 10, 'DELETE', convert_to('{"name": "Stage 10"}', 'UTF8'), NULL, '2026-08-14 10:57:23-06:00', '10.0.3.182'),
-    (59, 173, 'PRICE_TIER', 123, 'UPDATE', convert_to('{"price": 69.99}', 'UTF8'), convert_to('{"price": 74.99}', 'UTF8'), '2026-06-08 22:14:48-06:00', '10.0.2.34'),
-    (60, 183, 'PROMO_CODE', 19, 'UPDATE', convert_to('{"active": true}', 'UTF8'), convert_to('{"active": false}', 'UTF8'), '2026-05-25 23:48:04-06:00', '10.0.0.54'),
-    (61, 227, 'PERFORMANCE', 86, 'UPDATE', convert_to('{"status": "SCHEDULED"}', 'UTF8'), convert_to('{"status": "COMPLETED"}', 'UTF8'), '2026-05-02 00:39:57-06:00', '10.0.1.111'),
-    (62, 173, 'EVENT', 46, 'UPDATE', convert_to('{"title": "Compass of the Northern", "status": "DRAFT"}', 'UTF8'), convert_to('{"title": "Compass of the Northern", "status": "ACTIVE"}', 'UTF8'), '2026-09-11 21:48:15-06:00', '10.0.0.18'),
-    (63, 51, 'PROMO_CODE', 9, 'INSERT', NULL, convert_to('{"active": false}', 'UTF8'), '2026-07-28 23:17:13-06:00', '10.0.3.123'),
-    (64, 360, 'PROMO_CODE', 3, 'UPDATE', convert_to('{"active": true}', 'UTF8'), convert_to('{"active": false}', 'UTF8'), '2026-02-27 04:41:48-07:00', '10.0.2.185'),
-    (65, 142, 'EVENT', 10, 'UPDATE', convert_to('{"title": "A Broken Overture", "status": "DRAFT"}', 'UTF8'), convert_to('{"title": "A Broken Overture", "status": "ACTIVE"}', 'UTF8'), '2026-01-31 06:46:53-07:00', '10.0.2.23'),
-    (66, 301, 'STAGE', 7, 'INSERT', NULL, convert_to('{"name": "Recital Hall"}', 'UTF8'), '2026-03-16 21:14:03-06:00', '10.0.1.174'),
-    (67, 11, 'STAGE', 4, 'UPDATE', convert_to('{"name": "Stage 4"}', 'UTF8'), convert_to('{"name": "Main Stage"}', 'UTF8'), '2026-08-10 00:19:08-06:00', '10.0.3.90'),
-    (68, 16, 'PROMO_CODE', 20, 'UPDATE', convert_to('{"active": true}', 'UTF8'), convert_to('{"active": false}', 'UTF8'), '2026-10-10 05:02:09-06:00', '10.0.1.166'),
-    (69, 16, 'EVENT', 69, 'UPDATE', convert_to('{"title": "The Paper Railway", "status": "DRAFT"}', 'UTF8'), convert_to('{"title": "The Paper Railway", "status": "ACTIVE"}', 'UTF8'), '2026-03-30 18:36:58-06:00', '10.0.0.141'),
-    (70, 132, 'STAGE', 2, 'UPDATE', convert_to('{"name": "Stage 2"}', 'UTF8'), convert_to('{"name": "Studio Stage"}', 'UTF8'), '2026-06-05 05:06:07-06:00', '10.0.3.212'),
-    (71, 219, 'PROMO_CODE', 37, 'UPDATE', convert_to('{"active": true}', 'UTF8'), convert_to('{"active": false}', 'UTF8'), '2026-05-24 06:51:15-06:00', '10.0.3.231'),
-    (72, 216, 'STAGE', 8, 'UPDATE', convert_to('{"name": "Stage 8"}', 'UTF8'), convert_to('{"name": "Studio Stage"}', 'UTF8'), '2026-09-06 15:10:41-06:00', '10.0.0.29'),
-    (73, 348, 'PERFORMANCE', 39, 'UPDATE', convert_to('{"status": "SCHEDULED"}', 'UTF8'), convert_to('{"status": "COMPLETED"}', 'UTF8'), '2026-07-15 04:04:08-06:00', '10.0.0.205'),
-    (74, 123, 'STAGE', 1, 'INSERT', NULL, convert_to('{"name": "Main Stage"}', 'UTF8'), '2026-05-24 20:42:17-06:00', '10.0.3.115'),
-    (75, 314, 'VENUE', 5, 'UPDATE', convert_to('{"postal_code": "T0A 0A0"}', 'UTF8'), convert_to('{"postal_code": "T1J 0N7"}', 'UTF8'), '2026-02-21 11:54:33-07:00', '10.0.0.99'),
-    (76, 100, 'PERFORMANCE', 144, 'UPDATE', convert_to('{"status": "SCHEDULED"}', 'UTF8'), convert_to('{"status": "SCHEDULED"}', 'UTF8'), '2026-05-26 15:30:42-06:00', '10.0.3.243'),
-    (77, 53, 'VENUE', 5, 'INSERT', NULL, convert_to('{"postal_code": "T1J 0N7"}', 'UTF8'), '2026-01-28 13:48:28-07:00', '10.0.3.168'),
-    (78, 234, 'EVENT', 1, 'INSERT', NULL, convert_to('{"title": "A Midnight Carousel", "status": "ACTIVE"}', 'UTF8'), '2026-08-30 02:22:49-06:00', '10.0.2.76'),
-    (79, 342, 'PROMO_CODE', 8, 'UPDATE', convert_to('{"active": true}', 'UTF8'), convert_to('{"active": false}', 'UTF8'), '2026-03-14 21:03:21-06:00', '10.0.0.110'),
-    (80, 301, 'STAGE', 7, 'INSERT', NULL, convert_to('{"name": "Recital Hall"}', 'UTF8'), '2026-08-27 00:29:54-06:00', '10.0.1.158'),
-    (81, 206, 'EVENT', 7, 'UPDATE', convert_to('{"title": "Golden Echo", "status": "DRAFT"}', 'UTF8'), convert_to('{"title": "Golden Echo", "status": "ACTIVE"}', 'UTF8'), '2026-05-29 03:54:51-06:00', '10.0.0.115'),
-    (82, 360, 'PERFORMANCE', 164, 'UPDATE', convert_to('{"status": "SCHEDULED"}', 'UTF8'), convert_to('{"status": "SCHEDULED"}', 'UTF8'), '2026-09-13 01:34:13-06:00', '10.0.0.42'),
-    (83, 183, 'PERFORMANCE', 118, 'UPDATE', convert_to('{"status": "SCHEDULED"}', 'UTF8'), convert_to('{"status": "COMPLETED"}', 'UTF8'), '2026-08-16 06:04:11-06:00', '10.0.0.208'),
-    (84, 10, 'STAGE', 1, 'INSERT', NULL, convert_to('{"name": "Main Stage"}', 'UTF8'), '2026-10-01 23:17:57-06:00', '10.0.1.24'),
-    (85, 315, 'PERFORMANCE', 139, 'INSERT', NULL, convert_to('{"status": "SCHEDULED"}', 'UTF8'), '2026-04-27 06:56:43-06:00', '10.0.3.68'),
-    (86, 360, 'STAGE', 12, 'INSERT', NULL, convert_to('{"name": "Alpine Stage"}', 'UTF8'), '2026-08-14 09:48:26-06:00', '10.0.3.90'),
-    (87, 183, 'PRICE_TIER', 109, 'INSERT', NULL, convert_to('{"price": 74.99}', 'UTF8'), '2026-01-05 00:22:21-07:00', '10.0.3.218'),
-    (88, 314, 'PERFORMANCE', 142, 'UPDATE', convert_to('{"status": "SCHEDULED"}', 'UTF8'), convert_to('{"status": "SCHEDULED"}', 'UTF8'), '2026-10-09 17:53:50-06:00', '10.0.2.177'),
-    (89, 312, 'VENUE', 3, 'UPDATE', convert_to('{"postal_code": "T0A 0A0"}', 'UTF8'), convert_to('{"postal_code": "T5J 3R8"}', 'UTF8'), '2026-08-15 21:13:30-06:00', '10.0.0.232'),
-    (90, 206, 'PROMO_CODE', 4, 'INSERT', NULL, convert_to('{"active": false}', 'UTF8'), '2026-09-07 05:41:33-06:00', '10.0.1.8'),
-    (91, 234, 'PRICE_TIER', 113, 'UPDATE', convert_to('{"price": 64.99}', 'UTF8'), convert_to('{"price": 69.99}', 'UTF8'), '2026-09-13 22:36:51-06:00', '10.0.2.62'),
-    (92, 350, 'STAGE', 12, 'UPDATE', convert_to('{"name": "Stage 12"}', 'UTF8'), convert_to('{"name": "Alpine Stage"}', 'UTF8'), '2026-08-26 20:09:43-06:00', '10.0.3.122'),
-    (93, 10, 'PERFORMANCE', 73, 'INSERT', NULL, convert_to('{"status": "COMPLETED"}', 'UTF8'), '2026-03-16 07:15:53-06:00', '10.0.1.131'),
-    (94, 245, 'STAGE', 8, 'UPDATE', convert_to('{"name": "Stage 8"}', 'UTF8'), convert_to('{"name": "Studio Stage"}', 'UTF8'), '2026-09-12 04:48:22-06:00', '10.0.0.138'),
-    (95, 188, 'PRICE_TIER', 130, 'UPDATE', convert_to('{"price": 69.99}', 'UTF8'), convert_to('{"price": 74.99}', 'UTF8'), '2026-01-30 10:36:46-07:00', '10.0.1.229'),
-    (96, 183, 'PROMO_CODE', 12, 'UPDATE', convert_to('{"active": true}', 'UTF8'), convert_to('{"active": false}', 'UTF8'), '2026-01-14 08:11:26-07:00', '10.0.1.162'),
-    (97, 138, 'VENUE', 2, 'INSERT', NULL, convert_to('{"postal_code": "T2G 4K2"}', 'UTF8'), '2026-01-25 10:05:32-07:00', '10.0.2.100'),
-    (98, 130, 'STAGE', 12, 'UPDATE', convert_to('{"name": "Stage 12"}', 'UTF8'), convert_to('{"name": "Alpine Stage"}', 'UTF8'), '2026-08-25 07:01:00-06:00', '10.0.0.20'),
-    (99, 123, 'STAGE', 12, 'UPDATE', convert_to('{"name": "Stage 12"}', 'UTF8'), convert_to('{"name": "Alpine Stage"}', 'UTF8'), '2026-04-17 21:46:45-06:00', '10.0.0.248'),
-    (100, 394, 'PROMO_CODE', 32, 'UPDATE', convert_to('{"active": true}', 'UTF8'), convert_to('{"active": false}', 'UTF8'), '2026-03-24 14:27:58-06:00', '10.0.3.114'),
-    (101, 183, 'PROMO_CODE', 1, 'UPDATE', convert_to('{"active": true}', 'UTF8'), convert_to('{"active": false}', 'UTF8'), '2026-09-21 07:17:33-06:00', '10.0.1.28'),
-    (102, 138, 'PROMO_CODE', 30, 'UPDATE', convert_to('{"active": true}', 'UTF8'), convert_to('{"active": false}', 'UTF8'), '2026-06-05 16:43:00-06:00', '10.0.0.77'),
-    (103, 348, 'VENUE', 6, 'INSERT', NULL, convert_to('{"postal_code": "T1L 1A3"}', 'UTF8'), '2026-02-07 19:14:37-07:00', '10.0.1.184'),
-    (104, 53, 'PERFORMANCE', 23, 'UPDATE', convert_to('{"status": "SCHEDULED"}', 'UTF8'), convert_to('{"status": "COMPLETED"}', 'UTF8'), '2026-09-26 09:53:56-06:00', '10.0.3.3'),
-    (105, 245, 'VENUE', 1, 'UPDATE', convert_to('{"postal_code": "T0A 0A0"}', 'UTF8'), convert_to('{"postal_code": "T2P 1J9"}', 'UTF8'), '2026-07-05 13:30:13-06:00', '10.0.2.87'),
-    (106, 51, 'PROMO_CODE', 31, 'INSERT', NULL, convert_to('{"active": false}', 'UTF8'), '2026-08-27 15:23:29-06:00', '10.0.2.229'),
-    (107, 132, 'EVENT', 11, 'UPDATE', convert_to('{"title": "Forgotten Letters", "status": "DRAFT"}', 'UTF8'), convert_to('{"title": "Forgotten Letters", "status": "ACTIVE"}', 'UTF8'), '2026-09-07 04:32:28-06:00', '10.0.1.118'),
-    (108, 298, 'PROMO_CODE', 11, 'UPDATE', convert_to('{"active": true}', 'UTF8'), convert_to('{"active": false}', 'UTF8'), '2026-04-23 07:19:18-06:00', '10.0.1.63'),
-    (109, 245, 'VENUE', 4, 'UPDATE', convert_to('{"postal_code": "T0A 0A0"}', 'UTF8'), convert_to('{"postal_code": "T4N 1X6"}', 'UTF8'), '2026-07-16 15:08:16-06:00', '10.0.0.136'),
-    (110, 142, 'EVENT', 29, 'UPDATE', convert_to('{"title": "The Golden Chorus", "status": "DRAFT"}', 'UTF8'), convert_to('{"title": "The Golden Chorus", "status": "ACTIVE"}', 'UTF8'), '2026-02-21 00:52:28-07:00', '10.0.3.133'),
-    (111, 130, 'VENUE', 6, 'UPDATE', convert_to('{"postal_code": "T0A 0A0"}', 'UTF8'), convert_to('{"postal_code": "T1L 1A3"}', 'UTF8'), '2026-02-27 15:55:44-07:00', '10.0.3.254'),
-    (112, 53, 'VENUE', 6, 'INSERT', NULL, convert_to('{"postal_code": "T1L 1A3"}', 'UTF8'), '2026-05-13 21:52:32-06:00', '10.0.2.48'),
-    (113, 342, 'PERFORMANCE', 126, 'UPDATE', convert_to('{"status": "SCHEDULED"}', 'UTF8'), convert_to('{"status": "SCHEDULED"}', 'UTF8'), '2026-08-29 09:24:57-06:00', '10.0.3.192'),
-    (114, 100, 'PRICE_TIER', 109, 'UPDATE', convert_to('{"price": 69.99}', 'UTF8'), convert_to('{"price": 74.99}', 'UTF8'), '2026-01-08 20:22:43-07:00', '10.0.2.177'),
-    (115, 188, 'EVENT', 46, 'UPDATE', convert_to('{"title": "Compass of the Northern", "status": "DRAFT"}', 'UTF8'), convert_to('{"title": "Compass of the Northern", "status": "ACTIVE"}', 'UTF8'), '2026-04-09 23:36:25-06:00', '10.0.2.211'),
-    (116, 394, 'STAGE', 7, 'INSERT', NULL, convert_to('{"name": "Recital Hall"}', 'UTF8'), '2026-06-15 09:03:14-06:00', '10.0.3.121'),
-    (117, 342, 'STAGE', 9, 'UPDATE', convert_to('{"name": "Stage 9"}', 'UTF8'), convert_to('{"name": "Main Stage"}', 'UTF8'), '2026-08-21 07:35:38-06:00', '10.0.0.152'),
-    (118, 8, 'PERFORMANCE', 167, 'UPDATE', convert_to('{"status": "SCHEDULED"}', 'UTF8'), convert_to('{"status": "SCHEDULED"}', 'UTF8'), '2026-09-11 18:29:32-06:00', '10.0.2.183'),
-    (119, 315, 'EVENT', 66, 'UPDATE', convert_to('{"title": "Little Harbour: Live", "status": "DRAFT"}', 'UTF8'), convert_to('{"title": "Little Harbour: Live", "status": "ACTIVE"}', 'UTF8'), '2026-08-22 01:39:10-06:00', '10.0.2.124'),
-    (120, 53, 'EVENT', 30, 'INSERT', NULL, convert_to('{"title": "The Crimson Cabaret", "status": "ACTIVE"}', 'UTF8'), '2026-05-06 12:04:46-06:00', '10.0.0.199'),
-    (121, 57, 'STAGE', 3, 'UPDATE', convert_to('{"name": "Stage 3"}', 'UTF8'), convert_to('{"name": "VIP Lounge Stage"}', 'UTF8'), '2026-04-24 01:11:38-06:00', '10.0.2.187'),
-    (122, 183, 'EVENT', 28, 'UPDATE', convert_to('{"title": "The Masquerade Sessions", "status": "DRAFT"}', 'UTF8'), convert_to('{"title": "The Masquerade Sessions", "status": "ACTIVE"}', 'UTF8'), '2026-07-01 09:35:34-06:00', '10.0.1.68'),
-    (123, 115, 'PRICE_TIER', 15, 'INSERT', NULL, convert_to('{"price": 50.0}', 'UTF8'), '2026-03-04 09:44:33-07:00', '10.0.2.194'),
-    (124, 202, 'STAGE', 12, 'UPDATE', convert_to('{"name": "Stage 12"}', 'UTF8'), convert_to('{"name": "Alpine Stage"}', 'UTF8'), '2026-04-10 21:48:03-06:00', '10.0.2.26'),
-    (125, 130, 'PRICE_TIER', 51, 'UPDATE', convert_to('{"price": 59.99}', 'UTF8'), convert_to('{"price": 64.99}', 'UTF8'), '2026-02-25 20:38:44-07:00', '10.0.0.76'),
-    (126, 108, 'PERFORMANCE', 26, 'UPDATE', convert_to('{"status": "SCHEDULED"}', 'UTF8'), convert_to('{"status": "COMPLETED"}', 'UTF8'), '2026-05-05 14:36:12-06:00', '10.0.0.107'),
-    (127, 64, 'PERFORMANCE', 69, 'UPDATE', convert_to('{"status": "SCHEDULED"}', 'UTF8'), convert_to('{"status": "COMPLETED"}', 'UTF8'), '2026-09-10 21:28:54-06:00', '10.0.3.187'),
-    (128, 298, 'STAGE', 12, 'UPDATE', convert_to('{"name": "Stage 12"}', 'UTF8'), convert_to('{"name": "Alpine Stage"}', 'UTF8'), '2026-07-31 17:23:27-06:00', '10.0.2.210'),
-    (129, 16, 'EVENT', 44, 'UPDATE', convert_to('{"title": "The Forgotten Chorus", "status": "DRAFT"}', 'UTF8'), convert_to('{"title": "The Forgotten Chorus", "status": "ACTIVE"}', 'UTF8'), '2026-07-02 07:46:57-06:00', '10.0.3.166'),
-    (130, 173, 'EVENT', 31, 'UPDATE', convert_to('{"title": "The Midnight Railway", "status": "DRAFT"}', 'UTF8'), convert_to('{"title": "The Midnight Railway", "status": "ACTIVE"}', 'UTF8'), '2026-09-20 13:02:32-06:00', '10.0.0.24'),
-    (131, 173, 'VENUE', 4, 'UPDATE', convert_to('{"postal_code": "T0A 0A0"}', 'UTF8'), convert_to('{"postal_code": "T4N 1X6"}', 'UTF8'), '2026-03-09 19:14:13-06:00', '10.0.3.212'),
-    (132, 394, 'PRICE_TIER', 114, 'INSERT', NULL, convert_to('{"price": 64.99}', 'UTF8'), '2026-05-01 08:17:20-06:00', '10.0.2.190'),
-    (133, 342, 'PROMO_CODE', 37, 'UPDATE', convert_to('{"active": true}', 'UTF8'), convert_to('{"active": false}', 'UTF8'), '2026-03-28 02:28:47-06:00', '10.0.3.172'),
-    (134, 130, 'PROMO_CODE', 27, 'INSERT', NULL, convert_to('{"active": false}', 'UTF8'), '2026-08-05 10:21:00-06:00', '10.0.1.171'),
-    (135, 388, 'EVENT', 95, 'INSERT', NULL, convert_to('{"title": "Last Compass", "status": "DRAFT"}', 'UTF8'), '2026-04-16 12:03:55-06:00', '10.0.0.61'),
-    (136, 183, 'PERFORMANCE', 13, 'INSERT', NULL, convert_to('{"status": "COMPLETED"}', 'UTF8'), '2026-05-02 23:59:56-06:00', '10.0.1.231'),
-    (137, 2, 'VENUE', 5, 'UPDATE', convert_to('{"postal_code": "T0A 0A0"}', 'UTF8'), convert_to('{"postal_code": "T1J 0N7"}', 'UTF8'), '2026-05-15 15:05:13-06:00', '10.0.2.227'),
-    (138, 366, 'PERFORMANCE', 28, 'UPDATE', convert_to('{"status": "SCHEDULED"}', 'UTF8'), convert_to('{"status": "COMPLETED"}', 'UTF8'), '2026-01-25 22:41:22-07:00', '10.0.1.117'),
-    (139, 348, 'STAGE', 5, 'UPDATE', convert_to('{"name": "Stage 5"}', 'UTF8'), convert_to('{"name": "Black Box"}', 'UTF8'), '2026-01-31 23:54:32-07:00', '10.0.2.98'),
-    (140, 394, 'EVENT', 21, 'UPDATE', convert_to('{"title": "The Prairie Carousel", "status": "DRAFT"}', 'UTF8'), convert_to('{"title": "The Prairie Carousel", "status": "ACTIVE"}', 'UTF8'), '2026-05-01 15:57:20-06:00', '10.0.0.149'),
-    (141, 388, 'STAGE', 6, 'INSERT', NULL, convert_to('{"name": "Grand Stage"}', 'UTF8'), '2026-10-13 13:05:28-06:00', '10.0.3.88'),
-    (142, 8, 'PRICE_TIER', 151, 'UPDATE', convert_to('{"price": 119.99}', 'UTF8'), convert_to('{"price": 124.99}', 'UTF8'), '2026-06-06 23:31:15-06:00', '10.0.2.2'),
-    (143, 217, 'PERFORMANCE', 110, 'UPDATE', convert_to('{"status": "SCHEDULED"}', 'UTF8'), convert_to('{"status": "CANCELLED"}', 'UTF8'), '2026-08-19 01:43:20-06:00', '10.0.1.227'),
-    (144, 219, 'EVENT', 35, 'INSERT', NULL, convert_to('{"title": "Glass Overture: Live", "status": "ACTIVE"}', 'UTF8'), '2026-06-13 16:44:49-06:00', '10.0.3.20'),
-    (145, 145, 'STAGE', 2, 'UPDATE', convert_to('{"name": "Stage 2"}', 'UTF8'), convert_to('{"name": "Studio Stage"}', 'UTF8'), '2026-10-14 08:25:31-06:00', '10.0.1.90'),
-    (146, 312, 'EVENT', 20, 'INSERT', NULL, convert_to('{"title": "A Velvet Orchard", "status": "ACTIVE"}', 'UTF8'), '2026-03-21 09:30:37-06:00', '10.0.0.61'),
-    (147, 114, 'STAGE', 3, 'UPDATE', convert_to('{"name": "Stage 3"}', 'UTF8'), convert_to('{"name": "VIP Lounge Stage"}', 'UTF8'), '2026-09-01 05:03:47-06:00', '10.0.3.60'),
-    (148, 188, 'STAGE', 11, 'UPDATE', convert_to('{"name": "Stage 11"}', 'UTF8'), convert_to('{"name": "Main Stage"}', 'UTF8'), '2026-01-16 08:16:27-07:00', '10.0.2.18'),
-    (149, 234, 'PERFORMANCE', 171, 'INSERT', NULL, convert_to('{"status": "DRAFT"}', 'UTF8'), '2026-04-23 12:30:50-06:00', '10.0.3.114'),
-    (150, 304, 'PRICE_TIER', 97, 'UPDATE', convert_to('{"price": 49.99}', 'UTF8'), convert_to('{"price": 54.99}', 'UTF8'), '2026-08-21 17:41:48-06:00', '10.0.3.179'),
-    (151, 348, 'STAGE', 10, 'DELETE', convert_to('{"name": "Stage 10"}', 'UTF8'), NULL, '2026-08-05 01:23:57-06:00', '10.0.3.151'),
-    (152, 202, 'PERFORMANCE', 103, 'UPDATE', convert_to('{"status": "SCHEDULED"}', 'UTF8'), convert_to('{"status": "COMPLETED"}', 'UTF8'), '2026-05-25 03:15:33-06:00', '10.0.2.241'),
-    (153, 388, 'VENUE', 2, 'INSERT', NULL, convert_to('{"postal_code": "T2G 4K2"}', 'UTF8'), '2026-04-06 01:20:26-06:00', '10.0.3.153'),
-    (154, 173, 'STAGE', 8, 'UPDATE', convert_to('{"name": "Stage 8"}', 'UTF8'), convert_to('{"name": "Studio Stage"}', 'UTF8'), '2026-06-10 06:07:11-06:00', '10.0.0.80'),
-    (155, 145, 'VENUE', 2, 'INSERT', NULL, convert_to('{"postal_code": "T2G 4K2"}', 'UTF8'), '2026-01-06 06:56:40-07:00', '10.0.3.50'),
-    (156, 366, 'EVENT', 87, 'UPDATE', convert_to('{"title": "Crimson Compass: Live", "status": "DRAFT"}', 'UTF8'), convert_to('{"title": "Crimson Compass: Live", "status": "ACTIVE"}', 'UTF8'), '2026-06-21 15:16:28-06:00', '10.0.3.151'),
-    (157, 350, 'STAGE', 4, 'UPDATE', convert_to('{"name": "Stage 4"}', 'UTF8'), convert_to('{"name": "Main Stage"}', 'UTF8'), '2026-01-02 14:15:43-07:00', '10.0.3.79'),
-    (158, 315, 'PRICE_TIER', 44, 'UPDATE', convert_to('{"price": 54.0}', 'UTF8'), convert_to('{"price": 59.0}', 'UTF8'), '2026-07-12 00:50:48-06:00', '10.0.2.137'),
-    (159, 216, 'EVENT', 77, 'INSERT', NULL, convert_to('{"title": "The Electric Carousel", "status": "ACTIVE"}', 'UTF8'), '2026-06-29 18:13:21-06:00', '10.0.2.162'),
-    (160, 138, 'PROMO_CODE', 19, 'UPDATE', convert_to('{"active": true}', 'UTF8'), convert_to('{"active": false}', 'UTF8'), '2026-09-24 22:02:29-06:00', '10.0.3.7'),
-    (161, 206, 'PERFORMANCE', 79, 'INSERT', NULL, convert_to('{"status": "CANCELLED"}', 'UTF8'), '2026-05-02 14:20:44-06:00', '10.0.3.211'),
-    (162, 57, 'STAGE', 4, 'UPDATE', convert_to('{"name": "Stage 4"}', 'UTF8'), convert_to('{"name": "Main Stage"}', 'UTF8'), '2026-08-26 15:40:06-06:00', '10.0.0.72'),
-    (163, 202, 'STAGE', 7, 'UPDATE', convert_to('{"name": "Stage 7"}', 'UTF8'), convert_to('{"name": "Recital Hall"}', 'UTF8'), '2026-06-25 02:05:06-06:00', '10.0.3.21'),
-    (164, 394, 'PROMO_CODE', 1, 'UPDATE', convert_to('{"active": true}', 'UTF8'), convert_to('{"active": false}', 'UTF8'), '2026-08-02 18:50:48-06:00', '10.0.0.115'),
-    (165, 234, 'PERFORMANCE', 18, 'UPDATE', convert_to('{"status": "SCHEDULED"}', 'UTF8'), convert_to('{"status": "COMPLETED"}', 'UTF8'), '2026-03-16 08:58:47-06:00', '10.0.2.109'),
-    (166, 301, 'STAGE', 8, 'UPDATE', convert_to('{"name": "Stage 8"}', 'UTF8'), convert_to('{"name": "Studio Stage"}', 'UTF8'), '2026-02-19 23:25:43-07:00', '10.0.3.20'),
-    (167, 298, 'STAGE', 9, 'UPDATE', convert_to('{"name": "Stage 9"}', 'UTF8'), convert_to('{"name": "Main Stage"}', 'UTF8'), '2026-09-23 05:00:10-06:00', '10.0.2.137'),
-    (168, 2, 'EVENT', 73, 'INSERT', NULL, convert_to('{"title": "The Prairie Masquerade", "status": "ACTIVE"}', 'UTF8'), '2026-09-25 20:28:57-06:00', '10.0.0.110'),
-    (169, 314, 'PERFORMANCE', 27, 'INSERT', NULL, convert_to('{"status": "COMPLETED"}', 'UTF8'), '2026-08-29 08:20:37-06:00', '10.0.3.56'),
-    (170, 123, 'EVENT', 62, 'INSERT', NULL, convert_to('{"title": "A Golden Mirror", "status": "ACTIVE"}', 'UTF8'), '2026-04-08 08:17:54-06:00', '10.0.1.160'),
-    (171, 206, 'PERFORMANCE', 163, 'INSERT', NULL, convert_to('{"status": "DRAFT"}', 'UTF8'), '2026-09-27 10:08:16-06:00', '10.0.3.224'),
-    (172, 136, 'PRICE_TIER', 71, 'UPDATE', convert_to('{"price": 54.99}', 'UTF8'), convert_to('{"price": 59.99}', 'UTF8'), '2026-08-07 05:47:43-06:00', '10.0.1.9'),
-    (173, 132, 'PRICE_TIER', 103, 'UPDATE', convert_to('{"price": 64.99}', 'UTF8'), convert_to('{"price": 69.99}', 'UTF8'), '2026-04-17 17:26:12-06:00', '10.0.1.35'),
-    (174, 109, 'STAGE', 6, 'INSERT', NULL, convert_to('{"name": "Grand Stage"}', 'UTF8'), '2026-08-04 15:35:48-06:00', '10.0.0.199'),
-    (175, 315, 'PERFORMANCE', 3, 'DELETE', convert_to('{"status": "SCHEDULED"}', 'UTF8'), NULL, '2026-08-15 22:15:08-06:00', '10.0.3.107'),
-    (176, 142, 'STAGE', 6, 'UPDATE', convert_to('{"name": "Stage 6"}', 'UTF8'), convert_to('{"name": "Grand Stage"}', 'UTF8'), '2026-09-21 04:21:56-06:00', '10.0.2.84'),
-    (177, 132, 'PROMO_CODE', 29, 'UPDATE', convert_to('{"active": true}', 'UTF8'), convert_to('{"active": false}', 'UTF8'), '2026-05-09 15:51:56-06:00', '10.0.0.170'),
-    (178, 245, 'PERFORMANCE', 139, 'UPDATE', convert_to('{"status": "SCHEDULED"}', 'UTF8'), convert_to('{"status": "SCHEDULED"}', 'UTF8'), '2026-07-05 22:21:19-06:00', '10.0.0.96'),
-    (179, 304, 'PROMO_CODE', 37, 'UPDATE', convert_to('{"active": true}', 'UTF8'), convert_to('{"active": false}', 'UTF8'), '2026-06-07 08:36:46-06:00', '10.0.1.186'),
-    (180, 8, 'PRICE_TIER', 93, 'UPDATE', convert_to('{"price": 84.99}', 'UTF8'), convert_to('{"price": 89.99}', 'UTF8'), '2026-07-20 11:44:41-06:00', '10.0.3.218'),
-    (181, 53, 'VENUE', 3, 'UPDATE', convert_to('{"postal_code": "T0A 0A0"}', 'UTF8'), convert_to('{"postal_code": "T5J 3R8"}', 'UTF8'), '2026-09-01 05:55:57-06:00', '10.0.1.229'),
-    (182, 2, 'PERFORMANCE', 101, 'UPDATE', convert_to('{"status": "SCHEDULED"}', 'UTF8'), convert_to('{"status": "COMPLETED"}', 'UTF8'), '2026-07-07 22:30:55-06:00', '10.0.2.51'),
-    (183, 100, 'EVENT', 74, 'UPDATE', convert_to('{"title": "The Velvet Overture", "status": "DRAFT"}', 'UTF8'), convert_to('{"title": "The Velvet Overture", "status": "ACTIVE"}', 'UTF8'), '2026-02-03 07:22:16-07:00', '10.0.3.170'),
-    (184, 227, 'PERFORMANCE', 89, 'INSERT', NULL, convert_to('{"status": "COMPLETED"}', 'UTF8'), '2026-02-06 01:49:04-07:00', '10.0.3.68'),
-    (185, 314, 'STAGE', 7, 'UPDATE', convert_to('{"name": "Stage 7"}', 'UTF8'), convert_to('{"name": "Recital Hall"}', 'UTF8'), '2026-08-22 14:04:18-06:00', '10.0.0.182'),
-    (186, 114, 'EVENT', 29, 'UPDATE', convert_to('{"title": "The Golden Chorus", "status": "DRAFT"}', 'UTF8'), convert_to('{"title": "The Golden Chorus", "status": "ACTIVE"}', 'UTF8'), '2026-09-13 13:18:06-06:00', '10.0.1.127'),
-    (187, 114, 'VENUE', 5, 'INSERT', NULL, convert_to('{"postal_code": "T1J 0N7"}', 'UTF8'), '2026-06-09 15:25:09-06:00', '10.0.0.54'),
-    (188, 109, 'VENUE', 6, 'UPDATE', convert_to('{"postal_code": "T0A 0A0"}', 'UTF8'), convert_to('{"postal_code": "T1L 1A3"}', 'UTF8'), '2026-09-10 10:57:22-06:00', '10.0.1.212'),
-    (189, 202, 'PROMO_CODE', 37, 'UPDATE', convert_to('{"active": true}', 'UTF8'), convert_to('{"active": false}', 'UTF8'), '2026-01-16 01:22:03-07:00', '10.0.1.125'),
-    (190, 142, 'EVENT', 26, 'INSERT', NULL, convert_to('{"title": "Orchard of the Restless", "status": "ACTIVE"}', 'UTF8'), '2026-09-09 02:34:07-06:00', '10.0.2.88'),
-    (191, 108, 'EVENT', 49, 'INSERT', NULL, convert_to('{"title": "The Railway Sessions", "status": "ACTIVE"}', 'UTF8'), '2026-09-21 16:21:02-06:00', '10.0.1.197'),
-    (192, 312, 'STAGE', 7, 'UPDATE', convert_to('{"name": "Stage 7"}', 'UTF8'), convert_to('{"name": "Recital Hall"}', 'UTF8'), '2026-05-05 07:43:02-06:00', '10.0.0.253'),
-    (193, 145, 'VENUE', 4, 'INSERT', NULL, convert_to('{"postal_code": "T4N 1X6"}', 'UTF8'), '2026-07-28 07:51:29-06:00', '10.0.2.36'),
-    (194, 183, 'EVENT', 70, 'UPDATE', convert_to('{"title": "Hollow Sparrow", "status": "DRAFT"}', 'UTF8'), convert_to('{"title": "Hollow Sparrow", "status": "ACTIVE"}', 'UTF8'), '2026-01-18 21:46:16-07:00', '10.0.1.2'),
-    (195, 202, 'EVENT', 8, 'UPDATE', convert_to('{"title": "A Restless Sparrow", "status": "DRAFT"}', 'UTF8'), convert_to('{"title": "A Restless Sparrow", "status": "ACTIVE"}', 'UTF8'), '2026-02-11 19:26:02-07:00', '10.0.1.71'),
-    (196, 366, 'VENUE', 2, 'UPDATE', convert_to('{"postal_code": "T0A 0A0"}', 'UTF8'), convert_to('{"postal_code": "T2G 4K2"}', 'UTF8'), '2026-07-01 21:46:59-06:00', '10.0.2.63'),
-    (197, 132, 'PROMO_CODE', 7, 'INSERT', NULL, convert_to('{"active": false}', 'UTF8'), '2026-01-02 08:07:11-07:00', '10.0.3.142'),
-    (198, 219, 'PERFORMANCE', 181, 'UPDATE', convert_to('{"status": "SCHEDULED"}', 'UTF8'), convert_to('{"status": "DRAFT"}', 'UTF8'), '2026-06-17 17:53:40-06:00', '10.0.2.139'),
-    (199, 53, 'VENUE', 2, 'UPDATE', convert_to('{"postal_code": "T0A 0A0"}', 'UTF8'), convert_to('{"postal_code": "T2G 4K2"}', 'UTF8'), '2026-04-17 07:39:18-06:00', '10.0.0.238'),
-    (200, 298, 'PRICE_TIER', 75, 'UPDATE', convert_to('{"price": 44.99}', 'UTF8'), convert_to('{"price": 49.99}', 'UTF8'), '2026-03-04 00:33:24-07:00', '10.0.3.100'),
-    (201, 366, 'PRICE_TIER', 145, 'UPDATE', convert_to('{"price": 119.99}', 'UTF8'), convert_to('{"price": 124.99}', 'UTF8'), '2026-08-30 07:14:38-06:00', '10.0.0.107'),
-    (202, 57, 'STAGE', 5, 'INSERT', NULL, convert_to('{"name": "Black Box"}', 'UTF8'), '2026-06-18 22:38:46-06:00', '10.0.2.198'),
-    (203, 130, 'VENUE', 1, 'INSERT', NULL, convert_to('{"postal_code": "T2P 1J9"}', 'UTF8'), '2026-09-09 02:42:07-06:00', '10.0.2.140'),
-    (204, 348, 'PROMO_CODE', 31, 'UPDATE', convert_to('{"active": true}', 'UTF8'), convert_to('{"active": false}', 'UTF8'), '2026-07-12 04:58:07-06:00', '10.0.3.213'),
-    (205, 312, 'PERFORMANCE', 127, 'INSERT', NULL, convert_to('{"status": "SCHEDULED"}', 'UTF8'), '2026-08-20 07:03:03-06:00', '10.0.3.141'),
-    (206, 342, 'PERFORMANCE', 36, 'DELETE', convert_to('{"status": "SCHEDULED"}', 'UTF8'), NULL, '2026-03-22 08:00:33-06:00', '10.0.1.242'),
-    (207, 314, 'EVENT', 66, 'INSERT', NULL, convert_to('{"title": "Little Harbour: Live", "status": "ACTIVE"}', 'UTF8'), '2026-03-09 02:38:38-06:00', '10.0.1.54'),
-    (208, 245, 'PROMO_CODE', 28, 'UPDATE', convert_to('{"active": true}', 'UTF8'), convert_to('{"active": false}', 'UTF8'), '2026-10-03 20:19:02-06:00', '10.0.1.123'),
-    (209, 388, 'PROMO_CODE', 36, 'UPDATE', convert_to('{"active": true}', 'UTF8'), convert_to('{"active": false}', 'UTF8'), '2026-01-18 02:35:37-07:00', '10.0.2.161'),
-    (210, 217, 'VENUE', 4, 'INSERT', NULL, convert_to('{"postal_code": "T4N 1X6"}', 'UTF8'), '2026-09-17 04:09:51-06:00', '10.0.1.129'),
-    (211, 216, 'VENUE', 3, 'UPDATE', convert_to('{"postal_code": "T0A 0A0"}', 'UTF8'), convert_to('{"postal_code": "T5J 3R8"}', 'UTF8'), '2026-07-25 22:33:18-06:00', '10.0.2.142'),
-    (212, 202, 'PROMO_CODE', 2, 'UPDATE', convert_to('{"active": true}', 'UTF8'), convert_to('{"active": false}', 'UTF8'), '2026-01-01 18:36:54-07:00', '10.0.3.190'),
-    (213, 10, 'VENUE', 3, 'INSERT', NULL, convert_to('{"postal_code": "T5J 3R8"}', 'UTF8'), '2026-05-09 12:32:59-06:00', '10.0.0.99'),
-    (214, 342, 'PRICE_TIER', 93, 'UPDATE', convert_to('{"price": 84.99}', 'UTF8'), convert_to('{"price": 89.99}', 'UTF8'), '2026-07-25 04:58:22-06:00', '10.0.1.29'),
-    (215, 114, 'PROMO_CODE', 22, 'INSERT', NULL, convert_to('{"active": false}', 'UTF8'), '2026-05-08 11:13:07-06:00', '10.0.3.81'),
-    (216, 142, 'PERFORMANCE', 66, 'INSERT', NULL, convert_to('{"status": "COMPLETED"}', 'UTF8'), '2026-05-09 13:37:37-06:00', '10.0.3.121'),
-    (217, 173, 'PROMO_CODE', 2, 'UPDATE', convert_to('{"active": true}', 'UTF8'), convert_to('{"active": false}', 'UTF8'), '2026-08-11 14:52:31-06:00', '10.0.2.59'),
-    (218, 227, 'PRICE_TIER', 8, 'INSERT', NULL, convert_to('{"price": 39.0}', 'UTF8'), '2026-03-25 22:52:05-06:00', '10.0.1.227'),
-    (219, 227, 'PROMO_CODE', 25, 'INSERT', NULL, convert_to('{"active": false}', 'UTF8'), '2026-10-13 00:17:45-06:00', '10.0.3.67'),
-    (220, 173, 'PRICE_TIER', 146, 'INSERT', NULL, convert_to('{"price": 99.99}', 'UTF8'), '2026-07-16 16:22:03-06:00', '10.0.0.221'),
-    (221, 245, 'STAGE', 3, 'UPDATE', convert_to('{"name": "Stage 3"}', 'UTF8'), convert_to('{"name": "VIP Lounge Stage"}', 'UTF8'), '2026-09-12 00:42:24-06:00', '10.0.2.210'),
-    (222, 51, 'STAGE', 4, 'UPDATE', convert_to('{"name": "Stage 4"}', 'UTF8'), convert_to('{"name": "Main Stage"}', 'UTF8'), '2026-09-29 10:05:25-06:00', '10.0.0.56'),
-    (223, 51, 'PRICE_TIER', 80, 'UPDATE', convert_to('{"price": 69.99}', 'UTF8'), convert_to('{"price": 74.99}', 'UTF8'), '2026-03-09 10:16:13-06:00', '10.0.1.179'),
-    (224, 394, 'STAGE', 5, 'UPDATE', convert_to('{"name": "Stage 5"}', 'UTF8'), convert_to('{"name": "Black Box"}', 'UTF8'), '2026-06-11 15:41:25-06:00', '10.0.1.241'),
-    (225, 64, 'PRICE_TIER', 111, 'UPDATE', convert_to('{"price": 69.99}', 'UTF8'), convert_to('{"price": 74.99}', 'UTF8'), '2026-09-27 14:00:15-06:00', '10.0.1.22'),
-    (226, 366, 'PRICE_TIER', 125, 'UPDATE', convert_to('{"price": 64.99}', 'UTF8'), convert_to('{"price": 69.99}', 'UTF8'), '2026-08-24 06:09:06-06:00', '10.0.0.229'),
-    (227, 57, 'STAGE', 9, 'INSERT', NULL, convert_to('{"name": "Main Stage"}', 'UTF8'), '2026-02-02 17:06:32-07:00', '10.0.3.144'),
-    (228, 227, 'PERFORMANCE', 108, 'UPDATE', convert_to('{"status": "SCHEDULED"}', 'UTF8'), convert_to('{"status": "COMPLETED"}', 'UTF8'), '2026-09-21 01:18:02-06:00', '10.0.0.239'),
-    (229, 51, 'EVENT', 95, 'INSERT', NULL, convert_to('{"title": "Last Compass", "status": "DRAFT"}', 'UTF8'), '2026-07-30 19:36:01-06:00', '10.0.2.195'),
-    (230, 142, 'VENUE', 5, 'INSERT', NULL, convert_to('{"postal_code": "T1J 0N7"}', 'UTF8'), '2026-02-17 01:28:25-07:00', '10.0.2.189'),
-    (231, 183, 'PRICE_TIER', 72, 'INSERT', NULL, convert_to('{"price": 74.99}', 'UTF8'), '2026-08-12 20:20:07-06:00', '10.0.1.186'),
-    (232, 138, 'PERFORMANCE', 187, 'INSERT', NULL, convert_to('{"status": "DRAFT"}', 'UTF8'), '2026-07-04 09:19:09-06:00', '10.0.3.217'),
-    (233, 16, 'VENUE', 1, 'UPDATE', convert_to('{"postal_code": "T0A 0A0"}', 'UTF8'), convert_to('{"postal_code": "T2P 1J9"}', 'UTF8'), '2026-07-09 12:27:00-06:00', '10.0.3.162'),
-    (234, 53, 'PRICE_TIER', 94, 'UPDATE', convert_to('{"price": 49.99}', 'UTF8'), convert_to('{"price": 54.99}', 'UTF8'), '2026-04-16 02:44:47-06:00', '10.0.1.68'),
-    (235, 202, 'VENUE', 4, 'UPDATE', convert_to('{"postal_code": "T0A 0A0"}', 'UTF8'), convert_to('{"postal_code": "T4N 1X6"}', 'UTF8'), '2026-03-07 22:19:50-07:00', '10.0.1.145'),
-    (236, 301, 'PERFORMANCE', 176, 'UPDATE', convert_to('{"status": "SCHEDULED"}', 'UTF8'), convert_to('{"status": "DRAFT"}', 'UTF8'), '2026-04-04 12:54:08-06:00', '10.0.3.101'),
-    (237, 8, 'PROMO_CODE', 35, 'UPDATE', convert_to('{"active": true}', 'UTF8'), convert_to('{"active": false}', 'UTF8'), '2026-10-10 20:09:06-06:00', '10.0.0.210'),
-    (238, 108, 'PRICE_TIER', 104, 'UPDATE', convert_to('{"price": 59.99}', 'UTF8'), convert_to('{"price": 64.99}', 'UTF8'), '2026-06-22 05:24:49-06:00', '10.0.1.236'),
-    (239, 360, 'PROMO_CODE', 11, 'UPDATE', convert_to('{"active": true}', 'UTF8'), convert_to('{"active": false}', 'UTF8'), '2026-10-05 18:28:30-06:00', '10.0.3.88'),
-    (240, 109, 'VENUE', 1, 'DELETE', convert_to('{"postal_code": "T0A 0A0"}', 'UTF8'), NULL, '2026-01-10 00:05:00-07:00', '10.0.3.80'),
-    (241, 142, 'EVENT', 24, 'INSERT', NULL, convert_to('{"title": "The Northern Masquerade", "status": "ACTIVE"}', 'UTF8'), '2026-10-06 17:26:20-06:00', '10.0.3.163'),
-    (242, 145, 'EVENT', 20, 'UPDATE', convert_to('{"title": "A Velvet Orchard", "status": "DRAFT"}', 'UTF8'), convert_to('{"title": "A Velvet Orchard", "status": "ACTIVE"}', 'UTF8'), '2026-09-04 03:13:46-06:00', '10.0.3.224'),
-    (243, 312, 'VENUE', 2, 'UPDATE', convert_to('{"postal_code": "T0A 0A0"}', 'UTF8'), convert_to('{"postal_code": "T2G 4K2"}', 'UTF8'), '2026-10-09 01:26:14-06:00', '10.0.3.39'),
-    (244, 188, 'EVENT', 25, 'UPDATE', convert_to('{"title": "Carousel of the Burning", "status": "DRAFT"}', 'UTF8'), convert_to('{"title": "Carousel of the Burning", "status": "ACTIVE"}', 'UTF8'), '2026-05-25 07:47:04-06:00', '10.0.2.176'),
-    (245, 350, 'STAGE', 1, 'UPDATE', convert_to('{"name": "Stage 1"}', 'UTF8'), convert_to('{"name": "Main Stage"}', 'UTF8'), '2026-03-01 14:10:36-07:00', '10.0.2.53'),
-    (246, 136, 'STAGE', 11, 'UPDATE', convert_to('{"name": "Stage 11"}', 'UTF8'), convert_to('{"name": "Main Stage"}', 'UTF8'), '2026-03-10 13:41:20-06:00', '10.0.0.190'),
-    (247, 109, 'VENUE', 5, 'UPDATE', convert_to('{"postal_code": "T0A 0A0"}', 'UTF8'), convert_to('{"postal_code": "T1J 0N7"}', 'UTF8'), '2026-05-27 03:22:18-06:00', '10.0.0.161'),
-    (248, 388, 'EVENT', 86, 'UPDATE', convert_to('{"title": "The Paper Kingdom", "status": "DRAFT"}', 'UTF8'), convert_to('{"title": "The Paper Kingdom", "status": "ACTIVE"}', 'UTF8'), '2026-07-20 15:16:26-06:00', '10.0.2.207'),
-    (249, 145, 'PROMO_CODE', 9, 'UPDATE', convert_to('{"active": true}', 'UTF8'), convert_to('{"active": false}', 'UTF8'), '2026-10-15 03:01:50-06:00', '10.0.3.58'),
-    (250, 142, 'EVENT', 54, 'UPDATE', convert_to('{"title": "Lantern of the Electric", "status": "DRAFT"}', 'UTF8'), convert_to('{"title": "Lantern of the Electric", "status": "ACTIVE"}', 'UTF8'), '2026-06-28 19:49:26-06:00', '10.0.3.132'),
-    (251, 2, 'PRICE_TIER', 33, 'UPDATE', convert_to('{"price": 47.5}', 'UTF8'), convert_to('{"price": 52.5}', 'UTF8'), '2026-03-29 05:31:18-06:00', '10.0.1.42'),
-    (252, 202, 'PRICE_TIER', 87, 'UPDATE', convert_to('{"price": 49.99}', 'UTF8'), convert_to('{"price": 54.99}', 'UTF8'), '2026-07-09 05:57:46-06:00', '10.0.1.215'),
-    (253, 227, 'EVENT', 83, 'UPDATE', convert_to('{"title": "The Crimson Tide", "status": "DRAFT"}', 'UTF8'), convert_to('{"title": "The Crimson Tide", "status": "ACTIVE"}', 'UTF8'), '2026-10-02 18:51:00-06:00', '10.0.0.217'),
-    (254, 348, 'PROMO_CODE', 1, 'UPDATE', convert_to('{"active": true}', 'UTF8'), convert_to('{"active": false}', 'UTF8'), '2026-06-19 11:06:20-06:00', '10.0.2.72'),
-    (255, 16, 'STAGE', 3, 'UPDATE', convert_to('{"name": "Stage 3"}', 'UTF8'), convert_to('{"name": "VIP Lounge Stage"}', 'UTF8'), '2026-09-09 05:10:46-06:00', '10.0.1.95'),
-    (256, 138, 'PERFORMANCE', 31, 'INSERT', NULL, convert_to('{"status": "COMPLETED"}', 'UTF8'), '2026-03-03 09:15:26-07:00', '10.0.1.144'),
-    (257, 219, 'PRICE_TIER', 139, 'UPDATE', convert_to('{"price": 69.99}', 'UTF8'), convert_to('{"price": 74.99}', 'UTF8'), '2026-05-02 22:15:22-06:00', '10.0.2.253'),
-    (258, 301, 'PROMO_CODE', 38, 'UPDATE', convert_to('{"active": true}', 'UTF8'), convert_to('{"active": false}', 'UTF8'), '2026-07-11 23:58:22-06:00', '10.0.1.43'),
-    (259, 138, 'EVENT', 40, 'UPDATE', convert_to('{"title": "Glass Chorus", "status": "DRAFT"}', 'UTF8'), convert_to('{"title": "Glass Chorus", "status": "ACTIVE"}', 'UTF8'), '2026-01-17 00:07:08-07:00', '10.0.3.11'),
-    (260, 115, 'PERFORMANCE', 183, 'UPDATE', convert_to('{"status": "SCHEDULED"}', 'UTF8'), convert_to('{"status": "DRAFT"}', 'UTF8'), '2026-02-10 00:06:12-07:00', '10.0.0.96'),
-    (261, 360, 'STAGE', 10, 'UPDATE', convert_to('{"name": "Stage 10"}', 'UTF8'), convert_to('{"name": "Cabaret Room"}', 'UTF8'), '2026-05-02 23:14:39-06:00', '10.0.0.70'),
-    (262, 350, 'STAGE', 5, 'INSERT', NULL, convert_to('{"name": "Black Box"}', 'UTF8'), '2026-09-01 14:34:10-06:00', '10.0.0.194'),
-    (263, 145, 'PROMO_CODE', 38, 'UPDATE', convert_to('{"active": true}', 'UTF8'), convert_to('{"active": false}', 'UTF8'), '2026-01-15 12:09:25-07:00', '10.0.3.155'),
-    (264, 227, 'PROMO_CODE', 17, 'UPDATE', convert_to('{"active": true}', 'UTF8'), convert_to('{"active": false}', 'UTF8'), '2026-09-26 11:33:16-06:00', '10.0.0.158'),
-    (265, 206, 'PRICE_TIER', 4, 'INSERT', NULL, convert_to('{"price": 65.0}', 'UTF8'), '2026-05-19 13:13:37-06:00', '10.0.3.48'),
-    (266, 304, 'EVENT', 13, 'INSERT', NULL, convert_to('{"title": "The Last Letters", "status": "ACTIVE"}', 'UTF8'), '2026-03-23 08:24:42-06:00', '10.0.3.125'),
-    (267, 142, 'EVENT', 3, 'UPDATE', convert_to('{"title": "The Wandering Masquerade", "status": "DRAFT"}', 'UTF8'), convert_to('{"title": "The Wandering Masquerade", "status": "ACTIVE"}', 'UTF8'), '2026-09-27 01:23:34-06:00', '10.0.0.137'),
-    (268, 8, 'STAGE', 12, 'UPDATE', convert_to('{"name": "Stage 12"}', 'UTF8'), convert_to('{"name": "Alpine Stage"}', 'UTF8'), '2026-01-26 19:49:41-07:00', '10.0.3.243'),
-    (269, 366, 'PROMO_CODE', 12, 'UPDATE', convert_to('{"active": true}', 'UTF8'), convert_to('{"active": false}', 'UTF8'), '2026-03-21 23:19:13-06:00', '10.0.1.6'),
-    (270, 11, 'PRICE_TIER', 87, 'INSERT', NULL, convert_to('{"price": 54.99}', 'UTF8'), '2026-06-27 21:28:34-06:00', '10.0.1.101'),
-    (271, 217, 'PRICE_TIER', 62, 'UPDATE', convert_to('{"price": 54.99}', 'UTF8'), convert_to('{"price": 59.99}', 'UTF8'), '2026-01-01 15:18:26-07:00', '10.0.2.248'),
-    (272, 57, 'EVENT', 40, 'INSERT', NULL, convert_to('{"title": "Glass Chorus", "status": "ACTIVE"}', 'UTF8'), '2026-02-25 02:00:17-07:00', '10.0.1.81'),
-    (273, 202, 'PRICE_TIER', 5, 'INSERT', NULL, convert_to('{"price": 42.5}', 'UTF8'), '2026-05-08 13:39:10-06:00', '10.0.3.67'),
-    (274, 115, 'PRICE_TIER', 80, 'UPDATE', convert_to('{"price": 69.99}', 'UTF8'), convert_to('{"price": 74.99}', 'UTF8'), '2026-05-09 17:36:36-06:00', '10.0.0.27'),
-    (275, 138, 'EVENT', 83, 'UPDATE', convert_to('{"title": "The Crimson Tide", "status": "DRAFT"}', 'UTF8'), convert_to('{"title": "The Crimson Tide", "status": "ACTIVE"}', 'UTF8'), '2026-08-21 13:05:07-06:00', '10.0.2.9'),
-    (276, 130, 'PROMO_CODE', 19, 'UPDATE', convert_to('{"active": true}', 'UTF8'), convert_to('{"active": false}', 'UTF8'), '2026-07-09 15:53:57-06:00', '10.0.1.206'),
-    (277, 202, 'PROMO_CODE', 38, 'UPDATE', convert_to('{"active": true}', 'UTF8'), convert_to('{"active": false}', 'UTF8'), '2026-02-17 17:02:58-07:00', '10.0.1.194'),
-    (278, 188, 'PRICE_TIER', 67, 'UPDATE', convert_to('{"price": 69.99}', 'UTF8'), convert_to('{"price": 74.99}', 'UTF8'), '2026-09-26 01:40:49-06:00', '10.0.0.26'),
-    (279, 145, 'VENUE', 1, 'UPDATE', convert_to('{"postal_code": "T0A 0A0"}', 'UTF8'), convert_to('{"postal_code": "T2P 1J9"}', 'UTF8'), '2026-06-26 12:10:42-06:00', '10.0.2.96'),
-    (280, 298, 'EVENT', 31, 'UPDATE', convert_to('{"title": "The Midnight Railway", "status": "DRAFT"}', 'UTF8'), convert_to('{"title": "The Midnight Railway", "status": "ACTIVE"}', 'UTF8'), '2026-07-02 05:24:42-06:00', '10.0.1.14'),
-    (281, 315, 'VENUE', 5, 'INSERT', NULL, convert_to('{"postal_code": "T1J 0N7"}', 'UTF8'), '2026-01-16 20:29:53-07:00', '10.0.3.5'),
-    (282, 216, 'PRICE_TIER', 113, 'UPDATE', convert_to('{"price": 64.99}', 'UTF8'), convert_to('{"price": 69.99}', 'UTF8'), '2026-07-28 12:45:51-06:00', '10.0.1.183'),
-    (283, 108, 'STAGE', 5, 'INSERT', NULL, convert_to('{"name": "Black Box"}', 'UTF8'), '2026-01-22 07:52:43-07:00', '10.0.2.163'),
-    (284, 11, 'EVENT', 58, 'UPDATE', convert_to('{"title": "Lullaby of the Crimson", "status": "DRAFT"}', 'UTF8'), convert_to('{"title": "Lullaby of the Crimson", "status": "ACTIVE"}', 'UTF8'), '2026-06-06 12:34:54-06:00', '10.0.1.92'),
-    (285, 64, 'PRICE_TIER', 65, 'UPDATE', convert_to('{"price": 49.99}', 'UTF8'), convert_to('{"price": 54.99}', 'UTF8'), '2026-07-14 00:28:04-06:00', '10.0.0.132'),
-    (286, 100, 'STAGE', 3, 'UPDATE', convert_to('{"name": "Stage 3"}', 'UTF8'), convert_to('{"name": "VIP Lounge Stage"}', 'UTF8'), '2026-04-28 06:22:55-06:00', '10.0.1.175'),
-    (287, 312, 'STAGE', 7, 'INSERT', NULL, convert_to('{"name": "Recital Hall"}', 'UTF8'), '2026-08-18 05:31:48-06:00', '10.0.2.43'),
-    (288, 100, 'PERFORMANCE', 73, 'DELETE', convert_to('{"status": "SCHEDULED"}', 'UTF8'), NULL, '2026-08-31 09:27:59-06:00', '10.0.2.97'),
-    (289, 394, 'EVENT', 22, 'UPDATE', convert_to('{"title": "A Paper Cabaret", "status": "DRAFT"}', 'UTF8'), convert_to('{"title": "A Paper Cabaret", "status": "ACTIVE"}', 'UTF8'), '2026-09-30 20:32:35-06:00', '10.0.1.97'),
-    (290, 202, 'PROMO_CODE', 29, 'UPDATE', convert_to('{"active": true}', 'UTF8'), convert_to('{"active": false}', 'UTF8'), '2026-04-05 18:13:09-06:00', '10.0.1.91'),
-    (291, 216, 'EVENT', 82, 'UPDATE', convert_to('{"title": "The Kingdom Sessions", "status": "DRAFT"}', 'UTF8'), convert_to('{"title": "The Kingdom Sessions", "status": "ACTIVE"}', 'UTF8'), '2026-04-01 09:24:19-06:00', '10.0.1.209'),
-    (292, 136, 'PRICE_TIER', 67, 'UPDATE', convert_to('{"price": 69.99}', 'UTF8'), convert_to('{"price": 74.99}', 'UTF8'), '2026-10-10 09:47:22-06:00', '10.0.0.212'),
-    (293, 8, 'VENUE', 3, 'UPDATE', convert_to('{"postal_code": "T0A 0A0"}', 'UTF8'), convert_to('{"postal_code": "T5J 3R8"}', 'UTF8'), '2026-07-31 22:15:28-06:00', '10.0.2.138'),
-    (294, 115, 'PRICE_TIER', 54, 'INSERT', NULL, convert_to('{"price": 54.99}', 'UTF8'), '2026-10-05 01:36:52-06:00', '10.0.1.117'),
-    (295, 366, 'VENUE', 1, 'INSERT', NULL, convert_to('{"postal_code": "T2P 1J9"}', 'UTF8'), '2026-08-18 05:32:39-06:00', '10.0.1.75'),
-    (296, 138, 'EVENT', 6, 'INSERT', NULL, convert_to('{"title": "Midnight Sparrow: Live", "status": "ACTIVE"}', 'UTF8'), '2026-09-04 07:45:26-06:00', '10.0.3.226'),
-    (297, 234, 'EVENT', 80, 'UPDATE', convert_to('{"title": "A Velvet Cabaret", "status": "DRAFT"}', 'UTF8'), convert_to('{"title": "A Velvet Cabaret", "status": "DRAFT"}', 'UTF8'), '2026-02-16 08:20:45-07:00', '10.0.0.239'),
-    (298, 51, 'EVENT', 13, 'UPDATE', convert_to('{"title": "The Last Letters", "status": "DRAFT"}', 'UTF8'), convert_to('{"title": "The Last Letters", "status": "ACTIVE"}', 'UTF8'), '2026-04-22 06:57:05-06:00', '10.0.1.188'),
-    (299, 360, 'STAGE', 11, 'UPDATE', convert_to('{"name": "Stage 11"}', 'UTF8'), convert_to('{"name": "Main Stage"}', 'UTF8'), '2026-06-01 16:28:23-06:00', '10.0.2.78'),
-    (300, 206, 'PROMO_CODE', 23, 'UPDATE', convert_to('{"active": true}', 'UTF8'), convert_to('{"active": false}', 'UTF8'), '2026-05-28 22:00:33-06:00', '10.0.2.62');
 
 -- CART: 1561 rows
 INSERT INTO CART (id, patron_id, status) VALUES
@@ -6415,299 +5560,6 @@ INSERT INTO SEAT (id, section_id, row, seat_number) VALUES
     (862, 36, 'C', 6),
     (863, 36, 'C', 7),
     (864, 36, 'C', 8);
-
--- PERFORMANCE_STATUS_LOG: 290 rows
-INSERT INTO PERFORMANCE_STATUS_LOG (id, performance_id, changed_by, previous, new, date_time) VALUES
-    (1, 4, 312, 'DRAFT', 'SCHEDULED', '2025-12-07 09:00:00-07:00'),
-    (2, 1, 304, 'DRAFT', 'SCHEDULED', '2025-12-17 09:00:00-07:00'),
-    (3, 27, 342, 'DRAFT', 'SCHEDULED', '2025-12-27 09:00:00-07:00'),
-    (4, 28, 202, 'DRAFT', 'SCHEDULED', '2025-12-27 09:00:00-07:00'),
-    (5, 26, 130, 'DRAFT', 'SCHEDULED', '2025-12-30 09:00:00-07:00'),
-    (6, 20, 138, 'DRAFT', 'SCHEDULED', '2026-01-01 09:00:00-07:00'),
-    (7, 19, 350, 'DRAFT', 'SCHEDULED', '2026-01-06 09:00:00-07:00'),
-    (8, 29, 314, 'DRAFT', 'SCHEDULED', '2026-01-12 09:00:00-07:00'),
-    (9, 33, 315, 'DRAFT', 'SCHEDULED', '2026-01-14 09:00:00-07:00'),
-    (10, 18, 366, 'DRAFT', 'SCHEDULED', '2026-01-15 09:00:00-07:00'),
-    (11, 31, 314, 'DRAFT', 'SCHEDULED', '2026-01-17 09:00:00-07:00'),
-    (12, 30, 227, 'DRAFT', 'SCHEDULED', '2026-01-18 09:00:00-07:00'),
-    (13, 32, 314, 'DRAFT', 'SCHEDULED', '2026-01-20 09:00:00-07:00'),
-    (14, 17, 314, 'DRAFT', 'SCHEDULED', '2026-01-21 09:00:00-07:00'),
-    (15, 37, 10, 'DRAFT', 'SCHEDULED', '2026-01-21 09:00:00-07:00'),
-    (16, 34, 2, 'DRAFT', 'SCHEDULED', '2026-01-23 09:00:00-07:00'),
-    (17, 35, 314, 'DRAFT', 'SCHEDULED', '2026-01-23 09:00:00-07:00'),
-    (18, 36, 394, 'DRAFT', 'SCHEDULED', '2026-01-24 09:00:00-07:00'),
-    (19, 54, 130, 'DRAFT', 'SCHEDULED', '2026-01-26 09:00:00-07:00'),
-    (20, 53, 219, 'DRAFT', 'SCHEDULED', '2026-01-30 09:00:00-07:00'),
-    (21, 39, 314, 'DRAFT', 'SCHEDULED', '2026-01-31 09:00:00-07:00'),
-    (22, 57, 130, 'DRAFT', 'SCHEDULED', '2026-02-03 09:00:00-07:00'),
-    (23, 38, 145, 'DRAFT', 'SCHEDULED', '2026-02-04 09:00:00-07:00'),
-    (24, 21, 130, 'DRAFT', 'SCHEDULED', '2026-02-05 09:00:00-07:00'),
-    (25, 46, 173, 'DRAFT', 'SCHEDULED', '2026-02-06 09:00:00-07:00'),
-    (26, 43, 202, 'DRAFT', 'SCHEDULED', '2026-02-07 09:00:00-07:00'),
-    (27, 58, 10, 'DRAFT', 'SCHEDULED', '2026-02-07 09:00:00-07:00'),
-    (28, 47, 114, 'DRAFT', 'SCHEDULED', '2026-02-08 09:00:00-07:00'),
-    (29, 48, 109, 'DRAFT', 'SCHEDULED', '2026-02-09 09:00:00-07:00'),
-    (30, 25, 51, 'DRAFT', 'SCHEDULED', '2026-02-10 09:00:00-07:00'),
-    (31, 59, 100, 'DRAFT', 'SCHEDULED', '2026-02-11 09:00:00-07:00'),
-    (32, 7, 394, 'DRAFT', 'SCHEDULED', '2026-02-13 09:00:00-07:00'),
-    (33, 61, 312, 'DRAFT', 'SCHEDULED', '2026-02-14 09:00:00-07:00'),
-    (34, 62, 366, 'DRAFT', 'SCHEDULED', '2026-02-15 09:00:00-07:00'),
-    (35, 2, 64, 'DRAFT', 'SCHEDULED', '2026-02-16 09:00:00-07:00'),
-    (36, 3, 57, 'DRAFT', 'SCHEDULED', '2026-02-16 09:00:00-07:00'),
-    (37, 6, 298, 'DRAFT', 'SCHEDULED', '2026-02-17 09:00:00-07:00'),
-    (38, 60, 234, 'DRAFT', 'SCHEDULED', '2026-02-19 09:00:00-07:00'),
-    (39, 5, 219, 'DRAFT', 'SCHEDULED', '2026-02-20 09:00:00-07:00'),
-    (40, 11, 109, 'DRAFT', 'SCHEDULED', '2026-02-20 09:00:00-07:00'),
-    (41, 8, 64, 'DRAFT', 'SCHEDULED', '2026-02-21 09:00:00-07:00'),
-    (42, 12, 115, 'DRAFT', 'SCHEDULED', '2026-02-21 09:00:00-07:00'),
-    (43, 9, 100, 'DRAFT', 'SCHEDULED', '2026-02-22 09:00:00-07:00'),
-    (44, 15, 64, 'DRAFT', 'SCHEDULED', '2026-02-22 09:00:00-07:00'),
-    (45, 50, 109, 'DRAFT', 'SCHEDULED', '2026-02-24 09:00:00-07:00'),
-    (46, 10, 138, 'DRAFT', 'SCHEDULED', '2026-02-26 09:00:00-07:00'),
-    (47, 16, 348, 'DRAFT', 'SCHEDULED', '2026-02-26 09:00:00-07:00'),
-    (48, 49, 145, 'DRAFT', 'SCHEDULED', '2026-02-27 09:00:00-07:00'),
-    (49, 51, 188, 'DRAFT', 'SCHEDULED', '2026-03-01 09:00:00-07:00'),
-    (50, 14, 8, 'DRAFT', 'SCHEDULED', '2026-03-02 09:00:00-07:00'),
-    (51, 52, 51, 'DRAFT', 'SCHEDULED', '2026-03-03 09:00:00-07:00'),
-    (52, 41, 2, 'DRAFT', 'SCHEDULED', '2026-03-05 09:00:00-07:00'),
-    (53, 24, 360, 'DRAFT', 'SCHEDULED', '2026-03-07 09:00:00-07:00'),
-    (54, 13, 304, 'DRAFT', 'SCHEDULED', '2026-03-08 09:00:00-06:00'),
-    (55, 22, 10, 'DRAFT', 'SCHEDULED', '2026-03-08 09:00:00-06:00'),
-    (56, 23, 219, 'DRAFT', 'SCHEDULED', '2026-03-08 09:00:00-06:00'),
-    (57, 42, 57, 'DRAFT', 'SCHEDULED', '2026-03-13 09:00:00-06:00'),
-    (58, 80, 342, 'DRAFT', 'SCHEDULED', '2026-03-15 09:00:00-06:00'),
-    (59, 55, 342, 'DRAFT', 'SCHEDULED', '2026-03-19 09:00:00-06:00'),
-    (60, 67, 108, 'DRAFT', 'SCHEDULED', '2026-03-21 09:00:00-06:00'),
-    (61, 81, 132, 'DRAFT', 'SCHEDULED', '2026-03-21 09:00:00-06:00'),
-    (62, 69, 312, 'DRAFT', 'SCHEDULED', '2026-03-22 09:00:00-06:00'),
-    (63, 44, 360, 'DRAFT', 'SCHEDULED', '2026-03-24 09:00:00-06:00'),
-    (64, 40, 301, 'DRAFT', 'SCHEDULED', '2026-03-25 09:00:00-06:00'),
-    (65, 56, 388, 'DRAFT', 'SCHEDULED', '2026-03-25 09:00:00-06:00'),
-    (66, 45, 394, 'DRAFT', 'SCHEDULED', '2026-03-28 09:00:00-06:00'),
-    (67, 68, 64, 'DRAFT', 'SCHEDULED', '2026-03-29 09:00:00-06:00'),
-    (68, 89, 350, 'DRAFT', 'SCHEDULED', '2026-04-07 09:00:00-06:00'),
-    (69, 98, 216, 'DRAFT', 'SCHEDULED', '2026-04-08 09:00:00-06:00'),
-    (70, 70, 64, 'DRAFT', 'SCHEDULED', '2026-04-10 09:00:00-06:00'),
-    (71, 71, 138, 'DRAFT', 'SCHEDULED', '2026-04-10 09:00:00-06:00'),
-    (72, 72, 123, 'DRAFT', 'SCHEDULED', '2026-04-11 09:00:00-06:00'),
-    (73, 99, 202, 'DRAFT', 'SCHEDULED', '2026-04-12 09:00:00-06:00'),
-    (74, 1, 350, 'SCHEDULED', 'COMPLETED', '2026-04-16 16:30:00-06:00'),
-    (75, 76, 132, 'DRAFT', 'SCHEDULED', '2026-04-17 09:00:00-06:00'),
-    (76, 75, 298, 'DRAFT', 'SCHEDULED', '2026-04-20 09:00:00-06:00'),
-    (77, 77, 314, 'DRAFT', 'SCHEDULED', '2026-04-23 09:00:00-06:00'),
-    (78, 79, 360, 'DRAFT', 'SCHEDULED', '2026-04-24 09:00:00-06:00'),
-    (79, 85, 11, 'DRAFT', 'SCHEDULED', '2026-04-24 09:00:00-06:00'),
-    (80, 86, 123, 'DRAFT', 'SCHEDULED', '2026-04-24 09:00:00-06:00'),
-    (81, 5, 8, 'SCHEDULED', 'CANCELLED', '2026-04-25 22:14:07-06:00'),
-    (82, 66, 142, 'DRAFT', 'SCHEDULED', '2026-04-26 09:00:00-06:00'),
-    (83, 2, 183, 'SCHEDULED', 'COMPLETED', '2026-04-26 23:00:00-06:00'),
-    (84, 63, 57, 'DRAFT', 'SCHEDULED', '2026-04-29 09:00:00-06:00'),
-    (85, 64, 138, 'DRAFT', 'SCHEDULED', '2026-05-01 09:00:00-06:00'),
-    (86, 65, 388, 'DRAFT', 'SCHEDULED', '2026-05-02 09:00:00-06:00'),
-    (87, 73, 348, 'DRAFT', 'SCHEDULED', '2026-05-02 09:00:00-06:00'),
-    (88, 74, 315, 'DRAFT', 'SCHEDULED', '2026-05-02 09:00:00-06:00'),
-    (89, 78, 132, 'DRAFT', 'SCHEDULED', '2026-05-02 09:00:00-06:00'),
-    (90, 110, 206, 'DRAFT', 'SCHEDULED', '2026-05-03 09:00:00-06:00'),
-    (91, 3, 312, 'SCHEDULED', 'COMPLETED', '2026-05-03 22:30:00-06:00'),
-    (92, 108, 109, 'DRAFT', 'SCHEDULED', '2026-05-05 09:00:00-06:00'),
-    (93, 4, 348, 'SCHEDULED', 'COMPLETED', '2026-05-05 22:30:00-06:00'),
-    (94, 109, 234, 'DRAFT', 'SCHEDULED', '2026-05-06 09:00:00-06:00'),
-    (95, 6, 115, 'SCHEDULED', 'COMPLETED', '2026-05-08 22:30:00-06:00'),
-    (96, 7, 183, 'SCHEDULED', 'COMPLETED', '2026-05-09 23:00:00-06:00'),
-    (97, 82, 8, 'DRAFT', 'SCHEDULED', '2026-05-10 09:00:00-06:00'),
-    (98, 8, 114, 'SCHEDULED', 'COMPLETED', '2026-05-11 23:00:00-06:00'),
-    (99, 84, 57, 'DRAFT', 'SCHEDULED', '2026-05-13 09:00:00-06:00'),
-    (100, 10, 234, 'SCHEDULED', 'COMPLETED', '2026-05-13 22:30:00-06:00'),
-    (101, 13, 57, 'SCHEDULED', 'COMPLETED', '2026-05-13 23:00:00-06:00'),
-    (102, 11, 114, 'SCHEDULED', 'COMPLETED', '2026-05-14 22:30:00-06:00'),
-    (103, 12, 350, 'SCHEDULED', 'COMPLETED', '2026-05-15 22:30:00-06:00'),
-    (104, 14, 245, 'SCHEDULED', 'COMPLETED', '2026-05-15 23:00:00-06:00'),
-    (105, 83, 388, 'DRAFT', 'SCHEDULED', '2026-05-17 09:00:00-06:00'),
-    (106, 9, 366, 'SCHEDULED', 'COMPLETED', '2026-05-18 22:30:00-06:00'),
-    (107, 15, 132, 'SCHEDULED', 'COMPLETED', '2026-05-23 22:30:00-06:00'),
-    (108, 97, 202, 'DRAFT', 'SCHEDULED', '2026-05-24 09:00:00-06:00'),
-    (109, 118, 394, 'DRAFT', 'SCHEDULED', '2026-05-24 09:00:00-06:00'),
-    (110, 117, 301, 'DRAFT', 'SCHEDULED', '2026-05-25 09:00:00-06:00'),
-    (111, 17, 348, 'SCHEDULED', 'COMPLETED', '2026-05-26 16:30:00-06:00'),
-    (112, 18, 202, 'SCHEDULED', 'COMPLETED', '2026-05-28 22:30:00-06:00'),
-    (113, 21, 51, 'SCHEDULED', 'COMPLETED', '2026-05-28 22:30:00-06:00'),
-    (114, 19, 53, 'SCHEDULED', 'COMPLETED', '2026-05-28 23:00:00-06:00'),
-    (115, 120, 304, 'DRAFT', 'SCHEDULED', '2026-05-29 09:00:00-06:00'),
-    (116, 122, 11, 'DRAFT', 'SCHEDULED', '2026-05-29 09:00:00-06:00'),
-    (117, 20, 173, 'SCHEDULED', 'COMPLETED', '2026-05-29 23:00:00-06:00'),
-    (118, 16, 348, 'SCHEDULED', 'COMPLETED', '2026-05-30 23:00:00-06:00'),
-    (119, 95, 219, 'DRAFT', 'SCHEDULED', '2026-05-31 09:00:00-06:00'),
-    (120, 106, 301, 'DRAFT', 'SCHEDULED', '2026-05-31 09:00:00-06:00'),
-    (121, 111, 394, 'DRAFT', 'SCHEDULED', '2026-05-31 09:00:00-06:00'),
-    (122, 96, 301, 'DRAFT', 'SCHEDULED', '2026-06-01 09:00:00-06:00'),
-    (123, 121, 16, 'DRAFT', 'SCHEDULED', '2026-06-01 09:00:00-06:00'),
-    (124, 22, 388, 'SCHEDULED', 'COMPLETED', '2026-06-02 16:30:00-06:00'),
-    (125, 25, 123, 'SCHEDULED', 'COMPLETED', '2026-06-02 23:00:00-06:00'),
-    (126, 138, 227, 'DRAFT', 'SCHEDULED', '2026-06-03 09:00:00-06:00'),
-    (127, 139, 394, 'DRAFT', 'SCHEDULED', '2026-06-03 09:00:00-06:00'),
-    (128, 107, 114, 'DRAFT', 'SCHEDULED', '2026-06-04 09:00:00-06:00'),
-    (129, 26, 8, 'SCHEDULED', 'COMPLETED', '2026-06-04 16:30:00-06:00'),
-    (130, 101, 314, 'DRAFT', 'SCHEDULED', '2026-06-05 09:00:00-06:00'),
-    (131, 142, 132, 'DRAFT', 'SCHEDULED', '2026-06-05 09:00:00-06:00'),
-    (132, 27, 16, 'SCHEDULED', 'COMPLETED', '2026-06-05 16:30:00-06:00'),
-    (133, 29, 64, 'SCHEDULED', 'COMPLETED', '2026-06-05 23:00:00-06:00'),
-    (134, 90, 64, 'DRAFT', 'SCHEDULED', '2026-06-06 09:00:00-06:00'),
-    (135, 30, 57, 'SCHEDULED', 'COMPLETED', '2026-06-06 22:30:00-06:00'),
-    (136, 31, 202, 'SCHEDULED', 'COMPLETED', '2026-06-06 22:30:00-06:00'),
-    (137, 100, 360, 'DRAFT', 'SCHEDULED', '2026-06-07 09:00:00-06:00'),
-    (138, 28, 217, 'SCHEDULED', 'COMPLETED', '2026-06-07 22:30:00-06:00'),
-    (139, 88, 138, 'DRAFT', 'SCHEDULED', '2026-06-08 09:00:00-06:00'),
-    (140, 112, 202, 'DRAFT', 'SCHEDULED', '2026-06-08 09:00:00-06:00'),
-    (141, 141, 173, 'DRAFT', 'SCHEDULED', '2026-06-08 09:00:00-06:00'),
-    (142, 92, 8, 'DRAFT', 'SCHEDULED', '2026-06-09 09:00:00-06:00'),
-    (143, 126, 304, 'DRAFT', 'SCHEDULED', '2026-06-09 09:00:00-06:00'),
-    (144, 32, 2, 'SCHEDULED', 'COMPLETED', '2026-06-09 16:30:00-06:00'),
-    (145, 23, 298, 'SCHEDULED', 'COMPLETED', '2026-06-09 22:30:00-06:00'),
-    (146, 113, 173, 'DRAFT', 'SCHEDULED', '2026-06-10 09:00:00-06:00'),
-    (147, 33, 132, 'SCHEDULED', 'COMPLETED', '2026-06-10 22:30:00-06:00'),
-    (148, 34, 388, 'SCHEDULED', 'COMPLETED', '2026-06-11 22:30:00-06:00'),
-    (149, 24, 348, 'SCHEDULED', 'COMPLETED', '2026-06-11 23:00:00-06:00'),
-    (150, 91, 360, 'DRAFT', 'SCHEDULED', '2026-06-12 09:00:00-06:00'),
-    (151, 35, 301, 'SCHEDULED', 'COMPLETED', '2026-06-12 22:30:00-06:00'),
-    (152, 87, 145, 'DRAFT', 'SCHEDULED', '2026-06-13 09:00:00-06:00'),
-    (153, 114, 145, 'DRAFT', 'SCHEDULED', '2026-06-13 09:00:00-06:00'),
-    (154, 134, 8, 'DRAFT', 'SCHEDULED', '2026-06-13 09:00:00-06:00'),
-    (155, 38, 57, 'SCHEDULED', 'COMPLETED', '2026-06-13 16:30:00-06:00'),
-    (156, 40, 136, 'SCHEDULED', 'COMPLETED', '2026-06-13 22:30:00-06:00'),
-    (157, 36, 11, 'SCHEDULED', 'COMPLETED', '2026-06-13 23:00:00-06:00'),
-    (158, 127, 301, 'DRAFT', 'SCHEDULED', '2026-06-14 09:00:00-06:00'),
-    (159, 37, 314, 'SCHEDULED', 'COMPLETED', '2026-06-14 22:30:00-06:00'),
-    (160, 41, 183, 'SCHEDULED', 'COMPLETED', '2026-06-14 22:30:00-06:00'),
-    (161, 42, 366, 'SCHEDULED', 'COMPLETED', '2026-06-16 22:30:00-06:00'),
-    (162, 93, 366, 'DRAFT', 'SCHEDULED', '2026-06-17 09:00:00-06:00'),
-    (163, 116, 304, 'DRAFT', 'SCHEDULED', '2026-06-17 09:00:00-06:00'),
-    (164, 43, 348, 'SCHEDULED', 'COMPLETED', '2026-06-17 22:30:00-06:00'),
-    (165, 44, 314, 'SCHEDULED', 'COMPLETED', '2026-06-18 22:30:00-06:00'),
-    (166, 115, 145, 'DRAFT', 'SCHEDULED', '2026-06-19 09:00:00-06:00'),
-    (167, 45, 394, 'SCHEDULED', 'COMPLETED', '2026-06-19 16:30:00-06:00'),
-    (168, 39, 350, 'SCHEDULED', 'COMPLETED', '2026-06-20 23:00:00-06:00'),
-    (169, 46, 53, 'SCHEDULED', 'COMPLETED', '2026-06-21 23:00:00-06:00'),
-    (170, 94, 366, 'DRAFT', 'SCHEDULED', '2026-06-23 09:00:00-06:00'),
-    (171, 119, 64, 'DRAFT', 'SCHEDULED', '2026-06-24 09:00:00-06:00'),
-    (172, 47, 183, 'SCHEDULED', 'COMPLETED', '2026-06-24 22:30:00-06:00'),
-    (173, 131, 342, 'DRAFT', 'SCHEDULED', '2026-06-27 09:00:00-06:00'),
-    (174, 49, 206, 'SCHEDULED', 'COMPLETED', '2026-06-28 22:30:00-06:00'),
-    (175, 135, 227, 'DRAFT', 'SCHEDULED', '2026-06-30 09:00:00-06:00'),
-    (176, 50, 298, 'SCHEDULED', 'COMPLETED', '2026-06-30 23:00:00-06:00'),
-    (177, 51, 51, 'SCHEDULED', 'COMPLETED', '2026-07-01 22:30:00-06:00'),
-    (178, 48, 360, 'SCHEDULED', 'COMPLETED', '2026-07-01 23:00:00-06:00'),
-    (179, 52, 206, 'SCHEDULED', 'COMPLETED', '2026-07-04 22:30:00-06:00'),
-    (180, 136, 136, 'DRAFT', 'SCHEDULED', '2026-07-05 09:00:00-06:00'),
-    (181, 53, 202, 'SCHEDULED', 'COMPLETED', '2026-07-05 16:30:00-06:00'),
-    (182, 79, 53, 'SCHEDULED', 'CANCELLED', '2026-07-06 09:51:45-06:00'),
-    (183, 102, 114, 'DRAFT', 'SCHEDULED', '2026-07-07 09:00:00-06:00'),
-    (184, 132, 109, 'DRAFT', 'SCHEDULED', '2026-07-07 09:00:00-06:00'),
-    (185, 55, 132, 'SCHEDULED', 'COMPLETED', '2026-07-09 22:30:00-06:00'),
-    (186, 117, 57, 'SCHEDULED', 'CANCELLED', '2026-07-10 23:33:09-06:00'),
-    (187, 103, 16, 'DRAFT', 'SCHEDULED', '2026-07-11 09:00:00-06:00'),
-    (188, 56, 11, 'SCHEDULED', 'COMPLETED', '2026-07-11 16:30:00-06:00'),
-    (189, 133, 108, 'DRAFT', 'SCHEDULED', '2026-07-12 09:00:00-06:00'),
-    (190, 54, 227, 'SCHEDULED', 'COMPLETED', '2026-07-12 16:30:00-06:00'),
-    (191, 63, 51, 'SCHEDULED', 'COMPLETED', '2026-07-12 16:30:00-06:00'),
-    (192, 57, 115, 'SCHEDULED', 'COMPLETED', '2026-07-12 23:00:00-06:00'),
-    (193, 60, 202, 'SCHEDULED', 'COMPLETED', '2026-07-12 23:00:00-06:00'),
-    (194, 137, 64, 'DRAFT', 'SCHEDULED', '2026-07-13 09:00:00-06:00'),
-    (195, 61, 145, 'SCHEDULED', 'COMPLETED', '2026-07-13 16:30:00-06:00'),
-    (196, 58, 53, 'SCHEDULED', 'COMPLETED', '2026-07-13 22:30:00-06:00'),
-    (197, 59, 360, 'SCHEDULED', 'COMPLETED', '2026-07-14 22:30:00-06:00'),
-    (198, 104, 138, 'DRAFT', 'SCHEDULED', '2026-07-15 09:00:00-06:00'),
-    (199, 64, 173, 'SCHEDULED', 'COMPLETED', '2026-07-16 23:00:00-06:00'),
-    (200, 92, 51, 'SCHEDULED', 'CANCELLED', '2026-07-17 12:26:43-06:00'),
-    (201, 120, 11, 'SCHEDULED', 'CANCELLED', '2026-07-17 22:00:49-06:00'),
-    (202, 105, 108, 'DRAFT', 'SCHEDULED', '2026-07-18 09:00:00-06:00'),
-    (203, 65, 173, 'SCHEDULED', 'COMPLETED', '2026-07-18 23:00:00-06:00'),
-    (204, 128, 123, 'DRAFT', 'SCHEDULED', '2026-07-19 09:00:00-06:00'),
-    (205, 62, 366, 'SCHEDULED', 'COMPLETED', '2026-07-20 22:30:00-06:00'),
-    (206, 130, 394, 'DRAFT', 'SCHEDULED', '2026-07-21 09:00:00-06:00'),
-    (207, 157, 2, 'DRAFT', 'SCHEDULED', '2026-07-21 09:00:00-06:00'),
-    (208, 125, 188, 'DRAFT', 'SCHEDULED', '2026-07-23 09:00:00-06:00'),
-    (209, 129, 315, 'DRAFT', 'SCHEDULED', '2026-07-23 09:00:00-06:00'),
-    (210, 124, 136, 'DRAFT', 'SCHEDULED', '2026-07-24 09:00:00-06:00'),
-    (211, 158, 114, 'DRAFT', 'SCHEDULED', '2026-07-28 09:00:00-06:00'),
-    (212, 66, 234, 'SCHEDULED', 'COMPLETED', '2026-07-29 23:00:00-06:00'),
-    (213, 87, 16, 'SCHEDULED', 'CANCELLED', '2026-07-29 23:35:53-06:00'),
-    (214, 67, 145, 'SCHEDULED', 'COMPLETED', '2026-07-30 23:00:00-06:00'),
-    (215, 123, 109, 'DRAFT', 'SCHEDULED', '2026-07-31 09:00:00-06:00'),
-    (216, 68, 342, 'SCHEDULED', 'COMPLETED', '2026-07-31 22:30:00-06:00'),
-    (217, 155, 108, 'DRAFT', 'SCHEDULED', '2026-08-02 09:00:00-06:00'),
-    (218, 159, 10, 'DRAFT', 'SCHEDULED', '2026-08-02 09:00:00-06:00'),
-    (219, 160, 16, 'DRAFT', 'SCHEDULED', '2026-08-04 09:00:00-06:00'),
-    (220, 156, 219, 'DRAFT', 'SCHEDULED', '2026-08-05 09:00:00-06:00'),
-    (221, 69, 388, 'SCHEDULED', 'COMPLETED', '2026-08-07 16:30:00-06:00'),
-    (222, 70, 219, 'SCHEDULED', 'COMPLETED', '2026-08-08 23:00:00-06:00'),
-    (223, 73, 388, 'SCHEDULED', 'COMPLETED', '2026-08-09 22:30:00-06:00'),
-    (224, 71, 394, 'SCHEDULED', 'COMPLETED', '2026-08-09 23:00:00-06:00'),
-    (225, 165, 219, 'DRAFT', 'SCHEDULED', '2026-08-10 09:00:00-06:00'),
-    (226, 72, 188, 'SCHEDULED', 'COMPLETED', '2026-08-10 16:30:00-06:00'),
-    (227, 74, 234, 'SCHEDULED', 'COMPLETED', '2026-08-10 23:00:00-06:00'),
-    (228, 166, 109, 'DRAFT', 'SCHEDULED', '2026-08-13 09:00:00-06:00'),
-    (229, 168, 216, 'DRAFT', 'SCHEDULED', '2026-08-13 09:00:00-06:00'),
-    (230, 75, 142, 'SCHEDULED', 'COMPLETED', '2026-08-13 23:00:00-06:00'),
-    (231, 167, 130, 'DRAFT', 'SCHEDULED', '2026-08-14 09:00:00-06:00'),
-    (232, 76, 51, 'SCHEDULED', 'COMPLETED', '2026-08-14 23:00:00-06:00'),
-    (233, 164, 304, 'DRAFT', 'SCHEDULED', '2026-08-15 09:00:00-06:00'),
-    (234, 77, 216, 'SCHEDULED', 'COMPLETED', '2026-08-16 22:30:00-06:00'),
-    (235, 78, 115, 'SCHEDULED', 'COMPLETED', '2026-08-19 23:00:00-06:00'),
-    (236, 169, 301, 'DRAFT', 'SCHEDULED', '2026-08-21 09:00:00-06:00'),
-    (237, 80, 8, 'SCHEDULED', 'COMPLETED', '2026-08-21 22:30:00-06:00'),
-    (238, 170, 304, 'DRAFT', 'SCHEDULED', '2026-08-22 09:00:00-06:00'),
-    (239, 150, 53, 'DRAFT', 'SCHEDULED', '2026-08-24 09:00:00-06:00'),
-    (240, 82, 245, 'SCHEDULED', 'COMPLETED', '2026-08-24 22:30:00-06:00'),
-    (241, 161, 360, 'DRAFT', 'SCHEDULED', '2026-08-25 09:00:00-06:00'),
-    (242, 85, 312, 'SCHEDULED', 'COMPLETED', '2026-08-25 23:00:00-06:00'),
-    (243, 143, 173, 'DRAFT', 'SCHEDULED', '2026-08-28 09:00:00-06:00'),
-    (244, 145, 202, 'DRAFT', 'SCHEDULED', '2026-08-28 09:00:00-06:00'),
-    (245, 89, 350, 'SCHEDULED', 'COMPLETED', '2026-08-28 16:30:00-06:00'),
-    (246, 81, 188, 'SCHEDULED', 'COMPLETED', '2026-08-28 22:30:00-06:00'),
-    (247, 88, 8, 'SCHEDULED', 'COMPLETED', '2026-08-29 22:30:00-06:00'),
-    (248, 144, 57, 'DRAFT', 'SCHEDULED', '2026-08-30 09:00:00-06:00'),
-    (249, 83, 348, 'SCHEDULED', 'COMPLETED', '2026-08-31 22:30:00-06:00'),
-    (250, 86, 64, 'SCHEDULED', 'COMPLETED', '2026-09-01 16:30:00-06:00'),
-    (251, 84, 234, 'SCHEDULED', 'COMPLETED', '2026-09-02 16:30:00-06:00'),
-    (252, 90, 360, 'SCHEDULED', 'COMPLETED', '2026-09-03 22:30:00-06:00'),
-    (253, 91, 10, 'SCHEDULED', 'COMPLETED', '2026-09-05 22:30:00-06:00'),
-    (254, 93, 219, 'SCHEDULED', 'COMPLETED', '2026-09-06 22:30:00-06:00'),
-    (255, 95, 130, 'SCHEDULED', 'COMPLETED', '2026-09-07 16:30:00-06:00'),
-    (256, 177, 16, 'DRAFT', 'SCHEDULED', '2026-09-08 09:00:00-06:00'),
-    (257, 179, 234, 'DRAFT', 'SCHEDULED', '2026-09-08 09:00:00-06:00'),
-    (258, 94, 10, 'SCHEDULED', 'COMPLETED', '2026-09-08 22:30:00-06:00'),
-    (259, 96, 388, 'SCHEDULED', 'COMPLETED', '2026-09-09 23:00:00-06:00'),
-    (260, 97, 183, 'SCHEDULED', 'COMPLETED', '2026-09-10 16:30:00-06:00'),
-    (261, 98, 2, 'SCHEDULED', 'COMPLETED', '2026-09-11 22:30:00-06:00'),
-    (262, 178, 10, 'DRAFT', 'SCHEDULED', '2026-09-13 09:00:00-06:00'),
-    (263, 99, 301, 'SCHEDULED', 'COMPLETED', '2026-09-13 22:30:00-06:00'),
-    (264, 153, 114, 'DRAFT', 'SCHEDULED', '2026-09-15 09:00:00-06:00'),
-    (265, 152, 314, 'DRAFT', 'SCHEDULED', '2026-09-19 09:00:00-06:00'),
-    (266, 100, 53, 'SCHEDULED', 'COMPLETED', '2026-09-20 16:30:00-06:00'),
-    (267, 101, 10, 'SCHEDULED', 'COMPLETED', '2026-09-21 22:30:00-06:00'),
-    (268, 110, 10, 'SCHEDULED', 'CANCELLED', '2026-09-23 07:45:14-06:00'),
-    (269, 128, 51, 'SCHEDULED', 'CANCELLED', '2026-09-23 14:06:46-06:00'),
-    (270, 102, 2, 'SCHEDULED', 'COMPLETED', '2026-09-23 16:30:00-06:00'),
-    (271, 103, 10, 'SCHEDULED', 'COMPLETED', '2026-09-24 22:30:00-06:00'),
-    (272, 104, 173, 'SCHEDULED', 'COMPLETED', '2026-09-25 22:30:00-06:00'),
-    (273, 105, 304, 'SCHEDULED', 'COMPLETED', '2026-09-26 22:30:00-06:00'),
-    (274, 190, 100, 'DRAFT', 'SCHEDULED', '2026-09-29 09:00:00-06:00'),
-    (275, 106, 53, 'SCHEDULED', 'COMPLETED', '2026-09-29 23:00:00-06:00'),
-    (276, 107, 304, 'SCHEDULED', 'COMPLETED', '2026-09-30 22:30:00-06:00'),
-    (277, 191, 16, 'DRAFT', 'SCHEDULED', '2026-10-01 09:00:00-06:00'),
-    (278, 108, 188, 'SCHEDULED', 'COMPLETED', '2026-10-01 22:30:00-06:00'),
-    (279, 109, 342, 'SCHEDULED', 'COMPLETED', '2026-10-02 22:30:00-06:00'),
-    (280, 111, 245, 'SCHEDULED', 'COMPLETED', '2026-10-03 22:30:00-06:00'),
-    (281, 112, 314, 'SCHEDULED', 'COMPLETED', '2026-10-04 16:30:00-06:00'),
-    (282, 113, 138, 'SCHEDULED', 'COMPLETED', '2026-10-05 22:30:00-06:00'),
-    (283, 115, 173, 'SCHEDULED', 'COMPLETED', '2026-10-07 22:30:00-06:00'),
-    (284, 114, 312, 'SCHEDULED', 'COMPLETED', '2026-10-07 23:00:00-06:00'),
-    (285, 119, 206, 'SCHEDULED', 'COMPLETED', '2026-10-11 16:30:00-06:00'),
-    (286, 121, 312, 'SCHEDULED', 'COMPLETED', '2026-10-12 22:30:00-06:00'),
-    (287, 123, 219, 'SCHEDULED', 'COMPLETED', '2026-10-13 16:30:00-06:00'),
-    (288, 118, 342, 'SCHEDULED', 'COMPLETED', '2026-10-13 22:30:00-06:00'),
-    (289, 122, 315, 'SCHEDULED', 'COMPLETED', '2026-10-13 23:00:00-06:00'),
-    (290, 116, 394, 'SCHEDULED', 'COMPLETED', '2026-10-14 16:30:00-06:00');
 
 -- PERFORMANCE_CAST: 746 rows
 INSERT INTO PERFORMANCE_CAST (performer_id, performance_id) VALUES
@@ -37867,16 +36719,12 @@ SELECT setval(pg_get_serial_sequence('EVENT', 'id'), (SELECT MAX(id) FROM EVENT)
 SELECT setval(pg_get_serial_sequence('GENRE', 'id'), (SELECT MAX(id) FROM GENRE));
 SELECT setval(pg_get_serial_sequence('PROMO_CODE', 'id'), (SELECT MAX(id) FROM PROMO_CODE));
 SELECT setval(pg_get_serial_sequence('LOGIN_HISTORY', 'id'), (SELECT MAX(id) FROM LOGIN_HISTORY));
-SELECT setval(pg_get_serial_sequence('ERROR_LOG', 'id'), (SELECT MAX(id) FROM ERROR_LOG));
 SELECT setval(pg_get_serial_sequence('PASSWORD_RESET_REQUEST', 'id'), (SELECT MAX(id) FROM PASSWORD_RESET_REQUEST));
 SELECT setval(pg_get_serial_sequence('STAGE', 'id'), (SELECT MAX(id) FROM STAGE));
-SELECT setval(pg_get_serial_sequence('PERMISSION_CHANGE_LOG', 'id'), (SELECT MAX(id) FROM PERMISSION_CHANGE_LOG));
-SELECT setval(pg_get_serial_sequence('AUDIT_LOG', 'id'), (SELECT MAX(id) FROM AUDIT_LOG));
 SELECT setval(pg_get_serial_sequence('CART', 'id'), (SELECT MAX(id) FROM CART));
 SELECT setval(pg_get_serial_sequence('SECTION', 'id'), (SELECT MAX(id) FROM SECTION));
 SELECT setval(pg_get_serial_sequence('PERFORMANCE', 'id'), (SELECT MAX(id) FROM PERFORMANCE));
 SELECT setval(pg_get_serial_sequence('SEAT', 'id'), (SELECT MAX(id) FROM SEAT));
-SELECT setval(pg_get_serial_sequence('PERFORMANCE_STATUS_LOG', 'id'), (SELECT MAX(id) FROM PERFORMANCE_STATUS_LOG));
 SELECT setval(pg_get_serial_sequence('PRICE_TIER', 'id'), (SELECT MAX(id) FROM PRICE_TIER));
 SELECT setval(pg_get_serial_sequence('PERFORMANCE_SEAT', 'id'), (SELECT MAX(id) FROM PERFORMANCE_SEAT));
 SELECT setval(pg_get_serial_sequence('TICKET', 'id'), (SELECT MAX(id) FROM TICKET));
