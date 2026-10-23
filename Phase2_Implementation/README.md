@@ -9,7 +9,7 @@
 
 ## Setup Instructions
 
-**Hosted Prostgress - Neon Cloud Database**
+**Hosted PostgreSQL - Neon Cloud Database**
 
 Create a project, copy the connection string, and supply it as described in [Supplying Credentials](#supplying-credentials).
 
@@ -35,8 +35,8 @@ Then open Swagger at `https://localhost:5045/swagger`.
 
 | Item | Details |
 |------|---------|
-| Tables | asdasdasda |
-| Row counts | 67 |
+| Tables | 26 |
+| Row counts | 36,564 rows total (e.g. 400 people, 194 performances, 13,968 performance seats, 4,687 tickets) |
 | Source / generation method | AI Generated data, hand made Schema |
 
 ### Firestore
@@ -52,7 +52,7 @@ Then open Swagger at `https://localhost:5045/swagger`.
 - **PostgreSQL:** Cloud Hosted Neon Database
 - **Firebase / Firestore:** project setup requirements
 - **OS tested on:** Linux 7.2.11-arch1-1
-- **Ports used:** dotnet defualt **port:5045**
+- **Ports used:** dotnet default **port:5045**
 
 
 ## Supplying Credentials

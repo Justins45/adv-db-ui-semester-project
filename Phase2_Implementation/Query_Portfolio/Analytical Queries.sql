@@ -64,7 +64,7 @@ SELECT
     v.name AS venue,
     s.name AS stage,
     p.date_time AS performance_date,
-    COUNT(ps.id) FILTER (WHErE ps.status = 'AVAILABLE' AND ps.held_until < CURRENT_TIMESTAMP) AS abandoned_holds,
+    COUNT(ps.id) FILTER (WHERE ps.status = 'AVAILABLE' AND ps.held_until < CURRENT_TIMESTAMP) AS abandoned_holds,
     COUNT(ps.id) AS total_seats
 FROM PERFORMANCE p
 JOIN STAGE s ON p.stage_id = s.id
