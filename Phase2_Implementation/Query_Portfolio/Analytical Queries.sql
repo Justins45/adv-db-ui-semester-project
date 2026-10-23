@@ -13,22 +13,31 @@ WHERE ps.status = 'SOLD' --maybe make capital?
 GROUP BY e.title, e.status
 ORDER BY total_revenue DESC NULLS LAST;
 
---finds application endpoints making an above average # of errors to prioritize developer resources
---Nested Query and Aggregation
-SELECT
-    end_point,
-    COUNT(id) AS error_count
-FROM ERROR_LOG
-GROUP BY end_point
-HAVING COUNT (id) > (
-    SELECT AVG(endpoint_errors) 
+-- Finds patrons whose total ticket spending is above the average spending across all patrons
+-- Nested Query, Aggregation, and HAVING
+SELECT 
+    p.id AS patron_id,
+    pers.first_name || ' ' || pers.last_name AS patron_name,
+    COUNT(o.id) AS total_orders_placed,
+    SUM(pay.amount) AS total_amount_spent
+FROM PATRON p
+JOIN PERSON pers ON p.id = pers.id
+JOIN CART c ON p.id = c.patron_id
+JOIN "ORDER" o ON c.id = o.cart_id
+JOIN PAYMENT pay ON o.id = pay.order_id
+GROUP BY p.id, pers.first_name, pers.last_name
+HAVING SUM(pay.amount) > (
+    SELECT AVG(patron_total)
     FROM (
-        SELECT COUNT(id) AS endpoint_errors
-        FROM ERROR_LOG
-        GROUP BY end_point
+        SELECT SUM(pay_sub.amount) AS patron_total
+        FROM PATRON p_sub
+        JOIN CART c_sub ON p_sub.id = c_sub.patron_id
+        JOIN "ORDER" o_sub ON c_sub.id = o_sub.cart_id
+        JOIN PAYMENT pay_sub ON o_sub.id = pay_sub.order_id
+        GROUP BY p_sub.id
     ) AS subquery
 )
-ORDER BY error_count DESC;
+ORDER BY total_amount_spent DESC;
 
 --Tracks the # of manual system changes made by staff members to see workload distribution and also security
 --Complex Join
