@@ -204,8 +204,6 @@ $$;
 
 -- AFTER trigger, so the count sees the seat's new status.
 -- UPDATE OF status means updates that don't touch status never fire it.
-DROP TRIGGER IF EXISTS trg_performance_filled ON performance_seat;
-
 CREATE TRIGGER trg_performance_filled
 AFTER INSERT OR DELETE OR UPDATE OF status ON performance_seat
 FOR EACH ROW EXECUTE FUNCTION f_update_performance_filled();

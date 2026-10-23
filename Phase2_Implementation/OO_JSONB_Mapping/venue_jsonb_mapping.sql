@@ -14,7 +14,7 @@ CREATE TABLE venue_jsonb_mapping (
 );
 
 -- Insert sample venue with stages, sections, and seats
--- JSONB data has optional accessibility attributes for certain sections or individual seats
+-- JSONB data has optional accessability attributes for certain sections or individual seats
 INSERT INTO venue_jsonb_mapping (
     id, 
     name, 
@@ -86,7 +86,7 @@ VALUES (
 );
 
 -- Query: Compare accessible seating capacity across all stages, from greatest to least
--- Counts and displays the number of accessible seats for each stage 
+-- Counts and displays the number of accessibile seats for each stage 
 SELECT
     stage ->> 'name' AS stage_name,
     COUNT(*) FILTER (WHERE seat @> '{"accessible": true}') AS accessible_seats

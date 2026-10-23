@@ -44,7 +44,7 @@ JOIN ROLE r ON s.role_id = r.id
 GROUP BY staff_name, r.role
 ORDER BY last_change_timestamp DESC;
 
---Calculates the effect of promo codes applied against standard ticket orders to evaluate marketing
+--Calculates the affect of promo codes applied against standard ticket orders to evaluate marketing
 --Filtering and Aggregation 
 SELECT
     pc.code AS promo_code,
@@ -58,7 +58,7 @@ WHERE pc.active = TRUE
 GROUP BY pc.code
 ORDER BY total_revenue_made DESC; 
 
---Measures the volume of seats that were temp held by a user but then were abandoned and taken back to the pool, showing possible UI or payment issues
+--Measures the volume of seats that were temp held by a user but then where abandoned and taken back to the pool, showing possible UI or payment issues
 --Time Extraction and Filtering
 SELECT
     v.name AS venue,
