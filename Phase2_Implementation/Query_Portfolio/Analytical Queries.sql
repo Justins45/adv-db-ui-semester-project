@@ -1,5 +1,5 @@
 -- 6. 
---Finds the event that made the most money and tracks the overall sales volume
+--6. Finds the event that made the most money and tracks the overall sales volume
 --Aggregation and Joins
 SELECT
     e.title AS event_title,
@@ -15,7 +15,7 @@ GROUP BY e.title, e.status
 ORDER BY total_revenue DESC NULLS LAST;
 
 -- 7.
--- Finds patrons whose total ticket spending is above the average spending across all patrons
+--7. Finds patrons whose total ticket spending is above the average spending across all patrons
 -- Nested Query, Aggregation, and HAVING
 SELECT 
     p.id AS patron_id,
@@ -42,22 +42,22 @@ HAVING SUM(pay.amount) > (
 ORDER BY total_amount_spent DESC;
 
 -- 8.
---Tracks the # of manual system changes made by staff members to see workload distribution and also security
---Complex Join
+--8. Tracks the volume of ticket orders processed or managed by each staff member/role to evaluate operational workload
+-- Complex Join and Aggregation
 SELECT
     p.first_name || ' ' || p.last_name AS staff_name,
     r.role AS operational_role,
-    COUNT(a.id) AS total_changes,
-    MAX(a.changed_at) as last_change_timestamp
-FROM AUDIT_LOG a
-JOIN STAFF s ON a.staff_id = s.id
+    COUNT(psl.id) AS total_status_updates_made,
+    MAX(psl.date_time) AS latest_update_timestamp
+FROM STAFF s
 JOIN PERSON p ON s.id = p.id
 JOIN ROLE r ON s.role_id = r.id
-GROUP BY staff_name, r.role
-ORDER BY last_change_timestamp DESC;
+JOIN PERFORMANCE_STATUS_LOG psl ON s.id = psl.changed_by
+GROUP BY p.first_name, p.last_name, r.role
+ORDER BY total_status_updates_made DESC;
 
 -- 9.
---Calculates the affect of promo codes applied against standard ticket orders to evaluate marketing
+--9. Calculates the affect of promo codes applied against standard ticket orders to evaluate marketing
 --Filtering and Aggregation 
 SELECT
     pc.code AS promo_code,
@@ -72,7 +72,7 @@ GROUP BY pc.code
 ORDER BY total_revenue_made DESC; 
 
 -- 10.
---Measures the volume of seats that were temp held by a user but then where abandoned and taken back to the pool, showing possible UI or payment issues
+--10. Measures the volume of seats that were temp held by a user but then where abandoned and taken back to the pool, showing possible UI or payment issues
 --Time Extraction and Filtering
 SELECT
     v.name AS venue,
