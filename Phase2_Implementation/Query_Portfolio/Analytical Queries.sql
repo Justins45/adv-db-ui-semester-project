@@ -1,3 +1,4 @@
+-- 6. 
 --Finds the event that made the most money and tracks the overall sales volume
 --Aggregation and Joins
 SELECT
@@ -13,6 +14,7 @@ WHERE ps.status = 'SOLD' --maybe make capital?
 GROUP BY e.title, e.status
 ORDER BY total_revenue DESC NULLS LAST;
 
+-- 7.
 -- Finds patrons whose total ticket spending is above the average spending across all patrons
 -- Nested Query, Aggregation, and HAVING
 SELECT 
@@ -39,6 +41,7 @@ HAVING SUM(pay.amount) > (
 )
 ORDER BY total_amount_spent DESC;
 
+-- 8.
 --Tracks the # of manual system changes made by staff members to see workload distribution and also security
 --Complex Join
 SELECT
@@ -53,6 +56,7 @@ JOIN ROLE r ON s.role_id = r.id
 GROUP BY staff_name, r.role
 ORDER BY last_change_timestamp DESC;
 
+-- 9.
 --Calculates the affect of promo codes applied against standard ticket orders to evaluate marketing
 --Filtering and Aggregation 
 SELECT
@@ -67,6 +71,7 @@ WHERE pc.active = TRUE
 GROUP BY pc.code
 ORDER BY total_revenue_made DESC; 
 
+-- 10.
 --Measures the volume of seats that were temp held by a user but then where abandoned and taken back to the pool, showing possible UI or payment issues
 --Time Extraction and Filtering
 SELECT
