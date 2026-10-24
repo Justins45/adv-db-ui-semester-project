@@ -42,19 +42,24 @@ HAVING SUM(pay.amount) > (
 ORDER BY total_amount_spent DESC;
 
 -- 8.
---8. Tracks the volume of ticket orders processed or managed by each staff member/role to evaluate operational workload
+-- 8. Analyzes performer booking volume across events, stages, and venues to measure talent scheduling
 -- Complex Join and Aggregation
 SELECT
-    p.first_name || ' ' || p.last_name AS staff_name,
-    r.role AS operational_role,
-    COUNT(psl.id) AS total_status_updates_made,
-    MAX(psl.date_time) AS latest_update_timestamp
-FROM STAFF s
-JOIN PERSON p ON s.id = p.id
-JOIN ROLE r ON s.role_id = r.id
-JOIN PERFORMANCE_STATUS_LOG psl ON s.id = psl.changed_by
-GROUP BY p.first_name, p.last_name, r.role
-ORDER BY total_status_updates_made DESC;
+    pers.first_name || ' ' || pers.last_name AS performer_name,
+    e.title AS event_title,
+    v.name AS venue_name,
+    s.name AS stage_name,
+    COUNT(p.id) AS total_performances_scheduled,
+    MAX(p.date_time) AS latest_performance_date
+FROM PERFORMER perf
+JOIN PERSON pers ON perf.id = pers.id
+JOIN PERFORMANCE_CAST pc ON perf.id = pc.performer_id
+JOIN PERFORMANCE p ON pc.performance_id = p.id
+JOIN EVENT e ON p.event_id = e.id
+JOIN STAGE s ON p.stage_id = s.id
+JOIN VENUE v ON s.venue_id = v.id
+GROUP BY pers.first_name, pers.last_name, e.title, v.name, s.name
+ORDER BY total_performances_scheduled DESC;
 
 -- 9.
 --9. Calculates the affect of promo codes applied against standard ticket orders to evaluate marketing
