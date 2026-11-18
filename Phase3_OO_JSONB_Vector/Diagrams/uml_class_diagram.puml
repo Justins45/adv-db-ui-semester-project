@@ -1,0 +1,77 @@
+@startuml uml_class_diagram
+' Phase 3 UML class diagram: Person hierarchy, Venue and Review.
+' Render with the PlantUML extension in VS Code or at plantuml.com.
+
+hide circle
+skinparam classAttributeIconSize 0
+skinparam shadowing false
+skinparam linetype ortho
+
+class Person {
+  - id : int
+  - firstName : String
+  - lastName : String
+  - email : String
+  - phone : String
+  - password : String
+  --
+  + login(email : String, password : String) : boolean
+  + writeReview(venue : Venue, rating : int) : Review
+}
+
+class Patron {
+  - roleId : int
+  - preferences : JSON
+  - loyaltyTier : String
+  - pointsBalance : int
+  - membershipExpiry : DateTime
+  --
+  + earnPoints(points : int) : void
+  + isMembershipActive() : boolean
+}
+
+class Staff {
+  - roleId : int
+  - employeeId : String
+  - hireDate : DateTime
+  --
+  + assignToVenue(venue : Venue) : void
+}
+
+class Venue {
+  - id : int
+  - name : String
+  - address : String
+  - city : String
+  - province : String
+  - postalCode : String
+  --
+  + addReview(review : Review) : void
+  + getAverageRating() : double
+}
+
+class Review {
+  - id : int
+  - title : String
+  - body : String
+  - rating : int
+  --
+  + updateRating(rating : int) : void
+}
+
+note top of Person
+  Overlapping specialization: a Person can be a Patron, a Staff, or both
+end note
+
+' Inheritance
+Person <|-- Patron
+Person <|-- Staff
+
+' Associations (multiplicities on every end)
+Staff "0..*" --> "1" Venue : assignedVenue
+Person "1" --> "0..*" Review : writes
+
+' Composition: a Review belongs to exactly one Venue
+Venue "1" *-- "0..*" Review : has
+
+@enduml
