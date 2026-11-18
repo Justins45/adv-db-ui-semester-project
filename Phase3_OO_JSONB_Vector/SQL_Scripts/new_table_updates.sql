@@ -54,6 +54,26 @@ ALTER TABLE staff ALTER COLUMN assigned_venue SET NOT NULL;
 COMMIT;
 
 -- ---------------------------------------------------------------------------
+-- Vector Database Addition
+-- ---------------------------------------------------------------------------
+-- Enable pgvector (no-op if already enabled)
+CREATE EXTENSION IF NOT EXISTS vector;
+
+-- Drop the existing review table if it exists
+DROP TABLE IF EXISTS review;
+
+-- Create the review table based on the ERD
+CREATE TABLE review (
+    id         INTEGER GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+    venue_id   INTEGER NOT NULL REFERENCES venue (id),
+    person_id  INTEGER NOT NULL REFERENCES person (id),
+    title      VARCHAR(255) NOT NULL,
+    body       TEXT,
+    rating     INTEGER,
+    embedding  vector(384)
+);
+
+-- ---------------------------------------------------------------------------
 -- Indexes
 -- (Postgres does not index foreign key columns automatically.)
 -- ---------------------------------------------------------------------------
@@ -61,3 +81,10 @@ CREATE INDEX idx_staff_assigned_venue  ON staff (assigned_venue);
 
 -- GIN index so queries on patron.preferences (@>, ?, ?|, ?&) don't seq-scan
 CREATE INDEX idx_patron_preferences_gin ON patron USING GIN (preferences);
+
+
+-- Vector Table Indexes
+CREATE INDEX idx_review_venue_id  ON review (venue_id);
+CREATE INDEX idx_review_person_id ON review (person_id);
+-- Vector index for similarity search (cosine distance)
+CREATE INDEX idx_review_embedding ON review USING hnsw (embedding vector_cosine_ops);
