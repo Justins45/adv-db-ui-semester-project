@@ -1,0 +1,57 @@
+@startuml data_pipeline
+' Phase 3 data pipeline: how review text becomes searchable, and where the
+' JSONB preferences enter the database.
+' Render with the PlantUML extension in VS Code or at plantuml.com.
+
+skinparam shadowing false
+skinparam defaultTextAlignment left
+skinparam rectangle {
+  RoundCorner 8
+}
+skinparam ArrowColor #555555
+skinparam packageStyle rectangle
+
+title How review text becomes searchable (Phase 3)
+
+' ---------------------------------------------------------------- text path
+rectangle "**1. Source**\nEmbeddings/theater_reviews.csv\n2,150 synthetic theatre reviews\ncolumns: id, person_id, rating, title, body" as src #E8F1FB
+
+rectangle "**2. Cleaning and checks**\n0 empty bodies; 1,392 distinct bodies of 2,150\n(templated text, so identical bodies share a vector)\nlongest body: 34 words, under the model's\n256-token limit, so no text is truncated\nvenue_id missing from source: defaults to 1" as clean #E8F1FB
+
+package "Local machine: VS Code + Python, CPU only" as local #F6F6F6 {
+  rectangle "**3. Embedding model**\nsentence-transformers/all-MiniLM-L6-v2\n384 dimensions, unit-length vectors\ntext embedded: review body" as embed #FFF4D6
+  rectangle "**4. Load file**\nEmbeddings/theater_reviews_with_vectors.sql\nINSERT ... ON CONFLICT (id) DO UPDATE\n(re-runnable)" as loadfile #FFF4D6
+  rectangle "**Query embedding**\nEmbeddings/embed_query.ipynb\nsame model, search text -> vector(384)" as qembed #FFF4D6
+}
+
+actor "User" as user
+
+package "Local PostgreSQL 18.6 + pgvector 0.8.7" as pg #F6F6F6 {
+  rectangle "**review** table\nid, venue_id, person_id, title, body, rating\nembedding vector(384)" as review #E3F4E3
+  rectangle "**5. Index**\nidx_review_embedding\nHNSW, vector_cosine_ops\n(m = 16, ef_construction = 64)" as hnsw #E3F4E3
+
+  rectangle "**patron** table\npreferences JSONB\nCHECK validate_patron_preferences_jsonb" as patron #FBE8EC
+  rectangle "**GIN index**\nidx_patron_preferences_gin" as gin #FBE8EC
+
+  rectangle "**6. Queries**\nPart B: @>, @?, jsonb_array_elements, jsonb_set\nPart C: vector search (<=>), filtered search,\n           hybrid full-text + vector (RRF)\nPart D: vector + class hierarchy + JSONB" as queries #EDE7F6
+}
+
+' ---------------------------------------------------------------- JSONB path
+rectangle "**JSONB source**\nSQL_Scripts/jsonb_implementation.sql\nsample preference documents\n(accessibility, notifications,\ncontent_advisories[])" as jsrc #FBE8EC
+
+' ---------------------------------------------------------------- flows
+src --> clean
+clean --> embed : review body
+embed --> loadfile : 2,150 vectors
+loadfile --> review : run in pgAdmin 4
+review --> hnsw : CREATE INDEX ... USING hnsw
+hnsw --> queries : ORDER BY embedding <=> query\nLIMIT k
+
+jsrc --> patron : UPDATE patron SET preferences
+patron --> gin : CREATE INDEX ... USING GIN
+gin --> queries : WHERE preferences @> ...
+
+user --> qembed : search text
+qembed --> queries : query vector
+
+@enduml
