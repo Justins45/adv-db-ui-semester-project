@@ -7,7 +7,7 @@ using TheaterApi.Services;
 namespace TheaterApi.Controllers;
 
 [ApiController, Route("api")]
-public sealed class CatalogueController(AppDbContext db, IPriceResolutionService prices) : ControllerBase
+public sealed class CatalogueController(AppDbContext db, IPriceResolutionService prices, TimeProvider clock) : ControllerBase
 {
     /// <summary>Handles the GET request for events.</summary>
     [HttpGet("events")]
@@ -49,6 +49,11 @@ public sealed class CatalogueController(AppDbContext db, IPriceResolutionService
         var seats = await db.PerformanceSeats.AsNoTracking().Include(s => s.Seat).ThenInclude(s => s.Section).Include(s => s.Performance).Where(s => s.PerformanceId == id).ToListAsync(ct);
         if (seats.Count == 0 && !await db.Performances.AnyAsync(p => p.Id == id, ct)) return NotFound();
         var tiers = await db.PriceTiers.AsNoTracking().Where(t => !t.PerformanceId.HasValue || t.PerformanceId == id).ToListAsync(ct);
-        return Ok(seats.OrderBy(s => s.Seat.SectionId).ThenBy(s => s.Seat.Row).ThenBy(s => s.Seat.SeatNumber).Select(s => new PerformanceSeatDto(s.Id, s.SeatId, s.Seat.Row, s.Seat.SeatNumber, s.Status, s.HeldUntil, prices.Resolve(s, tiers))).ToList());
+        var now = clock.GetUtcNow();
+        return Ok(seats.OrderBy(s => s.Seat.SectionId).ThenBy(s => s.Seat.Row).ThenBy(s => s.Seat.SeatNumber).Select(s =>
+        {
+            var status = SeatAvailabilityStatus.GetDisplayStatus(s.Status, s.HeldUntil, now);
+            return new PerformanceSeatDto(s.Id, s.SeatId, s.Seat.Row, s.Seat.SeatNumber, status, status == "AVAILABLE" ? null : s.HeldUntil, prices.Resolve(s, tiers));
+        }).ToList());
     }
 }
