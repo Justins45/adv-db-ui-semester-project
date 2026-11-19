@@ -2,13 +2,14 @@ using Microsoft.EntityFrameworkCore;
 using TheaterApi.Data;
 using TheaterApi.Dtos;
 using TheaterApi.Models;
+using TheaterApi.Logging;
 
 namespace TheaterApi.Services;
 
 public sealed class CheckoutConflictException(string message) : Exception(message);
 public sealed class PaymentDeclinedException() : Exception;
 
-public sealed class OrderService(AppDbContext db, TimeProvider clock)
+public sealed class OrderService(AppDbContext db, TimeProvider clock, ILogSink logs)
 {
     private static readonly string[] Methods = ["CREDIT_CARD", "DEBIT_CARD", "PAYPAL", "APPLE_PAY", "GOOGLE_PAY", "MASTERCARD", "VISA"];
     public async Task<OrderDto> CheckoutAsync(int patronId, CheckoutRequest request, string? idempotencyKey, CancellationToken ct)
@@ -37,7 +38,7 @@ public sealed class OrderService(AppDbContext db, TimeProvider clock)
         db.Payments.Add(new Payment { Order = order, Method = method, Amount = total, DateTime = now }); cart.Status = "CHECKED_OUT";
         await db.SaveChangesAsync(ct);
         var remaining = await db.PerformanceSeats.AnyAsync(s => s.PerformanceId == performanceId && (s.Status == "AVAILABLE" || s.Status == "HELD") && (s.Status == "AVAILABLE" || s.HeldUntil > now), ct);
-        if (!remaining) { var performance = await db.Performances.SingleAsync(p => p.Id == performanceId, ct); performance.Filled = true; await db.SaveChangesAsync(ct); }
+        if (!remaining) { var performance = await db.Performances.SingleAsync(p => p.Id == performanceId, ct); performance.Filled = true; await db.SaveChangesAsync(ct); await logs.PerformanceStatusAsync(performanceId, null, performance.Status, "SOLD_OUT"); }
         await tx.CommitAsync(ct); return ToDto(order);
     }
 
