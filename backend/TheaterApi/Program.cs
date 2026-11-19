@@ -60,6 +60,8 @@ if (app.Environment.IsDevelopment() && app.Configuration.GetValue<bool>("SeedFir
     using var scope = app.Services.CreateScope();
     var seeder = scope.ServiceProvider.GetRequiredService<FirestoreSeeder>();
     await seeder.SeedAsync(Path.Combine(app.Environment.ContentRootPath, "firestore_logs_seed.json"));
+    var loginSeed = Path.Combine(app.Environment.ContentRootPath, "seed", "login_history.json");
+    if (File.Exists(loginSeed)) await seeder.SeedAsync(loginSeed);
 }
 
 app.UseHttpsRedirection();

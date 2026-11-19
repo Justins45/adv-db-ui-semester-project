@@ -30,7 +30,7 @@ public class AuditLogService(FirestoreDb firestore)
 
     public async Task<List<AuditLog>> GetRecentAsync(int daysAgo)
     {
-        var cutoff = Timestamp.FromDateTime(DateTime.UtcNow.AddDays(-daysAgo));
+        var cutoff = DateTimeOffset.UtcNow.AddDays(-daysAgo).ToString("yyyy-MM-ddTHH:mm:ssZ");
 
         var snapshot = await firestore.Collection("audit_log")
             .WhereGreaterThanOrEqualTo("changed_at", cutoff)

@@ -1,6 +1,5 @@
 using System.Text.Json.Serialization;
 using Google.Cloud.Firestore;
-using TheaterApi.Data;
 
 namespace TheaterApi.Models.Logs;
 
@@ -22,9 +21,9 @@ public class PermissionChangeLog : ILogDocument
     [FirestoreProperty("new_role")] [JsonPropertyName("new_role")]
     public int NewRole { get; set; }
 
-    [FirestoreProperty("date_time", ConverterType = typeof(FlexibleDateTimeConverter))]
+    [FirestoreProperty("date_time")]
     [JsonPropertyName("date_time")]
-    public DateTime DateTime { get; set; }
+    public string DateTime { get; set; } = "";
 }
 
 public class PermissionChangeLogRequest
@@ -43,7 +42,7 @@ public class PermissionChangeLogRequest
 
     public PermissionChangeLog ToEntity()
     {
-        var log = new PermissionChangeLog { DateTime = System.DateTime.UtcNow };
+        var log = new PermissionChangeLog { DateTime = DateTimeOffset.UtcNow.ToString("yyyy-MM-ddTHH:mm:ssZ") };
         ApplyTo(log);
         return log;
     }

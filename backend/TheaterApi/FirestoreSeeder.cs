@@ -3,9 +3,6 @@ using Google.Cloud.Firestore;
 
 public class FirestoreSeeder
 {
-    // Stored as ISO strings in the JSON; converted to real Firestore Timestamps
-    private static readonly HashSet<string> TimestampFields = new() { "date_time", "changed_at" };
-
     private readonly FirestoreDb _db;
     public FirestoreSeeder(FirestoreDb db) => _db = db;
 
@@ -15,7 +12,7 @@ public class FirestoreSeeder
         using var doc = JsonDocument.Parse(json);
 
         // Batch limit is 500 writes; the seed is ~100 documents, so one batch is fine.
-        var batch = _db.StartBatch();
+        var writes = new List<(DocumentReference Reference, Dictionary<string, object?> Data)>();
 
         foreach (var collection in doc.RootElement.EnumerateObject())
         {
@@ -23,11 +20,16 @@ public class FirestoreSeeder
             {
                 var data = ConvertObject(item);
                 var id = item.GetProperty("id").GetInt32().ToString();
-                batch.Set(_db.Collection(collection.Name).Document(id), data);
+                writes.Add((_db.Collection(collection.Name).Document(id), data));
             }
         }
 
-        await batch.CommitAsync();
+        foreach (var chunk in writes.Chunk(500))
+        {
+            var batch = _db.StartBatch();
+            foreach (var write in chunk) batch.Set(write.Reference, write.Data);
+            await batch.CommitAsync();
+        }
     }
 
     // JSON object -> Firestore map (recurses into nested maps and arrays)
@@ -41,13 +43,6 @@ public class FirestoreSeeder
 
     private static object? ConvertValue(JsonElement value, string? propertyName = null)
     {
-        if (propertyName is not null
-            && TimestampFields.Contains(propertyName)
-            && value.ValueKind == JsonValueKind.String)
-        {
-            return Timestamp.FromDateTime(value.GetDateTimeOffset().UtcDateTime);
-        }
-
         return value.ValueKind switch
         {
             JsonValueKind.Object => ConvertObject(value),

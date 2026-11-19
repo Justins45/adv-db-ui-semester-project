@@ -1,6 +1,5 @@
 using System.Text.Json.Serialization;
 using Google.Cloud.Firestore;
-using TheaterApi.Data;
 
 namespace TheaterApi.Models.Logs;
 
@@ -22,9 +21,9 @@ public class PerformanceStatusLog : ILogDocument
     [FirestoreProperty("new")] [JsonPropertyName("new")]
     public string NewStatus { get; set; } = "";
 
-    [FirestoreProperty("date_time", ConverterType = typeof(FlexibleDateTimeConverter))]
+    [FirestoreProperty("date_time")]
     [JsonPropertyName("date_time")]
-    public DateTime DateTime { get; set; }
+    public string DateTime { get; set; } = "";
 }
 
 public class PerformanceStatusLogRequest
@@ -43,7 +42,7 @@ public class PerformanceStatusLogRequest
 
     public PerformanceStatusLog ToEntity()
     {
-        var log = new PerformanceStatusLog { DateTime = System.DateTime.UtcNow };
+        var log = new PerformanceStatusLog { DateTime = DateTimeOffset.UtcNow.ToString("yyyy-MM-ddTHH:mm:ssZ") };
         ApplyTo(log);
         return log;
     }

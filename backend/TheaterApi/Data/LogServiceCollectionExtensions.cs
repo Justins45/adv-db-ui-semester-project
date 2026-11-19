@@ -11,6 +11,7 @@ public static class LogServiceCollectionExtensions
         AddLog<PermissionChangeLog>(services, "permission_change_log");
         AddLog<PerformanceStatusLog>(services, "performance_status_log");
         AddLog<ErrorLog>(services, "error_log");
+        AddLog<LoginHistory>(services, "login_history");
         return services;
     }
 
