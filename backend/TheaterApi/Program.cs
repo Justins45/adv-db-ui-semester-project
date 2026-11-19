@@ -57,6 +57,7 @@ builder.Services.AddRateLimiter(options => options.AddFixedWindowLimiter("auth",
 builder.Services.AddScoped<AuditLogService>();
 builder.Services.AddSingleton(TimeProvider.System);
 builder.Services.AddScoped<HoldService>();
+builder.Services.AddScoped<OrderService>();
 builder.Services.AddHostedService<HoldCleanupService>();
 builder.Services.AddScoped<SeedService>();
 builder.Services.AddSingleton<IPriceResolutionService, PriceResolutionService>();
