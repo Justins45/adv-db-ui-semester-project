@@ -9,7 +9,8 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 builder.Services.AddDbContext<AppDbContext>(o =>
     o.UseNpgsql(
-        builder.Configuration.GetConnectionString("NeonDb")
+        builder.Configuration.GetConnectionString("NeonDb"),
+        npgsql => npgsql.EnableRetryOnFailure()
         )
 );
 
