@@ -45,6 +45,21 @@ The Phase 3 Technical Report says `person_status(id)` returns a subclass-specifi
 
 Tests requiring Postgres/pgvector or Firestore emulator cannot be reported as passing unless those services are available. Fresh Neon migration and hosted Swagger/demo checks remain J's H9/H10 responsibility. Final audit sign-off remains H13.
 
+## C11 — remaining audit tests not yet implemented (H1, H2)
+
+The current test project contains the C3/C4 hold and checkout race tests, payment unit tests, route/clock/source safety checks, the C7/C8 tests, and the C9 contract tests. The following C11 groups are still missing; Postgres/Firestore integration coverage requires H2, and tests against the specified seed counts also require H1:
+
+- Phase 1: 1.17–1.21 (fresh migration, schema/table count, mapped entity counts, preferences CHECK, duplicate performance seat).
+- Phase 2: 2.11–2.15 (CRUD/counts, seeded login history, recent audit date, Firestore emulator).
+- Phase 3: 3.18–3.22 (seed counts/idempotence, event seats route, all price-tier scopes and tie-break).
+- Phase 4: 4.15–4.21 (auth and authorization integration cases).
+- Phase 6: 6.16–6.22 (totals/promo, declined payment, idempotency, sold-out log, ownership and card-data absence). Payment unit coverage exists, but the named integration rows remain missing.
+- Phase 7: 7.13–7.14 (performance creation and role authorization).
+- Phase 8: 8.12–8.13 (all Firestore document types and outage behavior).
+- Phase 9: 9.11–9.14 (seed containment, preferences, points, review CRUD/ownership).
+
+These rows are not described as “written, not run”: they still need test code. H2 unblocks Postgres/emulator execution; H1 unblocks exact seed-data assertions.
+
 ## C13 — host / semantic search (H4, H7, H12)
 
 Phase 10 is not authorized because A7 is not confirmed; audit rows 10.1–10.7 must be N/A with reason “A7 not confirmed”. Container execution against Neon and deployment-specific configuration remain blocked pending H12. Keep `net10.0` unless H4 explicitly approves a change.
