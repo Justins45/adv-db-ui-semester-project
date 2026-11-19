@@ -31,7 +31,7 @@ Tests `Row_5_16_TwentyConcurrentHoldsForOneSeat_ExactlyOneSucceeds`, `Row_5_17_E
 
 ## C6 — client coordination (H6)
 
-The requested `/api` route prefix changes existing URLs. Code changes can be made, but J must update external clients and confirm the transition.
+All application routes have been moved under `/api`; the previous unprefixed URLs now return 404. J must update external clients and confirm the transition per H6. This is an intentional client-visible breaking change until H6 is completed.
 
 ## C7 — CORS origins (H5)
 

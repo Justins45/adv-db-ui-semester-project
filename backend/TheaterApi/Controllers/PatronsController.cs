@@ -9,7 +9,7 @@ using TheaterApi.Services;
 
 namespace TheaterApi.Controllers;
 
-[ApiController, Authorize(Roles = "PATRON,STAFF,ADMIN"), Route("patrons/me/preferences")]
+[ApiController, Authorize(Roles = "PATRON,STAFF,ADMIN"), Route("api/patrons/me/preferences")]
 public sealed class PatronPreferencesController(PatronService patrons) : ControllerBase
 {
     [HttpGet]
@@ -19,7 +19,7 @@ public sealed class PatronPreferencesController(PatronService patrons) : Control
     private int Id() => int.Parse(User.FindFirstValue(ClaimTypes.NameIdentifier)!);
 }
 
-[ApiController, Authorize(Roles = "STAFF,ADMIN"), Route("admin/patrons")]
+[ApiController, Authorize(Roles = "STAFF,ADMIN"), Route("api/admin/patrons")]
 public sealed class AdminPatronsController(AppDbContext db, PatronService patrons) : ControllerBase
 {
     [HttpGet]

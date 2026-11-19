@@ -6,7 +6,7 @@ using TheaterApi.Services;
 
 namespace TheaterApi.Controllers;
 
-[ApiController, Route("")]
+[ApiController, Route("api")]
 public sealed class CatalogueController(AppDbContext db, IPriceResolutionService prices) : ControllerBase
 {
     [HttpGet("events")]

@@ -9,7 +9,7 @@ using TheaterApi.Service;
 namespace TheaterApi.Controllers;
 
 [ApiController]
-[Route("api/[controller]")]
+[Route("api/logs")]
 public class LogsController(
     ILogRepository<AuditLog> auditLogs,
     ILogRepository<PermissionChangeLog> permissionLogs,

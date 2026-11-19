@@ -5,7 +5,7 @@ using TheaterApi.Dtos;
 using TheaterApi.Services;
 
 namespace TheaterApi.Controllers;
-[ApiController, Authorize(Roles = "PATRON,STAFF,ADMIN"), Route("")]
+[ApiController, Authorize(Roles = "PATRON,STAFF,ADMIN"), Route("api")]
 public sealed class HoldsController(HoldService holds) : ControllerBase
 {
     [HttpPost("performances/{performanceId:int}/holds")]

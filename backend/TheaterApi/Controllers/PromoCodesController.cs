@@ -6,7 +6,7 @@ using TheaterApi.Dtos;
 using TheaterApi.Models;
 
 namespace TheaterApi.Controllers;
-[ApiController, Authorize(Roles = "STAFF,ADMIN"), Route("admin/promo-codes")]
+[ApiController, Authorize(Roles = "STAFF,ADMIN"), Route("api/admin/promo-codes")]
 public sealed class PromoCodesController(AppDbContext db) : ControllerBase
 {
     [HttpGet] public async Task<ActionResult<IReadOnlyList<PromoCodeDto>>> List(CancellationToken ct) => Ok(await db.PromoCodes.AsNoTracking().OrderBy(p => p.Code).Select(p => new PromoCodeDto(p.Id, p.Code, p.DOff, p.POff, p.Active, p.ExpiryDate)).ToListAsync(ct));

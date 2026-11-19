@@ -8,7 +8,7 @@ using TheaterApi.Models;
 
 namespace TheaterApi.Controllers;
 
-[ApiController, Route("reviews")]
+[ApiController, Route("api/reviews")]
 public sealed class ReviewsController(AppDbContext db) : ControllerBase
 {
     [HttpGet]

@@ -4,7 +4,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using TheaterApi.Data;
 namespace TheaterApi.Controllers;
-[ApiController, Authorize, Route("email-list")]
+[ApiController, Authorize, Route("api/account/email-list")]
 public sealed class EmailListController(AppDbContext db, TimeProvider clock) : ControllerBase
 {
     [HttpPost] public async Task<IActionResult> Join(CancellationToken ct) { var id = int.Parse(User.FindFirstValue(ClaimTypes.NameIdentifier)!); if (!await db.EmailLists.AnyAsync(x => x.PersonId == id, ct)) { db.EmailLists.Add(new Models.EmailList { PersonId = id, Added = clock.GetUtcNow() }); await db.SaveChangesAsync(ct); } return NoContent(); }
