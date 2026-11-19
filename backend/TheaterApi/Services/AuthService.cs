@@ -36,7 +36,7 @@ public sealed class AuthService(AppDbContext db, IConfiguration config, ILogSink
     {
         var person = await db.People.Include(p => p.Patron).ThenInclude(p => p!.Role).Include(p => p.Staff).ThenInclude(s => s!.Role).SingleOrDefaultAsync(p => p.Email == email.Trim().ToLower(), ct);
         var valid = person is not null && IsValidRole(person) && _hasher.VerifyHashedPassword(person, person.Password, password) != PasswordVerificationResult.Failed;
-        await logs.LoginAttemptAsync(person?.Id, ip, valid, ct);
+        await logs.LoginAttemptAsync(person?.Id, ip, valid);
         return valid ? (person, CreateToken(person!)) : (null, null);
     }
 

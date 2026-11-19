@@ -10,6 +10,8 @@ using TheaterApi.Services;
 using TheaterApi.Logging;
 using TheaterApi.BackgroundJobs;
 using Google.Cloud.Firestore;
+using System.Threading.Channels;
+using TheaterApi.Middleware;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -31,7 +33,8 @@ builder.Services.AddTransient<FirestoreSeeder>();
 builder.Services.AddFirestoreLogs();
 
 builder.Services.AddControllers();
-builder.Services.AddSingleton<ILogSink, InMemoryLogSink>();
+builder.Services.AddSingleton(Channel.CreateUnbounded<LogWorkItem>(new UnboundedChannelOptions { SingleReader = true, SingleWriter = false }));
+builder.Services.AddSingleton<ILogSink, ChannelLogSink>();
 builder.Services.AddSingleton<IMockEmailSender, MockEmailSender>();
 builder.Services.AddScoped<AuthService>();
 builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddJwtBearer(options =>
@@ -59,6 +62,7 @@ builder.Services.AddSingleton(TimeProvider.System);
 builder.Services.AddScoped<HoldService>();
 builder.Services.AddScoped<OrderService>();
 builder.Services.AddHostedService<HoldCleanupService>();
+builder.Services.AddHostedService<FirestoreLogWriter>();
 builder.Services.AddScoped<SeedService>();
 builder.Services.AddSingleton<IPriceResolutionService, PriceResolutionService>();
 // Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
@@ -108,6 +112,7 @@ if (app.Environment.IsDevelopment() && app.Configuration.GetValue<bool>("SeedFir
 }
 
 app.UseHttpsRedirection();
+app.UseMiddleware<ExceptionLoggingMiddleware>();
 
 app.UseRateLimiter();
 app.UseAuthentication();
