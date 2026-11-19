@@ -21,7 +21,8 @@ public sealed class TheaterApiFactory(TestPostgresFixture postgres, FakeTimeProv
             ["Jwt:SigningKey"] = "test-only-signing-key-that-is-long-enough-for-hmac-sha256",
             ["Jwt:Issuer"] = "TheaterApi.Tests",
             ["Jwt:Audience"] = "TheaterApi.Tests",
-            ["Firestore:ProjectId"] = "theater-api-tests"
+            ["Firestore:ProjectId"] = "theater-api-tests",
+            ["MockPayment:AcceptedCardNumber"] = Environment.GetEnvironmentVariable("THEATER_TEST_PAYMENT_CARD")
         }));
         builder.ConfigureTestServices(services =>
         {

@@ -2,6 +2,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Time.Testing;
+using Microsoft.Extensions.Configuration;
 using System.Security.Claims;
 using TheaterApi.Controllers;
 using TheaterApi.Dtos;
@@ -43,7 +44,11 @@ public sealed class CheckoutConcurrencyTests(TestPostgresFixture postgres) : ICl
         var checkouts = Enumerable.Range(0, 2).Select(async _ =>
         {
             await using var db = postgres.CreateDbContext();
-            var controller = new OrdersController(new OrderService(db, clock, new NullLogSink()))
+            var paymentConfiguration = new ConfigurationBuilder().AddInMemoryCollection(new Dictionary<string, string?>
+            {
+                ["MockPayment:AcceptedCardNumber"] = cardNumber
+            }).Build();
+            var controller = new OrdersController(new OrderService(db, clock, new NullLogSink(), new MockPaymentService(paymentConfiguration)))
             {
                 ControllerContext = new ControllerContext
                 {
