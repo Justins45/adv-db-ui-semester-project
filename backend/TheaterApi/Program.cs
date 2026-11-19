@@ -8,6 +8,7 @@ using TheaterApi.Data;
 using TheaterApi.Service;
 using TheaterApi.Services;
 using TheaterApi.Logging;
+using TheaterApi.BackgroundJobs;
 using Google.Cloud.Firestore;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -54,6 +55,9 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddJw
 builder.Services.AddAuthorization();
 builder.Services.AddRateLimiter(options => options.AddFixedWindowLimiter("auth", limiter => { limiter.PermitLimit = 10; limiter.Window = TimeSpan.FromMinutes(1); limiter.QueueLimit = 0; }));
 builder.Services.AddScoped<AuditLogService>();
+builder.Services.AddSingleton(TimeProvider.System);
+builder.Services.AddScoped<HoldService>();
+builder.Services.AddHostedService<HoldCleanupService>();
 builder.Services.AddScoped<SeedService>();
 builder.Services.AddSingleton<IPriceResolutionService, PriceResolutionService>();
 // Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
