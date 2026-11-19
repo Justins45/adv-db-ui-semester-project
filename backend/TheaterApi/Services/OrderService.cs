@@ -9,14 +9,15 @@ namespace TheaterApi.Services;
 public sealed class CheckoutConflictException(string message) : Exception(message);
 public sealed class PaymentDeclinedException() : Exception;
 
-public sealed class OrderService(AppDbContext db, TimeProvider clock, ILogSink logs)
+public sealed class OrderService(AppDbContext db, TimeProvider clock, ILogSink logs, IPaymentService paymentService)
 {
     private static readonly string[] Methods = ["CREDIT_CARD", "DEBIT_CARD", "PAYPAL", "APPLE_PAY", "GOOGLE_PAY", "MASTERCARD", "VISA"];
     public async Task<OrderDto> CheckoutAsync(int patronId, CheckoutRequest request, string? idempotencyKey, CancellationToken ct)
     {
         var method = request.Method.Trim().ToUpperInvariant();
         if (!Methods.Contains(method)) throw new CheckoutConflictException("Payment method is not supported.");
-        if (string.IsNullOrWhiteSpace(request.CardNumber) || new string(request.CardNumber.Where(char.IsDigit).ToArray()) != "4545454545454545") throw new PaymentDeclinedException();
+        var paymentResult = await paymentService.ChargeAsync(request.CardNumber, ct);
+        if (!paymentResult.Approved) throw new PaymentDeclinedException();
         await using var tx = await db.Database.BeginTransactionAsync(System.Data.IsolationLevel.Serializable, ct);
         if (!string.IsNullOrWhiteSpace(idempotencyKey))
         {
@@ -32,7 +33,7 @@ public sealed class OrderService(AppDbContext db, TimeProvider clock, ILogSink l
         var discount = promo?.DOff ?? (promo?.POff is decimal fraction ? subtotal * fraction : 0m);
         var total = Math.Max(0m, subtotal - discount).RoundMoney();
         var performanceId = cart.Items.First().Ticket.PerformanceSeat.PerformanceId;
-        var order = new Order { CartId = cart.Id, PromoCodeId = promo?.Id, DateTime = now, Status = "PAID", TotalAmount = total, PaymentReference = $"MOCK-{Guid.NewGuid()}", IdempotencyKey = string.IsNullOrWhiteSpace(idempotencyKey) ? null : idempotencyKey };
+        var order = new Order { CartId = cart.Id, PromoCodeId = promo?.Id, DateTime = now, Status = "PAID", TotalAmount = total, PaymentReference = paymentResult.Reference, IdempotencyKey = string.IsNullOrWhiteSpace(idempotencyKey) ? null : idempotencyKey };
         db.Orders.Add(order);
         foreach (var item in cart.Items) { item.Ticket.PerformanceSeat.Status = "SOLD"; item.Ticket.PerformanceSeat.HeldUntil = null; order.Items.Add(new OrderItem { PerformanceSeatId = item.Ticket.PerformanceSeatId, PriceAtPurchase = item.Ticket.Price }); }
         db.Payments.Add(new Payment { Order = order, Method = method, Amount = total, DateTime = now }); cart.Status = "CHECKED_OUT";

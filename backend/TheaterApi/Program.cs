@@ -36,6 +36,7 @@ builder.Services.AddControllers();
 builder.Services.AddSingleton(Channel.CreateUnbounded<LogWorkItem>(new UnboundedChannelOptions { SingleReader = true, SingleWriter = false }));
 builder.Services.AddSingleton<ILogSink, ChannelLogSink>();
 builder.Services.AddSingleton<IMockEmailSender, MockEmailSender>();
+builder.Services.AddSingleton<IPaymentService, MockPaymentService>();
 builder.Services.AddScoped<AuthService>();
 builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddJwtBearer(options =>
 {
