@@ -1,4 +1,6 @@
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.DependencyInjection;
+using Swashbuckle.AspNetCore.Swagger;
 using TheaterApi.Tests.Infrastructure;
 
 namespace TheaterApi.Tests.Infrastructure;
@@ -35,5 +37,23 @@ public sealed class CorsPolicyTests(TestPostgresFixture postgres) : IClassFixtur
         using var response = await client.SendAsync(request);
 
         Assert.False(response.Headers.Contains("Access-Control-Allow-Origin"));
+    }
+}
+
+public sealed class SwaggerSummaryTests(TestPostgresFixture postgres) : IClassFixture<TestPostgresFixture>
+{
+    [Fact]
+    public void Row_0_6_EverySwaggerOperationHasSummary()
+    {
+        using var factory = new TheaterApiFactory(postgres, new Microsoft.Extensions.Time.Testing.FakeTimeProvider());
+        var swagger = factory.Services.GetRequiredService<ISwaggerProvider>().GetSwagger("v1");
+
+        var missing = swagger.Paths
+            .SelectMany(path => path.Value.Operations
+                .Where(operation => string.IsNullOrWhiteSpace(operation.Value.Summary))
+                .Select(operation => $"{operation.Key} {path.Key}"))
+            .ToArray();
+
+        Assert.Empty(missing);
     }
 }

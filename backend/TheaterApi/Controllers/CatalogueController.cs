@@ -9,6 +9,7 @@ namespace TheaterApi.Controllers;
 [ApiController, Route("api")]
 public sealed class CatalogueController(AppDbContext db, IPriceResolutionService prices) : ControllerBase
 {
+    /// <summary>Handles the GET request for events.</summary>
     [HttpGet("events")]
     public async Task<ActionResult<IReadOnlyList<EventListDto>>> Events([FromQuery] int page = 1, [FromQuery] int pageSize = 20, [FromQuery] string? search = null, [FromQuery] int? genreId = null, CancellationToken ct = default)
     {
@@ -21,6 +22,7 @@ public sealed class CatalogueController(AppDbContext db, IPriceResolutionService
         return Ok(result);
     }
 
+    /// <summary>Handles the GET request for events/{id:int}.</summary>
     [HttpGet("events/{id:int}")]
     public async Task<ActionResult<EventDetailDto>> Event(int id, CancellationToken ct)
     {
@@ -28,15 +30,19 @@ public sealed class CatalogueController(AppDbContext db, IPriceResolutionService
         return e is null ? NotFound() : Ok(new EventDetailDto(e.Id, e.Title, e.Description, e.Status, e.LiveDate, e.Genres.OrderBy(g => g.Name).Select(g => g.Name).ToList(), e.Performances.OrderBy(p => p.DateTime).Select(p => new PerformanceSummaryDto(p.Id, p.DateTime, p.Status, p.StageId, p.Filled)).ToList()));
     }
 
+    /// <summary>Handles the GET request for events/{id:int}/image.</summary>
     [HttpGet("events/{id:int}/image")]
     public async Task<IActionResult> EventImage(int id, CancellationToken ct) { var image = await db.Events.Where(e => e.Id == id && e.Status == "ACTIVE").Select(e => e.Image).SingleOrDefaultAsync(ct); return image is null ? NotFound() : File(image, "application/octet-stream"); }
 
+    /// <summary>Handles the GET request for genres.</summary>
     [HttpGet("genres")]
     public async Task<ActionResult<IReadOnlyList<GenreDto>>> Genres(CancellationToken ct) => Ok(await db.Genres.AsNoTracking().Where(g => g.Active).OrderBy(g => g.Name).Select(g => new GenreDto(g.Id, g.Name, g.Active)).ToListAsync(ct));
 
+    /// <summary>Handles the GET request for performances/{id:int}.</summary>
     [HttpGet("performances/{id:int}")]
     public async Task<ActionResult<PerformanceDetailDto>> Performance(int id, CancellationToken ct) { var p = await db.Performances.AsNoTracking().SingleOrDefaultAsync(x => x.Id == id, ct); return p is null ? NotFound() : Ok(new PerformanceDetailDto(p.Id, p.EventId, p.StageId, p.DateTime, p.Status, p.Filled)); }
 
+    /// <summary>Handles the GET request for performances/{id:int}/seats.</summary>
     [HttpGet("performances/{id:int}/seats")]
     public async Task<ActionResult<IReadOnlyList<PerformanceSeatDto>>> Seats(int id, CancellationToken ct)
     {

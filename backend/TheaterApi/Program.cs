@@ -11,6 +11,7 @@ using TheaterApi.Logging;
 using TheaterApi.BackgroundJobs;
 using Google.Cloud.Firestore;
 using System.Threading.Channels;
+using System.Reflection;
 using TheaterApi.Middleware;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -76,6 +77,8 @@ builder.Services.AddOpenApi();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen(options => 
 {
+    var xmlDocumentation = Path.Combine(AppContext.BaseDirectory, $"{Assembly.GetExecutingAssembly().GetName().Name}.xml");
+    options.IncludeXmlComments(xmlDocumentation);
     options.SwaggerDoc("v1", new OpenApiInfo
     {
         Title = "Our Awesome API",
