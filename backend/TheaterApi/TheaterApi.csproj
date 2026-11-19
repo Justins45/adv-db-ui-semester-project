@@ -6,6 +6,7 @@
     <ImplicitUsings>enable</ImplicitUsings>
     <RootNamespace>TheaterApi</RootNamespace>
     <UserSecretsId>c3145380-a74a-4e9b-a393-5ea3e6509ad5</UserSecretsId>
+    <DefaultItemExcludes>$(DefaultItemExcludes);TheaterApi.Tests/**</DefaultItemExcludes>
   </PropertyGroup>
 
   <ItemGroup>
