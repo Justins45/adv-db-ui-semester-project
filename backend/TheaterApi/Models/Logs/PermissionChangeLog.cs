@@ -40,9 +40,9 @@ public class PermissionChangeLogRequest
     [JsonPropertyName("new_role")]
     public int NewRole { get; set; }
 
-    public PermissionChangeLog ToEntity()
+    public PermissionChangeLog ToEntity(TimeProvider clock)
     {
-        var log = new PermissionChangeLog { DateTime = DateTimeOffset.UtcNow.ToString("yyyy-MM-ddTHH:mm:ssZ") };
+        var log = new PermissionChangeLog { DateTime = clock.GetUtcNow().ToString("yyyy-MM-ddTHH:mm:ssZ") };
         ApplyTo(log);
         return log;
     }

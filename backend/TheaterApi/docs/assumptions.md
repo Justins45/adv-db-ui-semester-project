@@ -18,3 +18,4 @@ Defaults observed in the implementation or prescribed by the spec. Items marked 
 | C0-1 | Auth rate limit is 10 requests per minute. | Existing `Program.cs` fixed-window policy default; no product-specific limit is specified. | None requested. |
 | C0-2 | Firestore document IDs are string forms of integer `id` values from the seed. | Matches the seed and makes re-seeding idempotent. | None requested. |
 | C0-3 | No API version segment is added; routes use `/api` per the brief. | Versioning is optional in the brief and would change client URLs further. | H6 must confirm the `/api` prefix transition. |
+| C2-1 | Application timestamps and comparisons use the injected `TimeProvider`; hold SQL receives its timestamp as a parameter. | Makes time behavior controllable with the fake clock; no database `now()` expressions were found. | None requested. |
