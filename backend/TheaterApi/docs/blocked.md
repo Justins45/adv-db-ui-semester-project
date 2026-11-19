@@ -19,7 +19,7 @@ Seed-dependent tests must use hand-built fixtures until H1 supplies the seed fil
 
 ## C1 — container/emulator prerequisites (H2)
 
-Docker and Firestore emulator availability must be checked in this environment. If unavailable, write/compile the fixtures and mark their runtime smoke tests “written, not run”; J must provide Docker, Firebase CLI, Java, and `FIRESTORE_EMULATOR_HOST` per H2.
+Docker (`docker info`) and Firebase CLI are unavailable; Java is installed, but `FIRESTORE_EMULATOR_HOST` is unset. C1 fixtures and smoke tests are written and compile. Runtime checks are blocked by H2: `PostgresFixture_AppliesMigrationsAndConnects` fails before connecting because Docker is unavailable, and `FirestoreFixture_ConnectsToEmulator` fails with the explicit missing-`FIRESTORE_EMULATOR_HOST` message. Re-run both after J provides Docker, Firebase CLI, Java/emulator, and the emulator host.
 
 ## C6 — client coordination (H6)
 
