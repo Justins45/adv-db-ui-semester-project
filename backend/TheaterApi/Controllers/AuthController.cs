@@ -8,7 +8,7 @@ using TheaterApi.Dtos;
 using TheaterApi.Services;
 
 namespace TheaterApi.Controllers;
-[ApiController, Route("auth")]
+[ApiController, Route("api/auth")]
 public sealed class AuthController(AuthService auth, AppDbContext db) : ControllerBase
 {
     [HttpPost("register")]
