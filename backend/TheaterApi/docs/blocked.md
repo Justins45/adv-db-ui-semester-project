@@ -25,6 +25,10 @@ Docker (`docker info`) and Firebase CLI are unavailable; Java is installed, but 
 
 Tests `Row_5_16_TwentyConcurrentHoldsForOneSeat_ExactlyOneSucceeds`, `Row_5_17_ExpiredHoldCleanup_DeletesTicketAndItemAndAbandonsCart`, `Row_5_18_HoldingDifferentSeats_ReleasesOldHold`, `Row_5_19_NonScheduledPerformance_IsRejected`, and `ExpiredHoldTakeover_RemovesStaleTicketAndCartItem` are written and compile. They could not run against either the old or updated hold service because the Testcontainers fixture cannot start without Docker. H2 unblocks execution; re-run the 20-request test multiple times and verify the full set.
 
+## C4 — Checkout race integration test (H2)
+
+`Row_6_3_TwoConcurrentCheckoutsOfSameCart_ExactlyOneSucceeds` is written and compiles, but Testcontainers cannot start without Docker. It reads its mock payment value from `THEATER_TEST_PAYMENT_CARD`; set that variable in the local test environment without committing it. H2 unblocks the database run.
+
 ## C6 — client coordination (H6)
 
 The requested `/api` route prefix changes existing URLs. Code changes can be made, but J must update external clients and confirm the transition.
