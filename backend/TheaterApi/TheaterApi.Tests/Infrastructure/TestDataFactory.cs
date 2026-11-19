@@ -38,12 +38,13 @@ public sealed class TestDataFactory(AppDbContext db, TimeProvider clock)
 
     public async Task<Performance> CreatePerformanceAsync(int seatCount, decimal price)
     {
-        var venue = new Venue { Name = "Fixture Venue", Address = "1 Test Way", City = "Calgary", Province = "AB", PostalCode = "T2P 0A1" };
-        var stage = new Stage { Venue = venue, Name = "Fixture Stage" };
-        var section = new Section { Stage = stage, Name = "Fixture Section" };
+        var suffix = Guid.NewGuid().ToString("N");
+        var venue = new Venue { Name = $"Fixture Venue {suffix}", Address = "1 Test Way", City = "Calgary", Province = "AB", PostalCode = "T2P 0A1" };
+        var stage = new Stage { Venue = venue, Name = $"Fixture Stage {suffix}" };
+        var section = new Section { Stage = stage, Name = $"Fixture Section {suffix}" };
         for (var i = 1; i <= seatCount; i++) section.Seats.Add(new Seat { Row = "A", SeatNumber = i });
-        var genre = new Genre { Name = $"Fixture-{Guid.NewGuid():N}", Active = true };
-        var show = new Event { Title = "Fixture Event", Status = "ACTIVE", Genres = [genre] };
+        var genre = new Genre { Name = $"Fixture-{suffix}", Active = true };
+        var show = new Event { Title = $"Fixture Event {suffix}", Status = "ACTIVE", Genres = [genre] };
         var performance = new Performance { Event = show, Stage = stage, DateTime = clock.GetUtcNow().AddDays(1), Status = "SCHEDULED" };
         db.AddRange(venue, genre, show, performance);
         await db.SaveChangesAsync();

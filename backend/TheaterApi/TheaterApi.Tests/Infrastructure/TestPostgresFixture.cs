@@ -31,4 +31,15 @@ public sealed class TestPostgresFixture : IAsyncLifetime
             .Options;
         return new AppDbContext(options);
     }
+
+    public async Task ResetAsync()
+    {
+        await using var db = CreateDbContext();
+        await db.Database.ExecuteSqlRawAsync("""
+            TRUNCATE TABLE "ORDER", order_item, payment, ticket, cart_item, cart, performance_seat,
+                price_tier, performance_cast, performance, seat, section, stage, venue, event_genre,
+                genre, promo_code, email_list, password_reset_request, performer, staff, patron, person,
+                role, review RESTART IDENTITY CASCADE
+            """);
+    }
 }
