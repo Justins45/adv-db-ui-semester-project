@@ -66,7 +66,7 @@ builder.Services.AddScoped<AuditLogService>();
 builder.Services.AddSingleton(TimeProvider.System);
 builder.Services.AddScoped<HoldService>();
 builder.Services.AddScoped<OrderService>();
-builder.Services.AddScoped<PatronService>();
+builder.Services.AddScoped<IPatronService, PatronService>();
 builder.Services.AddHostedService<HoldCleanupService>();
 builder.Services.AddHostedService<FirestoreLogWriter>();
 builder.Services.AddScoped<SeedService>();

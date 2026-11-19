@@ -39,7 +39,7 @@ Origins must be supplied by J. `Program.cs` now reads `Cors:AllowedOrigins` and 
 
 ## C9 — person_status (H8)
 
-No definition was supplied in the available Phase 3 report/spec. Implement the simplest service behavior only if it can be grounded in the report; otherwise the service contract and test remain blocked pending H8.
+The Phase 3 Technical Report says `person_status(id)` returns a subclass-specific result, with `Patron Only` and `Staff member` examples and counts. `IPatronService.PersonStatusAsync` uses those labels based on staff-row presence; its missing-person result is null. J still needs to confirm labels and performer behavior (H8).
 
 ## C11/C14 — external verification (H2, H9, H10, H13)
 

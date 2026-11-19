@@ -10,7 +10,7 @@ using TheaterApi.Services;
 namespace TheaterApi.Controllers;
 
 [ApiController, Authorize(Roles = "PATRON,STAFF,ADMIN"), Route("api/patrons/me/preferences")]
-public sealed class PatronPreferencesController(PatronService patrons) : ControllerBase
+public sealed class PatronPreferencesController(IPatronService patrons) : ControllerBase
 {
     /// <summary>Handles the GET request for this resource.</summary>
     [HttpGet]
@@ -22,7 +22,7 @@ public sealed class PatronPreferencesController(PatronService patrons) : Control
 }
 
 [ApiController, Authorize(Roles = "STAFF,ADMIN"), Route("api/admin/patrons")]
-public sealed class AdminPatronsController(AppDbContext db, PatronService patrons) : ControllerBase
+public sealed class AdminPatronsController(AppDbContext db, IPatronService patrons) : ControllerBase
 {
     /// <summary>Handles the GET request for this resource.</summary>
     [HttpGet]
