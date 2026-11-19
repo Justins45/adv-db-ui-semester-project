@@ -62,4 +62,4 @@ These rows are not described as “written, not run”: they still need test cod
 
 ## C13 — host / semantic search (H4, H7, H12)
 
-Phase 10 is not authorized because A7 is not confirmed; audit rows 10.1–10.7 must be N/A with reason “A7 not confirmed”. Container execution against Neon and deployment-specific configuration remain blocked pending H12. Keep `net10.0` unless H4 explicitly approves a change.
+Phase 10 is not authorized because A7 is not confirmed; audit rows 10.1–10.7 are marked N/A with reason “A7 not confirmed”. The Docker image builds with the .NET 10 SDK image, but Docker is unavailable here (H2), so image build/run was not verified. Production origins and deployment values remain J's H5/H12 inputs. Keep `net10.0` unless H4 explicitly approves a change.

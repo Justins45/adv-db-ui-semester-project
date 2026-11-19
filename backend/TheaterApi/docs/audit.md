@@ -293,13 +293,13 @@ Expected not started. Record the actual state so we know the starting point.
 
 | # | Item | Status | Evidence |
 |---|------|--------|----------|
-| 10.1 | `POST /reviews/search` | PARTIAL | See phase evidence and gap summary below; no test project is present. |
-| 10.2 | Query embedding with `all-MiniLM-L6-v2` (384 dims, unit length) | PARTIAL | See phase evidence and gap summary below; no test project is present. |
-| 10.3 | Embedded text is title + body, title first | PARTIAL | See phase evidence and gap summary below; no test project is present. |
-| 10.4 | Seed review vectors regenerated with title + body | PARTIAL | See phase evidence and gap summary below; no test project is present. |
-| 10.5 | `ORDER BY embedding <=> $1 LIMIT k`; filter-first CTE for filtered searches | PARTIAL | See phase evidence and gap summary below; no test project is present. |
-| 10.6 | Embeddings regenerated on review edit | PARTIAL | See phase evidence and gap summary below; no test project is present. |
-| 10.7 | Query plan uses `idx_review_embedding` for an unfiltered query | PARTIAL | See phase evidence and gap summary below; no test project is present. |
+| 10.1 | `POST /reviews/search` | N/A | A7 not confirmed. |
+| 10.2 | Query embedding with `all-MiniLM-L6-v2` (384 dims, unit length) | N/A | A7 not confirmed. |
+| 10.3 | Embedded text is title + body, title first | N/A | A7 not confirmed. |
+| 10.4 | Seed review vectors regenerated with title + body | N/A | A7 not confirmed. |
+| 10.5 | `ORDER BY embedding <=> $1 LIMIT k`; filter-first CTE for filtered searches | N/A | A7 not confirmed. |
+| 10.6 | Embeddings regenerated on review edit | N/A | A7 not confirmed. |
+| 10.7 | Query plan uses `idx_review_embedding` for an unfiltered query | N/A | A7 not confirmed. |
 
 ## Phase 11: Delivery (brief M7)
 
