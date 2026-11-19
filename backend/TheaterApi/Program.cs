@@ -1,8 +1,13 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.OpenApi;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.RateLimiting;
+using Microsoft.IdentityModel.Tokens;
+using System.Text;
 using TheaterApi.Data;
 using TheaterApi.Service;
 using TheaterApi.Services;
+using TheaterApi.Logging;
 using Google.Cloud.Firestore;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -25,6 +30,29 @@ builder.Services.AddTransient<FirestoreSeeder>();
 builder.Services.AddFirestoreLogs();
 
 builder.Services.AddControllers();
+builder.Services.AddSingleton<ILogSink, InMemoryLogSink>();
+builder.Services.AddSingleton<IMockEmailSender, MockEmailSender>();
+builder.Services.AddScoped<AuthService>();
+builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddJwtBearer(options =>
+{
+    options.TokenValidationParameters = new TokenValidationParameters
+    {
+        ValidateIssuerSigningKey = true,
+        IssuerSigningKeyResolver = (_, _, _, _) =>
+        {
+            var key = builder.Configuration["Jwt:SigningKey"];
+            return string.IsNullOrWhiteSpace(key) ? [] : [new SymmetricSecurityKey(Encoding.UTF8.GetBytes(key))];
+        },
+        ValidateIssuer = !string.IsNullOrWhiteSpace(builder.Configuration["Jwt:Issuer"]),
+        ValidIssuer = builder.Configuration["Jwt:Issuer"],
+        ValidateAudience = !string.IsNullOrWhiteSpace(builder.Configuration["Jwt:Audience"]),
+        ValidAudience = builder.Configuration["Jwt:Audience"],
+        ValidateLifetime = true,
+        ClockSkew = TimeSpan.FromMinutes(1)
+    };
+});
+builder.Services.AddAuthorization();
+builder.Services.AddRateLimiter(options => options.AddFixedWindowLimiter("auth", limiter => { limiter.PermitLimit = 10; limiter.Window = TimeSpan.FromMinutes(1); limiter.QueueLimit = 0; }));
 builder.Services.AddScoped<AuditLogService>();
 builder.Services.AddScoped<SeedService>();
 builder.Services.AddSingleton<IPriceResolutionService, PriceResolutionService>();
@@ -76,6 +104,8 @@ if (app.Environment.IsDevelopment() && app.Configuration.GetValue<bool>("SeedFir
 
 app.UseHttpsRedirection();
 
+app.UseRateLimiter();
+app.UseAuthentication();
 app.UseAuthorization();
 
 app.MapControllers();
