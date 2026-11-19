@@ -2,6 +2,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.OpenApi;
 using TheaterApi.Data;
 using TheaterApi.Service;
+using TheaterApi.Services;
 using Google.Cloud.Firestore;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -25,6 +26,8 @@ builder.Services.AddFirestoreLogs();
 
 builder.Services.AddControllers();
 builder.Services.AddScoped<AuditLogService>();
+builder.Services.AddScoped<SeedService>();
+builder.Services.AddSingleton<IPriceResolutionService, PriceResolutionService>();
 // Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
 builder.Services.AddOpenApi();
 
@@ -45,6 +48,13 @@ builder.Services.AddSwaggerGen(options =>
 });
 
 var app = builder.Build();
+
+if (args.Any(a => string.Equals(a, "seed", StringComparison.OrdinalIgnoreCase)))
+{
+    using var seedScope = app.Services.CreateScope();
+    await seedScope.ServiceProvider.GetRequiredService<SeedService>().RunAsync();
+    return;
+}
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
