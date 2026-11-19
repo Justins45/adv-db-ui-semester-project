@@ -16,7 +16,8 @@ public class LogsController(
     ILogRepository<PerformanceStatusLog> performanceLogs,
     ILogRepository<ErrorLog> errorLogs,
     ILogRepository<LoginHistory> loginHistory,
-    AuditLogService auditLogService) : ControllerBase
+    AuditLogService auditLogService,
+    TimeProvider clock) : ControllerBase
 {
     // ───────────── Audit log ─────────────
 
@@ -36,7 +37,7 @@ public class LogsController(
      [Tags("Logs - Audit")]
     [ProducesResponseType<AuditLog>(StatusCodes.Status201Created)]
     public Task<ActionResult<AuditLog>> CreateAudit(AuditLogRequest request, CancellationToken ct) =>
-        CreateOne(auditLogs, request.ToEntity(), nameof(GetAudit), ct);
+        CreateOne(auditLogs, request.ToEntity(clock), nameof(GetAudit), ct);
 
     [HttpPut("audit/{id:int}")]
      [Tags("Logs - Audit")]
@@ -87,7 +88,7 @@ public class LogsController(
     [ProducesResponseType<PermissionChangeLog>(StatusCodes.Status201Created)]
     public Task<ActionResult<PermissionChangeLog>> CreatePermissionChange(
         PermissionChangeLogRequest request, CancellationToken ct) =>
-        CreateOne(permissionLogs, request.ToEntity(), nameof(GetPermissionChange), ct);
+        CreateOne(permissionLogs, request.ToEntity(clock), nameof(GetPermissionChange), ct);
 
     [HttpPut("permission-changes/{id:int}")]
     [Tags("Logs - Permission Changes")]
@@ -122,7 +123,7 @@ public class LogsController(
     [ProducesResponseType<PerformanceStatusLog>(StatusCodes.Status201Created)]
     public Task<ActionResult<PerformanceStatusLog>> CreatePerformanceStatus(
         PerformanceStatusLogRequest request, CancellationToken ct) =>
-        CreateOne(performanceLogs, request.ToEntity(), nameof(GetPerformanceStatus), ct);
+        CreateOne(performanceLogs, request.ToEntity(clock), nameof(GetPerformanceStatus), ct);
 
     [HttpPut("performance-status/{id:int}")]
     [Tags("Logs - Performance Status")]
@@ -156,13 +157,13 @@ public class LogsController(
     [Tags("Logs - Errors")]
     [ProducesResponseType<ErrorLog>(StatusCodes.Status201Created)]
     public Task<ActionResult<ErrorLog>> CreateError(ErrorLogRequest request, CancellationToken ct) =>
-        CreateOne(errorLogs, request.ToEntity(), nameof(GetError), ct);
+        CreateOne(errorLogs, request.ToEntity(clock), nameof(GetError), ct);
 
     [HttpPut("errors/{id:int}")]
     [Tags("Logs - Errors")]
     [ProducesResponseType(StatusCodes.Status404NotFound)]
     public Task<ActionResult<ErrorLog>> UpdateError(int id, ErrorLogRequest request, CancellationToken ct) =>
-        UpdateOne(errorLogs, id, request.ApplyTo, ct);
+        UpdateOne(errorLogs, id, log => request.ApplyTo(log, clock), ct);
 
     [HttpDelete("errors/{id:int}")]
     [Tags("Logs - Errors")]
@@ -176,7 +177,7 @@ public class LogsController(
     [HttpGet("login-history/{id:int}")]
     public Task<ActionResult<LoginHistory>> GetLoginHistory(int id, CancellationToken ct) => GetOne(loginHistory, id, ct);
     [HttpPost("login-history")]
-    public Task<ActionResult<LoginHistory>> CreateLoginHistory(LoginHistoryRequest request, CancellationToken ct) => CreateOne(loginHistory, request.ToEntity(), nameof(GetLoginHistory), ct);
+    public Task<ActionResult<LoginHistory>> CreateLoginHistory(LoginHistoryRequest request, CancellationToken ct) => CreateOne(loginHistory, request.ToEntity(clock), nameof(GetLoginHistory), ct);
     [HttpPut("login-history/{id:int}")]
     public Task<ActionResult<LoginHistory>> UpdateLoginHistory(int id, LoginHistoryRequest request, CancellationToken ct) => UpdateOne(loginHistory, id, request.ApplyTo, ct);
     [HttpDelete("login-history/{id:int}")]
