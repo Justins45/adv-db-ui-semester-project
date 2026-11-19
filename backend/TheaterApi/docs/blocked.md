@@ -21,6 +21,10 @@ Seed-dependent tests must use hand-built fixtures until H1 supplies the seed fil
 
 Docker (`docker info`) and Firebase CLI are unavailable; Java is installed, but `FIRESTORE_EMULATOR_HOST` is unset. C1 fixtures and smoke tests are written and compile. Runtime checks are blocked by H2: `PostgresFixture_AppliesMigrationsAndConnects` fails before connecting because Docker is unavailable, and `FirestoreFixture_ConnectsToEmulator` fails with the explicit missing-`FIRESTORE_EMULATOR_HOST` message. Re-run both after J provides Docker, Firebase CLI, Java/emulator, and the emulator host.
 
+## C3 — Postgres hold tests (H2)
+
+Tests `Row_5_16_TwentyConcurrentHoldsForOneSeat_ExactlyOneSucceeds`, `Row_5_17_ExpiredHoldCleanup_DeletesTicketAndItemAndAbandonsCart`, `Row_5_18_HoldingDifferentSeats_ReleasesOldHold`, `Row_5_19_NonScheduledPerformance_IsRejected`, and `ExpiredHoldTakeover_RemovesStaleTicketAndCartItem` are written and compile. They could not run against either the old or updated hold service because the Testcontainers fixture cannot start without Docker. H2 unblocks execution; re-run the 20-request test multiple times and verify the full set.
+
 ## C6 — client coordination (H6)
 
 The requested `/api` route prefix changes existing URLs. Code changes can be made, but J must update external clients and confirm the transition.
