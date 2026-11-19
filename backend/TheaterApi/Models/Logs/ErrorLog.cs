@@ -20,6 +20,10 @@ public class ErrorLog : ILogDocument
 
     [FirestoreProperty("stack_trace")] [JsonPropertyName("stack_trace")]
     public string? StackTrace { get; set; }
+
+    [FirestoreProperty("timestamp")]
+    [JsonPropertyName("timestamp")]
+    public string? Timestamp { get; set; }
 }
 
 public class ErrorLogRequest
@@ -49,5 +53,6 @@ public class ErrorLogRequest
         log.EndPoint = EndPoint;
         log.ErrorMessage = ErrorMessage;
         log.StackTrace = StackTrace;
+        log.Timestamp = DateTimeOffset.UtcNow.ToString("yyyy-MM-ddTHH:mm:ssZ");
     }
 }

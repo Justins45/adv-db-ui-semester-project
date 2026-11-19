@@ -15,6 +15,7 @@ public class LogsController(
     ILogRepository<PermissionChangeLog> permissionLogs,
     ILogRepository<PerformanceStatusLog> performanceLogs,
     ILogRepository<ErrorLog> errorLogs,
+    ILogRepository<LoginHistory> loginHistory,
     AuditLogService auditLogService) : ControllerBase
 {
     // ───────────── Audit log ─────────────
@@ -49,6 +50,7 @@ public class LogsController(
     [ProducesResponseType(StatusCodes.Status404NotFound)]
     public Task<IActionResult> DeleteAudit(int id, CancellationToken ct) =>
         DeleteOne(auditLogs, id, ct);
+
 
     // NOTE: (1) FIREBASE SDK QUERY -- aggregate count
     // GET api/logs/audit-counts
@@ -168,6 +170,17 @@ public class LogsController(
     [ProducesResponseType(StatusCodes.Status404NotFound)]
     public Task<IActionResult> DeleteError(int id, CancellationToken ct) =>
         DeleteOne(errorLogs, id, ct);
+
+    [HttpGet("login-history")]
+    public async Task<ActionResult<IReadOnlyList<LoginHistory>>> ListLoginHistory([Range(1, 200)] int limit = 50, CancellationToken ct = default) => Ok(await loginHistory.GetRecentAsync(limit, ct));
+    [HttpGet("login-history/{id:int}")]
+    public Task<ActionResult<LoginHistory>> GetLoginHistory(int id, CancellationToken ct) => GetOne(loginHistory, id, ct);
+    [HttpPost("login-history")]
+    public Task<ActionResult<LoginHistory>> CreateLoginHistory(LoginHistoryRequest request, CancellationToken ct) => CreateOne(loginHistory, request.ToEntity(), nameof(GetLoginHistory), ct);
+    [HttpPut("login-history/{id:int}")]
+    public Task<ActionResult<LoginHistory>> UpdateLoginHistory(int id, LoginHistoryRequest request, CancellationToken ct) => UpdateOne(loginHistory, id, request.ApplyTo, ct);
+    [HttpDelete("login-history/{id:int}")]
+    public Task<IActionResult> DeleteLoginHistory(int id, CancellationToken ct) => DeleteOne(loginHistory, id, ct);
 
     // ───────────── Shared helpers (private, so they are not endpoints) ─────────────
 
