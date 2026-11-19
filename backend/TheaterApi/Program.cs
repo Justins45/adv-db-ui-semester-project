@@ -33,6 +33,9 @@ builder.Services.AddTransient<FirestoreSeeder>();
 builder.Services.AddFirestoreLogs();
 
 builder.Services.AddControllers();
+var corsOrigins = builder.Configuration.GetSection("Cors:AllowedOrigins").Get<string[]>() ?? [];
+builder.Services.AddCors(options => options.AddPolicy("ConfiguredOrigins", policy =>
+    policy.WithOrigins(corsOrigins).AllowAnyHeader().AllowAnyMethod()));
 builder.Services.AddSingleton(Channel.CreateUnbounded<LogWorkItem>(new UnboundedChannelOptions { SingleReader = true, SingleWriter = false }));
 builder.Services.AddSingleton<ILogSink, ChannelLogSink>();
 builder.Services.AddSingleton<IMockEmailSender, MockEmailSender>();
@@ -115,6 +118,7 @@ if (app.Environment.IsDevelopment() && app.Configuration.GetValue<bool>("SeedFir
 
 app.UseHttpsRedirection();
 app.UseMiddleware<ExceptionLoggingMiddleware>();
+app.UseCors("ConfiguredOrigins");
 
 app.UseRateLimiter();
 app.UseAuthentication();

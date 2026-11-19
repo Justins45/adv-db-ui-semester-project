@@ -35,7 +35,7 @@ All application routes have been moved under `/api`; the previous unprefixed URL
 
 ## C7 — CORS origins (H5)
 
-Origins must be supplied by J. Implement a configuration-driven allowlist with no implicit wildcard; local policy behavior can be tested with an explicit test origin. Production origin values remain blocked pending H5.
+Origins must be supplied by J. `Program.cs` now reads `Cors:AllowedOrigins` and fails closed when it is empty; `CorsPolicyTests.Row_4_13_DisallowedOriginGetsNoCorsHeaders` is written but could not run because Docker is unavailable (H2). Production origin values remain blocked pending H5.
 
 ## C9 — person_status (H8)
 
