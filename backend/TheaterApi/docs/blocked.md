@@ -37,6 +37,10 @@ All application routes have been moved under `/api`; the previous unprefixed URL
 
 Origins must be supplied by J. `Program.cs` now reads `Cors:AllowedOrigins` and fails closed when it is empty; `CorsPolicyTests.Row_4_13_DisallowedOriginGetsNoCorsHeaders` is written but could not run because Docker is unavailable (H2). Production origin values remain blocked pending H5.
 
+## C8 — Swagger verification (H2, H10)
+
+XML documentation is enabled and all controller actions have summaries. `SwaggerSummaryTests.Row_0_6_EverySwaggerOperationHasSummary` is written, but its WebApplicationFactory fixture cannot start without Docker (H2). Launching Swagger in a browser remains H10.
+
 ## C9 — person_status (H8)
 
 The Phase 3 Technical Report says `person_status(id)` returns a subclass-specific result, with `Patron Only` and `Staff member` examples and counts. `IPatronService.PersonStatusAsync` uses those labels based on staff-row presence; its missing-person result is null. J still needs to confirm labels and performer behavior (H8).
