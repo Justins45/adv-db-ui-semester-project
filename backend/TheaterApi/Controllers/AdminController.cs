@@ -16,15 +16,12 @@ public sealed class AdminController(AppDbContext db, TimeProvider clock, ILogSin
     /// <summary>Handles the POST request for events.</summary>
     [HttpPost("events")]
     public async Task<IActionResult> CreateEvent(AdminEventRequest r, CancellationToken ct) { var e = new Event { Title = r.Title.Trim(), Description = r.Description, Status = r.Status, LiveDate = r.LiveDate, Image = r.Image }; await AddGenres(e, r.GenreIds, ct); db.Events.Add(e); await db.SaveChangesAsync(ct); await logs.AuditAsync(CurrentStaff(), "event", e.Id, "INSERT"); return Created($"/api/admin/events/{e.Id}", new { e.Id }); }
-    /// <summary>Handles the PUT request for events/{id:int}.</summary>
     [HttpPut("events/{id:int}")]
     public async Task<IActionResult> UpdateEvent(int id, AdminEventRequest r, CancellationToken ct) { var e = await db.Events.Include(x => x.Genres).SingleOrDefaultAsync(x => x.Id == id, ct); if (e is null) return NotFound(); e.Title = r.Title.Trim(); e.Description = r.Description; e.Status = r.Status; e.LiveDate = r.LiveDate; e.Image = r.Image; e.Genres.Clear(); await AddGenres(e, r.GenreIds, ct); await db.SaveChangesAsync(ct); await logs.AuditAsync(CurrentStaff(), "event", id, "UPDATE"); return NoContent(); }
     /// <summary>Handles the DELETE request for events/{id:int}.</summary>
     [HttpDelete("events/{id:int}")] public Task<IActionResult> DeleteEvent(int id, CancellationToken ct) => Delete(db.Events, id, ct);
 
-    /// <summary>Handles the POST request for genres.</summary>
     [HttpPost("genres")] public async Task<IActionResult> CreateGenre(AdminGenreRequest r, CancellationToken ct) { var g = new Genre { Name = r.Name.Trim(), Active = r.Active }; db.Genres.Add(g); await db.SaveChangesAsync(ct); await logs.AuditAsync(CurrentStaff(), "genre", g.Id, "INSERT"); return Created($"/api/admin/genres/{g.Id}", new { g.Id, g.Name, g.Active }); }
-    /// <summary>Handles the PUT request for genres/{id:int}.</summary>
     [HttpPut("genres/{id:int}")] public async Task<IActionResult> UpdateGenre(int id, AdminGenreRequest r, CancellationToken ct) { var g = await db.Genres.FindAsync([id], ct); if (g is null) return NotFound(); g.Name = r.Name.Trim(); g.Active = r.Active; await db.SaveChangesAsync(ct); await logs.AuditAsync(CurrentStaff(), "genre", id, "UPDATE"); return NoContent(); }
     /// <summary>Handles the DELETE request for genres/{id:int}.</summary>
     [HttpDelete("genres/{id:int}")] public Task<IActionResult> DeleteGenre(int id, CancellationToken ct) => Delete(db.Genres, id, ct);
