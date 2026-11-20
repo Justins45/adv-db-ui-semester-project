@@ -1,7 +1,6 @@
 using System.ComponentModel.DataAnnotations;
 using System.Text.Json.Serialization;
 using Google.Cloud.Firestore;
-using TheaterApi.Data;
 
 namespace TheaterApi.Models.Logs;
 
@@ -23,9 +22,9 @@ public class AuditLog : ILogDocument
     [FirestoreProperty("action")] [JsonPropertyName("action")]
     public string Action { get; set; } = "";
 
-    [FirestoreProperty("changed_at", ConverterType = typeof(FlexibleDateTimeConverter))]
+    [FirestoreProperty("changed_at")]
     [JsonPropertyName("changed_at")]
-    public DateTime ChangedAt { get; set; }
+    public string ChangedAt { get; set; } = "";
 
     [FirestoreProperty("changes")] [JsonPropertyName("changes")]
     public AuditChanges Changes { get; set; } = new();
@@ -83,9 +82,9 @@ public class AuditLogRequest
     public List<string> Tags { get; set; } = [];
 
     /// <summary>New document: stamps the time.</summary>
-    public AuditLog ToEntity()
+    public AuditLog ToEntity(TimeProvider clock)
     {
-        var log = new AuditLog { ChangedAt = DateTime.UtcNow };
+        var log = new AuditLog { ChangedAt = clock.GetUtcNow().ToString("yyyy-MM-ddTHH:mm:ssZ") };
         ApplyTo(log);
         return log;
     }

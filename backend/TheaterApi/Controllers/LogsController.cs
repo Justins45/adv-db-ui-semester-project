@@ -9,40 +9,47 @@ using TheaterApi.Service;
 namespace TheaterApi.Controllers;
 
 [ApiController]
-[Route("api/[controller]")]
+[Route("api/logs")]
 public class LogsController(
     ILogRepository<AuditLog> auditLogs,
     ILogRepository<PermissionChangeLog> permissionLogs,
     ILogRepository<PerformanceStatusLog> performanceLogs,
     ILogRepository<ErrorLog> errorLogs,
-    AuditLogService auditLogService) : ControllerBase
+    ILogRepository<LoginHistory> loginHistory,
+    AuditLogService auditLogService,
+    TimeProvider clock) : ControllerBase
 {
     // ───────────── Audit log ─────────────
 
+    /// <summary>Handles the GET request for audit.</summary>
     [HttpGet("audit")]
      [Tags("Logs - Audit")]
     public async Task<ActionResult<IReadOnlyList<AuditLog>>> ListAudit(
         [Range(1, 200)] int limit = 50, CancellationToken ct = default) =>
         Ok(await auditLogs.GetRecentAsync(limit, ct));
 
+    /// <summary>Handles the GET request for audit/{id:int}.</summary>
     [HttpGet("audit/{id:int}")]
      [Tags("Logs - Audit")]
     [ProducesResponseType(StatusCodes.Status404NotFound)]
     public Task<ActionResult<AuditLog>> GetAudit(int id, CancellationToken ct) =>
         GetOne(auditLogs, id, ct);
 
+    /// <summary>Handles the POST request for audit.</summary>
     [HttpPost("audit")]
      [Tags("Logs - Audit")]
     [ProducesResponseType<AuditLog>(StatusCodes.Status201Created)]
     public Task<ActionResult<AuditLog>> CreateAudit(AuditLogRequest request, CancellationToken ct) =>
-        CreateOne(auditLogs, request.ToEntity(), nameof(GetAudit), ct);
+        CreateOne(auditLogs, request.ToEntity(clock), nameof(GetAudit), ct);
 
+    /// <summary>Handles the PUT request for audit/{id:int}.</summary>
     [HttpPut("audit/{id:int}")]
      [Tags("Logs - Audit")]
     [ProducesResponseType(StatusCodes.Status404NotFound)]
     public Task<ActionResult<AuditLog>> UpdateAudit(int id, AuditLogRequest request, CancellationToken ct) =>
         UpdateOne(auditLogs, id, request.ApplyTo, ct);
 
+    /// <summary>Handles the DELETE request for audit/{id:int}.</summary>
     [HttpDelete("audit/{id:int}")]
      [Tags("Logs - Audit")]
     [ProducesResponseType(StatusCodes.Status204NoContent)]
@@ -50,8 +57,10 @@ public class LogsController(
     public Task<IActionResult> DeleteAudit(int id, CancellationToken ct) =>
         DeleteOne(auditLogs, id, ct);
 
+
     // NOTE: (1) FIREBASE SDK QUERY -- aggregate count
     // GET api/logs/audit-counts
+    /// <summary>Handles the GET request for audit-counts.</summary>
     [HttpGet("audit-counts")]
      [Tags("Logs - Audit")]
     public async Task<ActionResult<AuditLogCounts>> GetAuditCounts()
@@ -60,6 +69,7 @@ public class LogsController(
     
     // NOTE: (2) FIREBASE SDK QUERY -- filter by
     // GET api/logs/audit-recent?daysAgo=7
+    /// <summary>Handles the GET request for audit-recent.</summary>
     [HttpGet("audit-recent")]
      [Tags("Logs - Audit")]
     public async Task<ActionResult<List<AuditLog>>> GetRecentAuditLogs(
@@ -68,25 +78,29 @@ public class LogsController(
 
     // ───────────── Permission changes ─────────────
 
+    /// <summary>Handles the GET request for permission-changes.</summary>
     [HttpGet("permission-changes")]
     [Tags("Logs - Permission Changes")]
     public async Task<ActionResult<IReadOnlyList<PermissionChangeLog>>> ListPermissionChanges(
         [Range(1, 200)] int limit = 50, CancellationToken ct = default) =>
         Ok(await permissionLogs.GetRecentAsync(limit, ct));
 
+    /// <summary>Handles the GET request for permission-changes/{id:int}.</summary>
     [HttpGet("permission-changes/{id:int}")]
     [Tags("Logs - Permission Changes")]
     [ProducesResponseType(StatusCodes.Status404NotFound)]
     public Task<ActionResult<PermissionChangeLog>> GetPermissionChange(int id, CancellationToken ct) =>
         GetOne(permissionLogs, id, ct);
 
+    /// <summary>Handles the POST request for permission-changes.</summary>
     [HttpPost("permission-changes")]
     [Tags("Logs - Permission Changes")]
     [ProducesResponseType<PermissionChangeLog>(StatusCodes.Status201Created)]
     public Task<ActionResult<PermissionChangeLog>> CreatePermissionChange(
         PermissionChangeLogRequest request, CancellationToken ct) =>
-        CreateOne(permissionLogs, request.ToEntity(), nameof(GetPermissionChange), ct);
+        CreateOne(permissionLogs, request.ToEntity(clock), nameof(GetPermissionChange), ct);
 
+    /// <summary>Handles the PUT request for permission-changes/{id:int}.</summary>
     [HttpPut("permission-changes/{id:int}")]
     [Tags("Logs - Permission Changes")]
     [ProducesResponseType(StatusCodes.Status404NotFound)]
@@ -94,6 +108,7 @@ public class LogsController(
         int id, PermissionChangeLogRequest request, CancellationToken ct) =>
         UpdateOne(permissionLogs, id, request.ApplyTo, ct);
 
+    /// <summary>Handles the DELETE request for permission-changes/{id:int}.</summary>
     [HttpDelete("permission-changes/{id:int}")]
     [Tags("Logs - Permission Changes")]
     [ProducesResponseType(StatusCodes.Status204NoContent)]
@@ -103,25 +118,29 @@ public class LogsController(
 
     // ───────────── Performance status changes ─────────────
 
+    /// <summary>Handles the GET request for performance-status.</summary>
     [HttpGet("performance-status")]
     [Tags("Logs - Performance Status")]
     public async Task<ActionResult<IReadOnlyList<PerformanceStatusLog>>> ListPerformanceStatus(
         [Range(1, 200)] int limit = 50, CancellationToken ct = default) =>
         Ok(await performanceLogs.GetRecentAsync(limit, ct));
 
+    /// <summary>Handles the GET request for performance-status/{id:int}.</summary>
     [HttpGet("performance-status/{id:int}")]
     [Tags("Logs - Performance Status")]
     [ProducesResponseType(StatusCodes.Status404NotFound)]
     public Task<ActionResult<PerformanceStatusLog>> GetPerformanceStatus(int id, CancellationToken ct) =>
         GetOne(performanceLogs, id, ct);
 
+    /// <summary>Handles the POST request for performance-status.</summary>
     [HttpPost("performance-status")]
     [Tags("Logs - Performance Status")]
     [ProducesResponseType<PerformanceStatusLog>(StatusCodes.Status201Created)]
     public Task<ActionResult<PerformanceStatusLog>> CreatePerformanceStatus(
         PerformanceStatusLogRequest request, CancellationToken ct) =>
-        CreateOne(performanceLogs, request.ToEntity(), nameof(GetPerformanceStatus), ct);
+        CreateOne(performanceLogs, request.ToEntity(clock), nameof(GetPerformanceStatus), ct);
 
+    /// <summary>Handles the PUT request for performance-status/{id:int}.</summary>
     [HttpPut("performance-status/{id:int}")]
     [Tags("Logs - Performance Status")]
     [ProducesResponseType(StatusCodes.Status404NotFound)]
@@ -129,6 +148,7 @@ public class LogsController(
         int id, PerformanceStatusLogRequest request, CancellationToken ct) =>
         UpdateOne(performanceLogs, id, request.ApplyTo, ct);
 
+    /// <summary>Handles the DELETE request for performance-status/{id:int}.</summary>
     [HttpDelete("performance-status/{id:int}")]
     [Tags("Logs - Performance Status")]
     [ProducesResponseType(StatusCodes.Status204NoContent)]
@@ -138,36 +158,57 @@ public class LogsController(
 
     // ───────────── Error log ─────────────
 
+    /// <summary>Handles the GET request for errors.</summary>
     [HttpGet("errors")]
     [Tags("Logs - Errors")]
     public async Task<ActionResult<IReadOnlyList<ErrorLog>>> ListErrors(
         [Range(1, 200)] int limit = 50, CancellationToken ct = default) =>
         Ok(await errorLogs.GetRecentAsync(limit, ct));
 
+    /// <summary>Handles the GET request for errors/{id:int}.</summary>
     [HttpGet("errors/{id:int}")]
     [Tags("Logs - Errors")]
     [ProducesResponseType(StatusCodes.Status404NotFound)]
     public Task<ActionResult<ErrorLog>> GetError(int id, CancellationToken ct) =>
         GetOne(errorLogs, id, ct);
 
+    /// <summary>Handles the POST request for errors.</summary>
     [HttpPost("errors")]
     [Tags("Logs - Errors")]
     [ProducesResponseType<ErrorLog>(StatusCodes.Status201Created)]
     public Task<ActionResult<ErrorLog>> CreateError(ErrorLogRequest request, CancellationToken ct) =>
-        CreateOne(errorLogs, request.ToEntity(), nameof(GetError), ct);
+        CreateOne(errorLogs, request.ToEntity(clock), nameof(GetError), ct);
 
+    /// <summary>Handles the PUT request for errors/{id:int}.</summary>
     [HttpPut("errors/{id:int}")]
     [Tags("Logs - Errors")]
     [ProducesResponseType(StatusCodes.Status404NotFound)]
     public Task<ActionResult<ErrorLog>> UpdateError(int id, ErrorLogRequest request, CancellationToken ct) =>
-        UpdateOne(errorLogs, id, request.ApplyTo, ct);
+        UpdateOne(errorLogs, id, log => request.ApplyTo(log, clock), ct);
 
+    /// <summary>Handles the DELETE request for errors/{id:int}.</summary>
     [HttpDelete("errors/{id:int}")]
     [Tags("Logs - Errors")]
     [ProducesResponseType(StatusCodes.Status204NoContent)]
     [ProducesResponseType(StatusCodes.Status404NotFound)]
     public Task<IActionResult> DeleteError(int id, CancellationToken ct) =>
         DeleteOne(errorLogs, id, ct);
+
+    /// <summary>Handles the GET request for login-history.</summary>
+    [HttpGet("login-history")]
+    public async Task<ActionResult<IReadOnlyList<LoginHistory>>> ListLoginHistory([Range(1, 200)] int limit = 50, CancellationToken ct = default) => Ok(await loginHistory.GetRecentAsync(limit, ct));
+    /// <summary>Handles the GET request for login-history/{id:int}.</summary>
+    [HttpGet("login-history/{id:int}")]
+    public Task<ActionResult<LoginHistory>> GetLoginHistory(int id, CancellationToken ct) => GetOne(loginHistory, id, ct);
+    /// <summary>Handles the POST request for login-history.</summary>
+    [HttpPost("login-history")]
+    public Task<ActionResult<LoginHistory>> CreateLoginHistory(LoginHistoryRequest request, CancellationToken ct) => CreateOne(loginHistory, request.ToEntity(clock), nameof(GetLoginHistory), ct);
+    /// <summary>Handles the PUT request for login-history/{id:int}.</summary>
+    [HttpPut("login-history/{id:int}")]
+    public Task<ActionResult<LoginHistory>> UpdateLoginHistory(int id, LoginHistoryRequest request, CancellationToken ct) => UpdateOne(loginHistory, id, request.ApplyTo, ct);
+    /// <summary>Handles the DELETE request for login-history/{id:int}.</summary>
+    [HttpDelete("login-history/{id:int}")]
+    public Task<IActionResult> DeleteLoginHistory(int id, CancellationToken ct) => DeleteOne(loginHistory, id, ct);
 
     // ───────────── Shared helpers (private, so they are not endpoints) ─────────────
 

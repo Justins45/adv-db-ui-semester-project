@@ -519,6 +519,14 @@ FodyWeavers.xsd
 # VS Code files for those working on multiple tools
 *.code-workspace
 
+# Local secrets and service-account credentials
+.env
+.env.*
+!.env.example
+appsettings.Local.json
+service-account*.json
+*-firebase-adminsdk-*.json
+
 # Local History for Visual Studio Code
 
 # Windows Installer files from build outputs
