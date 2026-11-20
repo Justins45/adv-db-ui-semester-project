@@ -11,6 +11,7 @@ using TheaterApi.Logging;
 using TheaterApi.BackgroundJobs;
 using Google.Cloud.Firestore;
 using System.Threading.Channels;
+using System.Reflection;
 using TheaterApi.Middleware;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -33,6 +34,9 @@ builder.Services.AddTransient<FirestoreSeeder>();
 builder.Services.AddFirestoreLogs();
 
 builder.Services.AddControllers();
+var corsOrigins = builder.Configuration.GetSection("Cors:AllowedOrigins").Get<string[]>() ?? [];
+builder.Services.AddCors(options => options.AddPolicy("ConfiguredOrigins", policy =>
+    policy.WithOrigins(corsOrigins).AllowAnyHeader().AllowAnyMethod()));
 builder.Services.AddSingleton(Channel.CreateUnbounded<LogWorkItem>(new UnboundedChannelOptions { SingleReader = true, SingleWriter = false }));
 builder.Services.AddSingleton<ILogSink, ChannelLogSink>();
 builder.Services.AddSingleton<IMockEmailSender, MockEmailSender>();
@@ -62,7 +66,7 @@ builder.Services.AddScoped<AuditLogService>();
 builder.Services.AddSingleton(TimeProvider.System);
 builder.Services.AddScoped<HoldService>();
 builder.Services.AddScoped<OrderService>();
-builder.Services.AddScoped<PatronService>();
+builder.Services.AddScoped<IPatronService, PatronService>();
 builder.Services.AddHostedService<HoldCleanupService>();
 builder.Services.AddHostedService<FirestoreLogWriter>();
 builder.Services.AddScoped<SeedService>();
@@ -73,6 +77,8 @@ builder.Services.AddOpenApi();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen(options => 
 {
+    var xmlDocumentation = Path.Combine(AppContext.BaseDirectory, $"{Assembly.GetExecutingAssembly().GetName().Name}.xml");
+    options.IncludeXmlComments(xmlDocumentation);
     options.SwaggerDoc("v1", new OpenApiInfo
     {
         Title = "Our Awesome API",
@@ -115,6 +121,7 @@ if (app.Environment.IsDevelopment() && app.Configuration.GetValue<bool>("SeedFir
 
 app.UseHttpsRedirection();
 app.UseMiddleware<ExceptionLoggingMiddleware>();
+app.UseCors("ConfiguredOrigins");
 
 app.UseRateLimiter();
 app.UseAuthentication();

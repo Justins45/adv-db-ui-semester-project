@@ -6,6 +6,7 @@ using Microsoft.Extensions.DependencyInjection.Extensions;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Time.Testing;
+using System.Security.Cryptography;
 using TheaterApi.Data;
 
 namespace TheaterApi.Tests.Infrastructure;
@@ -18,7 +19,7 @@ public sealed class TheaterApiFactory(TestPostgresFixture postgres, FakeTimeProv
         builder.ConfigureAppConfiguration((_, config) => config.AddInMemoryCollection(new Dictionary<string, string?>
         {
             ["ConnectionStrings:NeonDb"] = postgres.ConnectionString,
-            ["Jwt:SigningKey"] = "test-only-signing-key-that-is-long-enough-for-hmac-sha256",
+            ["Jwt:SigningKey"] = Convert.ToBase64String(RandomNumberGenerator.GetBytes(32)),
             ["Jwt:Issuer"] = "TheaterApi.Tests",
             ["Jwt:Audience"] = "TheaterApi.Tests",
             ["Firestore:ProjectId"] = "theater-api-tests",
