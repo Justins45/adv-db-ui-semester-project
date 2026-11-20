@@ -82,9 +82,9 @@ public class AuditLogRequest
     public List<string> Tags { get; set; } = [];
 
     /// <summary>New document: stamps the time.</summary>
-    public AuditLog ToEntity()
+    public AuditLog ToEntity(TimeProvider clock)
     {
-        var log = new AuditLog { ChangedAt = DateTimeOffset.UtcNow.ToString("yyyy-MM-ddTHH:mm:ssZ") };
+        var log = new AuditLog { ChangedAt = clock.GetUtcNow().ToString("yyyy-MM-ddTHH:mm:ssZ") };
         ApplyTo(log);
         return log;
     }

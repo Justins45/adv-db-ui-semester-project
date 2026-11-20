@@ -5,7 +5,9 @@
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
     <RootNamespace>TheaterApi</RootNamespace>
+    <GenerateDocumentationFile>true</GenerateDocumentationFile>
     <UserSecretsId>c3145380-a74a-4e9b-a393-5ea3e6509ad5</UserSecretsId>
+    <DefaultItemExcludes>$(DefaultItemExcludes);TheaterApi.Tests/**</DefaultItemExcludes>
   </PropertyGroup>
 
   <ItemGroup>
@@ -18,6 +20,10 @@
     </PackageReference>
     <PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL" Version="10.0.3" />
     <PackageReference Include="Swashbuckle.AspNetCore" Version="10.3.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Remove="TheaterApi.Tests/**/*.cs" />
   </ItemGroup>
 
 </Project>

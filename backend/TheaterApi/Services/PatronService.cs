@@ -8,7 +8,15 @@ namespace TheaterApi.Services;
 public sealed class InvalidPreferencesException(string message) : Exception(message);
 public sealed class PointsChangeException(string message) : Exception(message);
 
-public sealed class PatronService(AppDbContext db)
+public interface IPatronService
+{
+    Task<string?> GetPreferencesAsync(int personId, CancellationToken ct);
+    Task<bool> SetPreferencesAsync(int personId, string json, CancellationToken ct);
+    Task<bool> ChangePointsAsync(int personId, int amount, CancellationToken ct);
+    Task<string?> PersonStatusAsync(int personId, CancellationToken ct);
+}
+
+public sealed class PatronService(AppDbContext db) : IPatronService
 {
     public static string ValidatePreferences(string json)
     {
@@ -38,5 +46,16 @@ public sealed class PatronService(AppDbContext db)
         var updated = await db.Database.ExecuteSqlInterpolatedAsync($"UPDATE patron SET points_balance = points_balance + {amount} WHERE id = {personId} AND points_balance + {amount} >= 0", ct);
         return updated == 1;
     }
+
+    public async Task<string?> PersonStatusAsync(int personId, CancellationToken ct)
+    {
+        var personExists = await db.People.AnyAsync(person => person.Id == personId, ct);
+        if (!personExists) return null;
+
+        var hasStaffRecord = await db.Staff.AnyAsync(staff => staff.Id == personId, ct);
+        return PersonStatus(hasStaffRecord);
+    }
+
+    public static string PersonStatus(bool hasStaffRecord) => hasStaffRecord ? "Staff member" : "Patron Only";
     private static bool IsBool(JsonElement element, string name) => element.TryGetProperty(name, out var value) && (value.ValueKind is JsonValueKind.True or JsonValueKind.False);
 }

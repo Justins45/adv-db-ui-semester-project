@@ -5,7 +5,7 @@ using TheaterApi.Models.Logs;
 namespace TheaterApi.Service;
 
 // Services/AuditLogService.cs
-public class AuditLogService(FirestoreDb firestore)
+public class AuditLogService(FirestoreDb firestore, TimeProvider clock)
 {
     public async Task<AuditLogCounts> GetCountsAsync()
     {
@@ -30,7 +30,7 @@ public class AuditLogService(FirestoreDb firestore)
 
     public async Task<List<AuditLog>> GetRecentAsync(int daysAgo)
     {
-        var cutoff = DateTimeOffset.UtcNow.AddDays(-daysAgo).ToString("yyyy-MM-ddTHH:mm:ssZ");
+        var cutoff = clock.GetUtcNow().AddDays(-daysAgo).ToString("yyyy-MM-ddTHH:mm:ssZ");
 
         var snapshot = await firestore.Collection("audit_log")
             .WhereGreaterThanOrEqualTo("changed_at", cutoff)

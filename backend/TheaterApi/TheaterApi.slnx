@@ -1,0 +1,4 @@
+<Solution>
+  <Project Path="TheaterApi.csproj" />
+  <Project Path="TheaterApi.Tests/TheaterApi.Tests.csproj" />
+</Solution>

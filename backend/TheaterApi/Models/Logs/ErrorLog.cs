@@ -40,19 +40,19 @@ public class ErrorLogRequest
     [JsonPropertyName("stack_trace")]
     public string? StackTrace { get; set; }
 
-    public ErrorLog ToEntity()
+    public ErrorLog ToEntity(TimeProvider clock)
     {
         var log = new ErrorLog();
-        ApplyTo(log);
+        ApplyTo(log, clock);
         return log;
     }
 
-    public void ApplyTo(ErrorLog log)
+    public void ApplyTo(ErrorLog log, TimeProvider clock)
     {
         log.PersonId = PersonId;
         log.EndPoint = EndPoint;
         log.ErrorMessage = ErrorMessage;
         log.StackTrace = StackTrace;
-        log.Timestamp = DateTimeOffset.UtcNow.ToString("yyyy-MM-ddTHH:mm:ssZ");
+        log.Timestamp = clock.GetUtcNow().ToString("yyyy-MM-ddTHH:mm:ssZ");
     }
 }
